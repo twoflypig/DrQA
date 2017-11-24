@@ -182,7 +182,7 @@ def batchlize(inputs, max_sequence_length=None):
 
     # print("max_sequence_length:{}".format(max_sequence_length))
 
-    inputs_batch_major = np.ones(shape=[batch_size, max_sequence_length], dtype=np.int32) # == PAD
+    inputs_batch_major = np.zeros(shape=[batch_size, max_sequence_length], dtype=np.int32) # == PAD
 
     for i, seq in enumerate(inputs):
         for j, element in enumerate(seq):
@@ -216,7 +216,25 @@ def check_exis_question(passage_ls,query_ls):
         binary_ls.append(binary_per)
     return batchlize(binary_ls)
 
-def get_dict(model,query_ls , passage_ls, answer_ls, answer_p_s, answer_p_e,query_pos_ls,passage_pos_ls):
+# feed the return numpy array to dict
+def set_dict(model, query_ls , passage_ls, answer_p_s, answer_p_e,passage_pos_ls,add_token_feature = False):
+    
+    passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch = \
+             get_numpys(query_ls , passage_ls, passage_pos_ls)
+
+    feed={
+      model.passage_inputs:passage_batch,
+      model.passage_sequence_length:passage_length,
+      model.query_inputs: query_batch,
+      model.query_sequence_length:query_length,
+      model.passage_start_pos:answer_p_s,
+      model.passage_end_pos:answer_p_e,
+      model.binary_inputs:binary_batch,
+      model.pos_passages_inputs:passage_pos_batch
+     }
+    return feed
+# get numpys forms 
+def get_numpys(query_ls , passage_ls,passage_pos_ls,add_token_feature = False):
     """
     inputs:all inputs must be list
     convert inputs list of ids to numpy martix,and check binary feature ,which are also converted to numpy martix
@@ -233,8 +251,6 @@ def get_dict(model,query_ls , passage_ls, answer_ls, answer_p_s, answer_p_e,quer
 
     # print("len of query pos :{}".format( len(query_pos_ls)))
 
-    query_pos_batch, _ = batchlize(query_pos_ls)
-
     # print("passage_ls:{}".format(passage_ls))
 
     # print("passage_pos_ls:{}".format(passage_pos_ls))
@@ -242,16 +258,9 @@ def get_dict(model,query_ls , passage_ls, answer_ls, answer_p_s, answer_p_e,quer
     # print("len of passage pos :{}".format( len(passage_pos_ls)))
     passage_pos_batch, _ = batchlize(passage_pos_ls)
 
-    feed={
-      model.passage_inputs:passage_batch,
-      model.passage_sequence_length:passage_length,
-      model.query_inputs: query_batch,
-      model.query_sequence_length:query_length,
-      model.passage_start_pos:answer_p_s,
-      model.passage_end_pos:answer_p_e,
-      model.binary_inputs:binary_batch,
-      model.pos_query_inputs:query_pos_batch,
-      model.pos_passages_inputs:passage_pos_batch
-     }
-    return feed
+    # add_token_feature is False , set passage_pos_batch to be zeros
+    if add_token_feature is False:
 
+        passage_pos_batch = np.zeros_like(passage_pos_batch)
+
+    return  passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch

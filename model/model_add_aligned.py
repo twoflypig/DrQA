@@ -26,10 +26,7 @@ class model(object):
             self.passage_end_pos =  tf.placeholder(shape=([self.batch_size]), dtype=tf.int32, name='passage_end_pos')
             self.passage_logit_pro_start =tf.one_hot(self.passage_start_pos, depth= tf.reduce_max(self.passage_sequence_length) )     #tf.placeholder(shape=(1, passage_max), dtype=tf.int32, name='self.passage_logit_pro_start')
             self.passage_logit_pro_end = tf.one_hot(self.passage_end_pos,    depth= tf.reduce_max(self.passage_sequence_length) )  #tf.placeholder(shape=(1, passage_max), dtype=tf.int32, name='self.passage_logit_pro_end')
-            # pos vector
-            self.pos_query_inputs = tf.placeholder(shape=(None,self.batch_size), dtype=tf.int32, name='pos_query_vector')
-            #input is (nums,batch_sizes) result should be (?, 20, 401) (nums,batch_size,deeps)
-            query_pos_vectors = tf.one_hot(tf.transpose(self.pos_query_inputs,[1,0]),depth = self.config.pos_vocab_size,axis = -1)
+             #input is (nums,batch_sizes) result should be (?, 20, 401) (nums,batch_size,deeps)
 
             self.pos_passages_inputs = tf.placeholder(shape=(None,self.batch_size), dtype=tf.int32, name='pos_passages_vector')
             #input is (nums,batch_sizes) result should be (?, 20, 401) (nums,batch_size,deeps)
@@ -148,11 +145,12 @@ class model(object):
                     self.p_We_q.append(tf.matmul(passage_outputs_unstack[i] ,We_q_unstacked[i]))
                 self.p_We_q = tf.concat(self.p_We_q,axis= -1)
                 self.p_We_q = tf.transpose(self.p_We_q ,[1,0])
-
+        print("Training :{}".format(self.config.is_training))
         if self.config.is_training is False :
             # I need to see probalities:
-            self.end_pro = tf.nn.softmax(self.p_We_q)
-            self.start_pro = tf.nn.softmax(self.p_W_q)
+            self.end_pro = tf.exp(self.p_We_q)
+            self.start_pro = tf.exp(self.p_W_q)
+            print("In inference process")
             return
         with tf.name_scope("compute_loss") as scope:
             # start point

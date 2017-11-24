@@ -13,7 +13,7 @@ parser.add_argument('--batch_size',type= int ,default = 1,
                     help='the origin data path')
 parser.add_argument('--num_units', type= int, default = 200,
                     help='the path of processed data ')
-parser.add_argument('--is_training', type= bool, default = False,
+parser.add_argument('--is_training', type= bool, default = False, # attention : no matter what we pass ,result always is True
                     help='Ture means inference')
 parser.add_argument('--restore_path', type= str, default = "../modelRestor/word-level/",
                     help='the path of retore path ')
@@ -39,7 +39,9 @@ parser.add_argument('--pos_vocab_path', type= str, default ="pos_vocab",
                     help='the pos vocab')
 parser.add_argument('--pos_vocab_size', type= int, default = 30,
                     help='the pos vocab size')
-
+# this need to be set in train.py
+parser.add_argument('--add_token_feature', type= bool, default = False,
+                    help='add_token_feature to be Ture of False')
 args = parser.parse_args()
 
 # Read cha_vectors.bin
@@ -104,24 +106,16 @@ if args.test == "test":
 else:
     Lenght = reader.length
 
-
 for step in range(Lenght):
 
         print('step:'+ str(step))
 
-        query_ls , passage_ls,query_id_ls,origin_passage,query_pos_ls,passage_pos_ls = reader.get_batch()
+        query_ls , passage_ls,query_id_ls,origin_passage,passage_pos_ls = reader.get_batch()
 
         print(len(origin_passage))
-        
-        query_batch , query_length = batchlize(query_ls)
-        
-        passage_batch , passage_length = batchlize(passage_ls)
 
-        binary_batch ,_ = check_exis_question(passage_ls,query_ls)
-
-        query_pos_batch, _ = batchlize(query_pos_ls)
-
-        passage_pos_batch, _ = batchlize(passage_pos_ls)
+        passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch= \
+                          get_numpys(query_ls , passage_ls,passage_pos_ls,args.add_token_feature)
 
         result_buffer= []
 
@@ -132,19 +126,21 @@ for step in range(Lenght):
               evaluate_model.query_inputs: query_batch[:,i].reshape((-1,1)),
               evaluate_model.query_sequence_length:[query_length[i]],
               evaluate_model.binary_inputs:binary_batch[:,i].reshape((-1,1)),
-              evaluate_model.pos_query_inputs:query_pos_batch[:,i].reshape((-1,1)),
               evaluate_model.pos_passages_inputs:passage_pos_batch[:,i].reshape((-1,1))
              }
+            #print(feed[evaluate_model.pos_passages_inputs])
             #pre_s ,pre_e =sess.run([evaluate_model.start_pro,evaluate_model.end_pro],feed_dict=feed)
             #we use theunnormalized exponential and take argmax over all considered paragraph spans for our ﬁnal prediction
-            pre_s ,pre_e =sess.run([evaluate_model.p_W_q,evaluate_model.p_We_q],feed_dict=feed)
+            pre_s ,pre_e =sess.run([evaluate_model.start_pro,evaluate_model.end_pro],feed_dict=feed)
             s_p = np.argmax(pre_s[0])
             e_p = np.argmax(pre_e[0])
             s_p_max = np.max(pre_s[0])
             e_p_max = np.max(pre_e[0])
-            if s_p <e_p and s_p +15 >e_p:
+            if s_p <e_p and s_p +5 >e_p:
 
                 passage_split = origin_passage[i]
+                #print(passage_split)
+                #print(pre_s[0])
                 buffer_answer = "".join(passage_split[s_p:e_p]) #id2word(passage_ls[i][s_p:e_p] ,id_vocab)
                 
                 #print(buffer_answer)

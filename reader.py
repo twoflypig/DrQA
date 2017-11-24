@@ -53,13 +53,12 @@ class Reader(object):
         answer_ls  = []
         answer_p_s = []
         answer_p_e = []
-        query_pos_ls = []
         passage_pos_ls = []
 
         patched_index= 0
         while  patched_index < self.batch_size:
             # convert the batch return to id
-            query , passage , answer ,answer_p , query_pos , passage_pos =  self.next_batch()
+            query , passage , answer ,answer_p  , passage_pos =  self.next_batch()
             # add </s> to the passage
             passage.append('</s>')
 
@@ -69,7 +68,6 @@ class Reader(object):
             # for the pos of </s>       
             passage_pos.append("end")
             #perform pos2id
-            query_pos =  self._pos2id(query_pos)
 
             passage_pos = self._pos2id(passage_pos)
 
@@ -81,7 +79,7 @@ class Reader(object):
                 batch_query_ls.append(query)
                 passage_ls.append(passage)
                 answer_ls.append(answer)
-                query_pos_ls.append(query_pos)
+
                 passage_pos_ls.append(passage_pos)
                 if answer_p :
                     answer_p_s.append(answer_p[0])
@@ -91,7 +89,7 @@ class Reader(object):
                     # I add </s> to th end of the passage so we can set None p to the end
                     answer_p_s.append(len(passage) -1)
                     answer_p_e.append(len(passage) -1)
-        return  batch_query_ls , passage_ls, answer_ls, answer_p_s, answer_p_e ,query_pos_ls,passage_pos_ls
+        return  batch_query_ls , passage_ls, answer_ls, answer_p_s, answer_p_e ,passage_pos_ls
     def reset(self):
         self.question_index = 0
         self.line  = json.loads(self.data[self.question_index])
@@ -99,7 +97,7 @@ class Reader(object):
         # load one json line from file
         # question
 
-        query , query_pos  =   token_pos(self.line['query'])
+        query , _  =   token_pos(self.line['query'])
         # passage
         passage , passage_pos   =  token_pos (self.line['passages'][self.passage_index]['passage_text'] )
         # answer
@@ -116,7 +114,7 @@ class Reader(object):
                 self.question_index =0
             # reload json line
             self.line  = json.loads(self.data[self.question_index])
-        return   query , passage , answer ,answer_p , query_pos , passage_pos
+        return   query , passage , answer ,answer_p  , passage_pos
     def _word2id(self,sentence):
         ids = []
         unk_id = self.vocab['<unk>']
@@ -180,7 +178,6 @@ class infe_reader(object):
         
         query_id  = []
 
-        query_pos_ls = []
         passage_pos_ls = []
         
         # json load buffer
@@ -189,7 +186,7 @@ class infe_reader(object):
         for i in range(len(self.line['passages'])):
 
             # convert the batch return to id
-            query, query_pos = token_pos(self.line['query'])
+            query, _ = token_pos(self.line['query'])
             # passage
             passage, passage_pos  =  token_pos(self.line['passages'][i]['passage_text'])
 
@@ -202,8 +199,6 @@ class infe_reader(object):
 
             query , id_passage  = self._batch2id( (query , passage ))
 
-            query_pos =  self._pos2id(query_pos)
-
             passage_pos = self._pos2id(passage_pos)
 
             # because we add </s> so the len must bigger than 1
@@ -211,15 +206,17 @@ class infe_reader(object):
                 # the count of patched data
                 batch_query_ls.append(query)
                 passage_ls.append(id_passage)
+
                 origin_passage.append(passage)# this is for inference 
+                
                 query_id.append(q_id)
-                query_pos_ls.append(query_pos)
+
                 passage_pos_ls.append(passage_pos)
 
         self.question_index+=1
         if self.question_index > self.length :
             self.question_index = 0
-        return  batch_query_ls , passage_ls, query_id,origin_passage,query_pos_ls,passage_pos_ls
+        return  batch_query_ls , passage_ls, query_id,origin_passage,passage_pos_ls
     def reset(self):
         self.question_index = 0
         

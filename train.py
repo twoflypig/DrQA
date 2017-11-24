@@ -39,6 +39,9 @@ parser.add_argument('--pos_vocab_path', type= str, default ="pos_vocab",
                     help='the pos vocab')
 parser.add_argument('--pos_vocab_size', type= int, default = 30,
                     help='the pos vocab size')
+# this need to be set in inference.py
+parser.add_argument('--add_token_feature', type= bool, default = False,
+                    help='add_token_feature to be Ture of False')
 
 
 args = parser.parse_args()
@@ -103,9 +106,9 @@ for m_epoch in range(args.epoch):
     
     for step in  range(reader.num_examples // args.batch_size):
 
-        query_ls , passage_ls, answer_ls, answer_p_s, answer_p_e,query_pos_ls,passage_pos_ls = reader.get_batch()
+        query_ls , passage_ls, answer_ls, answer_p_s, answer_p_e,passage_pos_ls = reader.get_batch()
         
-        feed = get_dict(trainModel,query_ls , passage_ls, answer_ls, answer_p_s, answer_p_e, query_pos_ls,passage_pos_ls)
+        feed = set_dict(trainModel,query_ls , passage_ls, answer_p_s, answer_p_e,passage_pos_ls,add_token_feature = args.add_token_feature)
         
         toSee = [trainModel.cross_entropy_start,trainModel.cross_entropy_end,trainModel.summary_op,trainModel.start_train_op,trainModel.end_train_op]
         
