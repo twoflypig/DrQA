@@ -5,11 +5,13 @@
 rm -rf ../modelRestor/word-level
 mkdir ../modelRestor/word-level
 
+rm -rf ../output
+mkdir ../output
 
 # delete some unrelated characters
 python toSimply.py --data_path ../input/data --aim_path ../output/train_Simply
 
-python make_vocab.py  --src_path ../output/train_Simply  --answer_path ../output/train_answer_vocab --vocab_path ../output/vocab
+python make_vocab.py  --src_path ../output/train_Simply  --vocab_path ../output/vocab
 
 # add answer
 python add_answer.py --src_path ../output/train_Simply --aim_path ../output/train_add_answer

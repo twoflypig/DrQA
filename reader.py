@@ -32,6 +32,8 @@ class Reader(object):
         # load pos vocab
         self.pos_vocab  = self._load_pos_vocab(config.pos_vocab_path)
 
+        self.config = config # store configs
+
         print(self.num_examples)
 
     def _load_pos_vocab(self,filename):
@@ -97,11 +99,11 @@ class Reader(object):
         # load one json line from file
         # question
 
-        query , _  =   token_pos(self.line['query'])
+        query , _  =   token_pos(self.line['query'] ,use_pos = self.config.add_token_feature)
         # passage
-        passage , passage_pos   =  token_pos (self.line['passages'][self.passage_index]['passage_text'] )
+        passage , passage_pos   =  token_pos (self.line['passages'][self.passage_index]['passage_text']  ,use_pos = self.config.add_token_feature)
         # answer
-        answer   =   self.line['answer'].split()
+        answer   =    cut_sentence (self.line['answer'] ,cut = False)
         # answer_point
         answer_p  =  self.line['passages'][self.passage_index]['answer_point']
 

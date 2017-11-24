@@ -129,6 +129,7 @@ for m_epoch in range(args.epoch):
             s_p = np.argmax(pre_s[0])
             e_p = np.argmax(pre_e[0])
             if  s_p <= e_p:
+                print("answer_ls[0]:{},len id_vocab:{},len vocab:{}".format(answer_ls[0] , len(id_vocab) ,len(vocab)))
                 print("question:{},passage:{},answer:{},pre:{},start:{},end:{},sequence_len:{}".format(
                     id2word(query_ls[0],id_vocab),
                     id2word(passage_ls[0],id_vocab),

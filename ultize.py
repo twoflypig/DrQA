@@ -26,19 +26,30 @@ def strQ2B(ustring):
         rstring += chr(inside_code)
     return rstring
 
-# convert numbers in Alabo  to numbers in chinese
+
 def convert_num2ch(string):
+    """
+    convert numbers in Alabo  to numbers in chinese
+    """
     temp_str=[]
     for item in string:
         temp_str.append( reverse_number_dict.get(item,item))
     return "".join(temp_str)
-"""
-if cut is Ture:
-    return a list of words,which are processed by regex
-else:
-    just return the word processed by regex
-"""
+
+def convert_ch2num(string):
+    temp_str=[]
+    for item in string:
+        temp_str.append( number_dict.get(item,item))
+    return "".join(temp_str)
+
 def process_line(line,cut = True):
+    
+    """
+    if cut is Ture:
+        return a list of words,which are processed by regex
+    else:
+        just return the word processed by regex
+    """
     if cut is True:
         # remove space 
 
@@ -51,20 +62,17 @@ def process_line(line,cut = True):
         return cut_down
     else:
         return re.sub(re_delete_space,"",strQ2B(line)).lower()
-"""
-input must be a string
-"""
-def process_answer(line):
 
+def process_answer(line):
+    """
+    input must be a string ,remove some unrelated flags
+    """
     temp_line  = re.sub(re_delete_space," ",strQ2B(line))
     # make sure we can search for answers with space
     line_split = temp_line.split()
     if len(line_split) >1:
-        temp_line = "[\s,.，、]".join(line_split)
+        temp_line = "".join(line_split)
     return process_replace_brackets(temp_line)
-
-def process_passage(line):
-    return process_line(line,cut=False)
 
 
 def process_delte_sym(line):
@@ -78,24 +86,33 @@ def process_answer_num2ch(line):
 def process_replace_brackets(line):
     return line.replace('(','\(').replace(')','\)')
 
+def cut_sentence(sentence,cut = False):
+    if cut:
+        return jieba.lcut(sentence,cut_all = False)
+    else:
+        return sentence
 
-def token_pos(sentence):
+def token_pos(sentence , use_pos = True):
     """
+    if use_pos is True: return pos , else return empty pos
     input: a strng
     return tokenize ,part of speech ,
     attention: the result of tokenize may not same as the result of lcut 
     """
+    if use_pos :
+        result =  pseg.cut(sentence)
 
-    result =  pseg.cut(sentence)
+        words_ls = []
+        pos_ls = []
 
-    words_ls = []
-    pos_ls = []
+        for word, pp in result:
+            words_ls.append(word)
+            pos_ls.append(pp)
 
-    for word, pp in result:
-        words_ls.append(word)
-        pos_ls.append(pp)
-
-    return words_ls,pos_ls
+        return words_ls,pos_ls
+    else:
+        words_ls  = cut_sentence(sentence ,cut = True)
+        return words_ls, [0]*len(words_ls)
 
 
 def loadWord2Vec(filename):
@@ -189,6 +206,7 @@ def batchlize(inputs, max_sequence_length=None):
             if j >= max_sequence_length:
                 break
             else:
+                # because inputs are None
                 try:
                     inputs_batch_major[i, j] = element
                 except:

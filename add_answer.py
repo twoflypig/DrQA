@@ -18,7 +18,7 @@ search the word start_pos and end_pos
 
 return a tuple (start,end) or None
 """
-jieba.load_userdict("../output/train_answer_vocab")
+#jieba.load_userdict("../output/train_answer_vocab")
 
 
 def search_start_end(pattern ,sentence):
@@ -83,7 +83,7 @@ for index,item in  enumerate(data):
 
         sentence = line['passages'][i]['passage_text']
        
-        list_words = process_line(line['passages'][i]['passage_text'] ,cut = True)
+        list_words = cut_sentence(line['passages'][i]['passage_text'] ,cut = True)
 
         result = search_start_end(pattern,sentence)
 
