@@ -57,3 +57,4 @@ with codecs.open("tag_vocab","r","utf8") as fp:
     data = fp.readlines()
     args.EN_TAG  = data[0]
     args.NUM_TAG = data[1]
+print("load paramaters")
