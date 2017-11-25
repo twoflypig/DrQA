@@ -58,9 +58,14 @@ parser.add_argument('--version', action='version', version='%(prog)s 1.01')
 
 args = parser.parse_args()
 
+with codecs.open("tag_vocab","r","utf8") as fp:
+    # load tag vocab
+    data = fp.readlines()
+    args.EN_TAG  = data[0]
+    args.NUM_TAG = data[1]
 
 # Read cha_vectors.bin
-if args.vocab_path  is not None:
+if args.use_pretrain_vector  is  False:
     vocab = loadvocab(args.vocab_path)
     vocab_size = len(vocab)
     embedding_dim = args.input_embedding_size 
@@ -70,6 +75,7 @@ else:
     vocab_size = len(vocab)
     embedding_dim = len(embd[0])  
     print("load vector")  
+ 
 
 vocab_index = range(vocab_size)
 vocab = dict(zip(vocab,vocab_index)) # vocab

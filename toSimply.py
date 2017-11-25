@@ -26,15 +26,18 @@ fp = codecs.open(args.data_path,"r","utf-8")
 pro_fp = codecs.open(args.aim_path,"w","utf-8")
 data = fp.readlines()
 
+
 for index, item in enumerate(data):
     # read original data
     loaded = json.loads(item)
     # write question
-    loaded['query'] = HanziConv.toSimplified(process_line(loaded['query'],cut=False)).encode().decode()
+    loaded['query'] =  process_line(loaded['query'],cut=False)
+
     for i in range(len(loaded['passages'])):
         # write document
-        loaded['passages'][i]['passage_text'] = HanziConv.toSimplified(process_line(loaded['passages'][i]['passage_text'] ,cut=False))
+        loaded['passages'][i]['passage_text'] = process_line(loaded['passages'][i]['passage_text'] ,cut=False)
+   
     # write answer
-    loaded['answer'] = HanziConv.toSimplified(process_line(loaded['answer'] ,cut= False))
+    loaded['answer'] = process_line(loaded['answer'] ,cut= False)
     pro_fp.write(json.dumps(loaded,ensure_ascii = False) +'\n')
 print("processed finished")

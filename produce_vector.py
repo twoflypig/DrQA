@@ -33,7 +33,7 @@ for word in vocab:
 		result = model.wv[word]
 	except:
 		count +=1
-		result = np.random.rand(dimension,)
+		result = np.random.uniform(-0.1,0.1,(dimension,))
 	result = result.tolist()
 	result = [str(x) for x in result]
 	aim_fp.write(word+' '+' '.join(result) +'\n')

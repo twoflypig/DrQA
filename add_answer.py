@@ -18,7 +18,6 @@ search the word start_pos and end_pos
 
 return a tuple (start,end) or None
 """
-#jieba.load_userdict("../output/train_answer_vocab")
 
 
 def search_start_end(pattern ,sentence):

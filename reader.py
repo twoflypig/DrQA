@@ -102,6 +102,11 @@ class Reader(object):
         query , _  =   token_pos(self.line['query'] ,use_pos = self.config.add_token_feature)
         # passage
         passage , passage_pos   =  token_pos (self.line['passages'][self.passage_index]['passage_text']  ,use_pos = self.config.add_token_feature)
+        
+        # replacing the english and numbers with tags
+        #print(passage)
+        passage = check_nunber_en(passage,tagnum = self.config.NUM_TAG,tagen=self.config.EN_TAG)
+        #print(passage)
         # answer
         answer   =    cut_sentence (self.line['answer'] ,cut = False)
         # answer_point
@@ -195,6 +200,9 @@ class infe_reader(object):
             query, _ = token_pos(self.line['query'] ,use_pos = self.config.add_token_feature )
             # passage
             passage, passage_pos  =  token_pos(self.line['passages'][i]['passage_text'] ,use_pos = self.config.add_token_feature)
+
+            # replacing TAG
+            passage = check_nunber_en(passage,tagnum = self.config.NUM_TAG,tagen=self.config.EN_TAG)
 
             # query id
             q_id =   self.line['query_id']

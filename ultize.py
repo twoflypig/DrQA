@@ -10,9 +10,38 @@ process needed
 """
 re_delete_space = re.compile(r'\u3000| |\.{2,10}|\xa0|\u2002|\u2003|\u202f')
 #This is a regex that only keep number
-rule = re.compile(r"[^a-zA-Z0-9，。！？,.?!<<>>《》()（）\"%+-×/\{}|～~u4e00-\u9fa5]")
+rule = re.compile(r"[^a-zA-Z0-9，。！？,.?!<<>>《》()（）\"%+-×/\{}|～ ~u4e00-\u9fa5]")
+
+# here for vocab making 
+# converting numbers and Arabic numerals to tags
+rule_num = re.compile(r"[0-9]+") 
+rule_englist = re.compile(r"[a-zA-Z]+") 
+rule_numdotnum =re.compile(r"\d+\.\d+")
+
+
 number_dict={'三十':'30','九':'9','八':'8','七':'7','六':'6','五':'5','四':'4','三':'3','二':'2','一':'1','零':'0'}
 reverse_number_dict = {v:k for k, v in number_dict.items() }
+
+def delete_replicate(oldstring):
+    """
+    the oldstring must be origin sentence 
+    delete replicate charcters
+    """
+    try:
+        if oldstring != "":
+            newstring = oldstring[0]
+            for char in oldstring[1:]:
+                if char != newstring[-1]:
+                    newstring += char
+            return newstring
+        else:
+            return oldstring
+    except:
+        print(oldstring=="")
+        print(oldstring)
+        exit(0)
+        
+
 def strQ2B(ustring):
     """全角转半角"""
     rstring = ""
@@ -42,6 +71,53 @@ def convert_ch2num(string):
         temp_str.append( number_dict.get(item,item))
     return "".join(temp_str)
 
+def replace_numdotnum_withtag(sentence,tag):
+    
+    # input tag must be a string
+    # replacing strings like 3.2
+    # used in make_vocab.py
+    line = re.sub(rule_numdotnum,tag,sentence)
+
+    return line 
+
+def replace_num_withtag(sentence,tag):
+    
+    # input tag must be a string
+    # replacing strings like 32
+    # used in make_vocab.py
+    line = re.sub(rule_num,tag,sentence)
+
+    return line 
+
+def replace_englist_withtag(sentence,tag):
+    
+    # input tag must be a string
+    # replacing strings like  apple 
+    # used in make_vocab.py
+    line = re.sub(rule_englist,tag,sentence)
+
+    return line 
+
+def replace_fuse(sentence,tag_nn,tagnum,tagen):
+    # performing vocab replacing all 
+    line = replace_englist_withtag(sentence , tagen)
+    line = replace_numdotnum_withtag(line,tag_nn)
+    line = replace_num_withtag(line , tagnum)
+
+    return line 
+
+def check_nunber_en(words_ls , tagnum,tagen):
+
+    result = []
+    for item in words_ls:
+        if re.match(rule_num,item) :
+            result.append(tagnum)
+        elif re.match(rule_englist,item):
+            result.append(tagen)
+        else:
+            result.append(item)
+    return result
+
 def process_line(line,cut = True):
     
     """
@@ -50,18 +126,27 @@ def process_line(line,cut = True):
     else:
         just return the word processed by regex
     """
+
+    # deleting replicate characters
+    if line is None:
+        return None
+    line = strQ2B(line)
+
+    str0 = delete_replicate(line)
+
+    # deleting special space  characters , spaces are also removed for convient
+    str1 = re.sub(re_delete_space,"",str0)
+    # remove others special characters,only allowed chacters are keeped
+    str2 = re.sub(rule,"",str1)
+
     if cut is True:
-        # remove space 
-
-        str1 = re.sub(re_delete_space,"",strQ2B(line))
-        # remove others unrelated 
-        str2 = re.sub(rule,"",str1)
-
+        # if there are spaces ? how to process ? not allowed to be cut!
         cut_down = jieba.lcut( str2,cut_all = False)
 
         return cut_down
     else:
-        return re.sub(re_delete_space,"",strQ2B(line)).lower()
+
+        return str2
 
 def process_answer(line):
     """
@@ -75,13 +160,6 @@ def process_answer(line):
     return process_replace_brackets(temp_line)
 
 
-def process_delte_sym(line):
-     return re.sub("[,.，。]"," ",strQ2B(line))
-
-def process_answer_num2ch(line):
-     return re.sub("[,.，。]"," ",strQ2B(line))
-    # return re.sub(re_delete_space," ",strQ2B(line)) +'\n'
-# only for answer search in regex
 
 def process_replace_brackets(line):
     return line.replace('(','\(').replace(')','\)')

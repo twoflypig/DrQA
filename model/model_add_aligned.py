@@ -42,7 +42,7 @@ class model(object):
                 print("using pre-trained vector")
                 self.embedding_placeholder = tf.placeholder(tf.float32, [self.src_vocab_size, self.input_embedding_size])
                 embeddings = tf.Variable(tf.constant(0.0, shape=[self.src_vocab_size , self.input_embedding_size]),
-                                    trainable=False, name="W")
+                                    trainable=True, name="W")
                 # embedding intial assgin op
                 self.embedding_init = embeddings.assign(self.embedding_placeholder)
             else:
