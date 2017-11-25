@@ -127,31 +127,29 @@ def loadWord2Vec(filename):
     #print line
     word_dim = int(line.split(' ')[1])
     vocab_size = int(line.split(' ')[0])
-    buffer=  np.zeros( (vocab_size,word_dim))
+    buffer_vector=  np.zeros( (vocab_size,word_dim))
     #vocab.append("<unk>")
-    print(buffer.shape)
+    print("vector shape is:{}".format(buffer_vector.shape))
     for index,line in enumerate(fr) :
         row = line.strip().split(' ')
-        if len(row) == 201 :
-            vocab.append(row[0])
-            value_line = np.array( [float(x) for x in row[1:] ] )
-            buffer[index,:] =  value_line
-        else:
-            # TODO: some lines are ignored!
-            vocab.append(line[0])
-            value_line = np.array( [float(x) for x in row[0:] ] )
-            buffer[index,:] =  value_line
+        # if len(row) == word_dim +1:
+        vocab.append(row[0])
+        value_line = np.array( [float(x) for x in row[1:] ] )
+        buffer_vector[index,:] =  value_line
+        # else:
+        #     # TODO: some lines are ignored!
+        #     vocab.append(line[0])
+        #     value_line = np.array( [float(x) for x in row[0:] ] )
+        #     buffer_vector[index,:] =  value_line
     print("loaded word2vec")
     fr.close()
-    vocab.append("<unk>")
-    return vocab,buffer
+    return vocab,buffer_vector
 
 def loadvocab(filename):
     vocab= []
     with codecs.open(filename,'r','utf-8') as fp:
         for line in fp:
             vocab.append(line.strip())
-        vocab.append("<unk>")
     return vocab
 
 def load_pos_vocab(filename):

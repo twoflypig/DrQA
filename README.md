@@ -1,8 +1,22 @@
+#  Introduce
+
 This is a tensorflow version using DrQA model from  Reading Wikipedia to answer Opendomain questions
 
+# Dependence:
 
+​	jieba
 
-formate should be like this 
+​	tensorflow :1.3
+
+​	hanziconv
+
+​	
+
+# Results 
+
+​	on sougou qa set , word-level are 36% ac after 10 epochs
+
+formate should like this 
 
 ```
 ├── input

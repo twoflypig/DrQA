@@ -17,4 +17,6 @@ python make_vocab.py  --src_path ../output/train_Simply  --vocab_path ../output/
 python add_answer.py --src_path ../output/train_Simply --aim_path ../output/train_add_answer
 
 # train
-python train.py --vocab_path ../output/vocab --test train --data_path ../output/train_add_answer --is_training True
+python train.py --vocab_path ../output/vocab --test train --data_path ../output/train_add_answer --is_training True\
+     --use_pretrain_vector  true --vector_path word-vector
+

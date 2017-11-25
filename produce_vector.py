@@ -21,7 +21,7 @@ vocab =  vocab_fp.readlines()
 model = gensim.models.Word2Vec.load("../../text.model")
 dimension = model.vector_size
 
-aim_fp.write( str(len(vocab)) +'\t' +str(dimension) +'\n')
+aim_fp.write( str(len(vocab)) +' ' +str(dimension) +'\n')
 
 count = 0 
 for word in vocab:

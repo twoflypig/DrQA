@@ -32,22 +32,25 @@ class model(object):
             #input is (nums,batch_sizes) result should be (?, 20, 401) (nums,batch_size,deeps)
             passages_pos_vectors = tf.one_hot(tf.transpose(self.pos_passages_inputs,[1,0]),depth = self.config.pos_vocab_size,axis = -1)
             
-            print("passage_pos_vecots shape:{}".format(passages_pos_vectors.shape))    
+            if self.config.add_token_feature:
+                 print("passage_pos_vecots shape:{}".format(passages_pos_vectors.shape))    
             # embedding
-            # TODO: -1 is because we add <unk> to vocab
-            # It doesn't matter
-            #self.embedding_placeholder = tf.placeholder(tf.float32, [self.src_vocab_size -1, self.input_embedding_size])
+            if self.config.use_pretrain_vector:
 
-            # TODO: -1 is because we add <unk> to vocab
-            # embeddings = tf.Variable(tf.constant(0.0, shape=[self.src_vocab_size -1, self.input_embedding_size]),
-            #                 initializer=tf.random_uniform_initializer(-0.1, 0.1, seed=113),
-            #                 trainable=True, name="W")
-            # embedding intial assgin op
-            # embedding_init = embeddings.assign(self.embedding_placeholder)
+                # load pre-trained vector
 
-            embeddings = tf.get_variable('W',[self.src_vocab_size , self.input_embedding_size],
-                                                   initializer=tf.random_uniform_initializer(-0.1, 0.1, seed=123),
-                                                    dtype=tf.float32)
+                print("using pre-trained vector")
+                self.embedding_placeholder = tf.placeholder(tf.float32, [self.src_vocab_size, self.input_embedding_size])
+                embeddings = tf.Variable(tf.constant(0.0, shape=[self.src_vocab_size , self.input_embedding_size]),
+                                    trainable=False, name="W")
+                # embedding intial assgin op
+                self.embedding_init = embeddings.assign(self.embedding_placeholder)
+            else:
+                print("using vocab vectos training with models")
+                embeddings = tf.get_variable('W',[self.src_vocab_size , self.input_embedding_size],
+                                                       initializer=tf.random_uniform_initializer(-0.1, 0.1, seed=123),
+                                                        dtype=tf.float32)
+
             passage_inputs_embedded = tf.nn.embedding_lookup(embeddings, self.passage_inputs)
             query_inputs_embedded = tf.nn.embedding_lookup(embeddings, self.query_inputs)
 

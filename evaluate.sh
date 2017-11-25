@@ -12,4 +12,5 @@ python toSimply.py  --data_path ../input/valid --aim_path ../output/valid_pred
 #python totokenize.py --data_path ../output/valid_pred --aim_path ../output/valid_tokenize
 
 # in inference.py --is_training  default is false
-python inference.py --vocab_path ../output/vocab --test inference --data_path ../output/valid_pred
+python inference.py --vocab_path ../output/vocab --test inference --data_path ../output/valid_pred \
+	--use_pretrain_vector  true --vector_path word-vector

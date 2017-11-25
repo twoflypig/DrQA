@@ -14,20 +14,28 @@ parser.add_argument('--batch_size',type= int ,default = 20,
                     help='the origin data path')
 parser.add_argument('--num_units', type= int, default = 200,
                     help='the path of processed data ')
-parser.add_argument('--is_training', type= bool, default = True,
+parser.add_argument('--is_training', type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
                     help='Ture means inference')
 parser.add_argument('--restore_path', type= str, default = "../modelRestor/word-level/",
                     help='the path of retore path ')
 parser.add_argument('--src_vocab_size', type= int, default = 17689,
                     help='the size of vocab size ')
-parser.add_argument('--vocab_path', type= str, default = None,
-                    help='the size of vocab size ')
+
+
+
 parser.add_argument('--input_embedding_size', type= int, default = 200,
                     help='the size of embedding size ')
 parser.add_argument('--data_path', type= str, default = "../input/data",
                     help='the path of data')
+# check to use vocab or pre-train vector
+parser.add_argument('--use_pretrain_vector',type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
+                    help='a switch to use pre-trained vector ')
+
+parser.add_argument('--vocab_path', type= str, default = None,
+                    help='the size of vocab size ')
 parser.add_argument('--vector_path', type= str, default = "../cha_vectors.bin",
                     help='the path of vector and vocab')
+
 parser.add_argument('--result_path', type= str, default = "../output/result",
                     help='the path of result')
 parser.add_argument('--test', type= str, default = "inference",
@@ -36,22 +44,23 @@ parser.add_argument('--num_layer', type= int, default =3,
                     help='layers in biRNN')
 parser.add_argument('--epoch', type= int, default =10,
                     help='the training epochs')
+# pos 
 parser.add_argument('--pos_vocab_path', type= str, default ="pos_vocab",
                     help='the pos vocab')
 parser.add_argument('--pos_vocab_size', type= int, default = 30,
                     help='the pos vocab size')
 # this need to be set in inference.py
-parser.add_argument('--add_token_feature', type= bool, default = False,
+parser.add_argument('--add_token_feature', type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
                     help='add_token_feature to be Ture of False')
 # model version 
 parser.add_argument('--version', action='version', version='%(prog)s 1.01')
 
 
 args = parser.parse_args()
-print(args.version)
+
 
 # Read cha_vectors.bin
-if args.vocab_path  is not None:
+if args.use_pretrain_vector  is  False:
     vocab = loadvocab(args.vocab_path)
     vocab_size = len(vocab)
     embedding_dim = args.input_embedding_size 
@@ -92,6 +101,9 @@ writer = tf.summary.FileWriter(args.restore_path,graph=graph)
 if ckpt_state == None:
     print("Cant't load model,starting initial")
     sess.run(tf.global_variables_initializer())
+    # load embedding
+    if args.use_pretrain_vector:
+        sess.run(trainModel.embedding_init, feed_dict={trainModel.embedding_placeholder: embd})
 else:
     try:
         saver.restore(sess, ckpt_state.model_checkpoint_path)

@@ -19,6 +19,7 @@ def save(path,word_set):
         fp.write('</s>' +'\n')
         for item in word_set:
             fp.write(item + '\n' )
+        fp.write('<unk>' +'\n') # in case there are no see words
 
 args = parser.parse_args()
 
