@@ -42,6 +42,7 @@ parser.add_argument('--pos_vocab_size', type= int, default = 30,
 # this need to be set in train.py
 parser.add_argument('--add_token_feature', type= bool, default = False,
                     help='add_token_feature to be Ture of False')
+
 args = parser.parse_args()
 
 # Read cha_vectors.bin

@@ -75,10 +75,14 @@ class model(object):
 
         with tf.name_scope("passage_rnn") as scope:
 
-            fuse_passage_encoding1 = tf.concat(  [passage_inputs_embedded ,tf.transpose(aligned_question_embeding ,[1,0,2]) ],axis =2 )
-            fuse_passage_encoding = tf.concat(  [fuse_passage_encoding1 ,tf.expand_dims(self.binary_inputs,axis=-1) ],axis =2 )
-
-            fuse_passage_encoding = tf.concat(  [fuse_passage_encoding1 , tf.transpose(passages_pos_vectors,[1,0,2]) ],axis =2 )
+            fuse_passage_encoding = tf.concat(  [passage_inputs_embedded ,tf.transpose(aligned_question_embeding ,[1,0,2]) ],axis =2 )
+            
+            # adding binary feature
+            fuse_passage_encoding = tf.concat(  [fuse_passage_encoding ,tf.expand_dims(self.binary_inputs,axis=-1) ],axis =2 )
+            
+            if self.config.add_token_feature is True:
+                # adding token feature
+                fuse_passage_encoding = tf.concat(  [fuse_passage_encoding , tf.transpose(passages_pos_vectors,[1,0,2]) ],axis =2 )
 
             print("after adding pos vector, shape is:{}".format(fuse_passage_encoding.shape))
             forward_cell = tf.contrib.rnn.GRUCell(self.num_units)

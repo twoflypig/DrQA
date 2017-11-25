@@ -9,6 +9,7 @@ import model.model_add_aligned as model_add_aligned
 import time
 import logging
 parser = argparse.ArgumentParser(description='parameters.')
+
 parser.add_argument('--batch_size',type= int ,default = 20,
                     help='the origin data path')
 parser.add_argument('--num_units', type= int, default = 200,
@@ -42,9 +43,12 @@ parser.add_argument('--pos_vocab_size', type= int, default = 30,
 # this need to be set in inference.py
 parser.add_argument('--add_token_feature', type= bool, default = False,
                     help='add_token_feature to be Ture of False')
+# model version 
+parser.add_argument('--version', action='version', version='%(prog)s 1.01')
 
 
 args = parser.parse_args()
+print(args.version)
 
 # Read cha_vectors.bin
 if args.vocab_path  is not None:
@@ -129,11 +133,13 @@ for m_epoch in range(args.epoch):
             s_p = np.argmax(pre_s[0])
             e_p = np.argmax(pre_e[0])
             if  s_p <= e_p:
-                print("answer_ls[0]:{},len id_vocab:{},len vocab:{}".format(answer_ls[0] , len(id_vocab) ,len(vocab)))
-                print("question:{},passage:{},answer:{},pre:{},start:{},end:{},sequence_len:{}".format(
+                #print("answer_ls[0]:{},len id_vocab:{},len vocab:{}".format(answer_ls[0] , len(id_vocab) ,len(vocab)))
+                print("question:{},passage:{},answer:{},answer_p:{},answer_e:{},pre:{},start:{},end:{},sequence_len:{}".format(
                     id2word(query_ls[0],id_vocab),
                     id2word(passage_ls[0],id_vocab),
-                    id2word(answer_ls[0],id_vocab),
+                    answer_ls[0],
+                    answer_p_s[0],
+                    answer_p_e[0],
                     id2word(passage_ls[0][s_p:e_p],id_vocab),
                     s_p,
                     e_p,

@@ -112,7 +112,10 @@ def token_pos(sentence , use_pos = True):
         return words_ls,pos_ls
     else:
         words_ls  = cut_sentence(sentence ,cut = True)
-        return words_ls, [0]*len(words_ls)
+
+        # attention: here end should an intance of pos_vocab
+
+        return words_ls, ['end']*len(words_ls)
 
 
 def loadWord2Vec(filename):
@@ -211,6 +214,7 @@ def batchlize(inputs, max_sequence_length=None):
                     inputs_batch_major[i, j] = element
                 except:
                     print("error none locate at {}".format(i))
+                    exit(0)
 
     # [batch_size, max_time] -> [max_time, batch_size]
     inputs_time_major = inputs_batch_major.swapaxes(0, 1)
@@ -257,12 +261,13 @@ def get_numpys(query_ls , passage_ls,passage_pos_ls,add_token_feature = False):
     inputs:all inputs must be list
     convert inputs list of ids to numpy martix,and check binary feature ,which are also converted to numpy martix
     """
+    #print("starting...")
     query_batch , query_length = batchlize(query_ls)
-
+    #print("After query_ls")
     passage_batch , passage_length = batchlize(passage_ls)
-
+    #print("After passage_ls")
     binary_batch ,_ = check_exis_question(passage_ls,query_ls)
-
+    #print("After binary_batch")
     # print("query_ls:{}".format(query_ls))
 
     # print("query_pos_ls:{}".format(query_pos_ls))
@@ -275,10 +280,9 @@ def get_numpys(query_ls , passage_ls,passage_pos_ls,add_token_feature = False):
 
     # print("len of passage pos :{}".format( len(passage_pos_ls)))
     passage_pos_batch, _ = batchlize(passage_pos_ls)
-
+    #print("After passage_pos")
     # add_token_feature is False , set passage_pos_batch to be zeros
     if add_token_feature is False:
-
         passage_pos_batch = np.zeros_like(passage_pos_batch)
 
     return  passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch

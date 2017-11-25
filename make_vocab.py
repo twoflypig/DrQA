@@ -45,6 +45,7 @@ for index,item in  enumerate(data):
         answer_1   =    answer_temp.split()
 
         answer_2   =    (convert_ch2num(answer_temp)).split()
+
         #print("index:{},answer:{}".format(index,answer_2) )
 
         answer_words.extend([answer_temp] + answer_1 + answer_2 )
@@ -64,8 +65,6 @@ for index,item in  enumerate(data):
 answer_words =set(answer_words)
 
 passages_words = set(passages_words)
-save(args.vocab_path , answer_words )
-exit(0)
 
 # we dont't need to cut answer words
 # words_list = []
@@ -81,5 +80,5 @@ exit(0)
 passages_words |= answer_words
 
 # words_list final answer words
-print( '380伏' in passages_words)
-save(args.vocab_path , answer_words )
+
+save(args.vocab_path , passages_words )

@@ -65,7 +65,7 @@ class Reader(object):
             passage.append('</s>')
 
             #perform word2id
-            query , passage , answer = self._batch2id( (query , passage , answer))
+            query , passage  = self._batch2id( (query , passage ))
 
             # for the pos of </s>       
             passage_pos.append("end")
@@ -128,8 +128,8 @@ class Reader(object):
         pair: the list of  q,a,d
         vocab:vocab
         """
-        q_id,d_id,a_id = [ self._word2id(item) for item in pair]
-        return  q_id,d_id,a_id
+        result = [ self._word2id(item) for item in pair]
+        return  result
     def _pos2id(self,ls):
         """
         ls : the list of pos
@@ -156,6 +156,9 @@ class infe_reader(object):
         # load pos vocab
         self.pos_vocab  = self._load_pos_vocab(arg.pos_vocab_path)
 
+        # store paramaters
+        self.config = arg
+
     def _load_pos_vocab(self,filename):
         # load pos vocab
         vocab = []
@@ -169,6 +172,7 @@ class infe_reader(object):
 
     def get_batch(self):
         """
+        return batched query, passage ,query_id , origin_possage, passage_pos
         return [batch_size,length]
         """
         # return the original passages
@@ -188,9 +192,9 @@ class infe_reader(object):
         for i in range(len(self.line['passages'])):
 
             # convert the batch return to id
-            query, _ = token_pos(self.line['query'])
+            query, _ = token_pos(self.line['query'] ,use_pos = self.config.add_token_feature )
             # passage
-            passage, passage_pos  =  token_pos(self.line['passages'][i]['passage_text'])
+            passage, passage_pos  =  token_pos(self.line['passages'][i]['passage_text'] ,use_pos = self.config.add_token_feature)
 
             # query id
             q_id =   self.line['query_id']
@@ -218,7 +222,9 @@ class infe_reader(object):
         self.question_index+=1
         if self.question_index > self.length :
             self.question_index = 0
+
         return  batch_query_ls , passage_ls, query_id,origin_passage,passage_pos_ls
+
     def reset(self):
         self.question_index = 0
         
