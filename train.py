@@ -9,9 +9,7 @@ import model.model_add_aligned as model_add_aligned
 import time
 import logging
 # the commandline parameters 
-import parameter 
-
-
+from  parameter import args
 
 # Read cha_vectors.bin
 if args.use_pretrain_vector is False:

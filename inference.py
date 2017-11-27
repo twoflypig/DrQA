@@ -10,7 +10,7 @@ import time
 import logging
 
 # the commandline parameters 
-import parameter 
+from  parameter import args
 
 args.batch_size =1
 args.is_training = False

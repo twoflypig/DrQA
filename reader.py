@@ -202,16 +202,16 @@ class infe_reader(object):
             passage, passage_pos  =  token_pos(self.line['passages'][i]['passage_text'] ,use_pos = self.config.add_token_feature)
 
             # replacing TAG
-            passage = check_nunber_en(passage,tagnum = self.config.NUM_TAG,tagen=self.config.EN_TAG)
+            passage_taged = check_nunber_en(passage,tagnum = self.config.NUM_TAG,tagen=self.config.EN_TAG)
 
             # query id
             q_id =   self.line['query_id']
             # add </s> to the passage
-            passage.append('</s>')
-
+            passage.append('</s>') # used for answering(inference)
+            passage_taged.append('</s>')#used for trainingg
             passage_pos.append('end')
 
-            query , id_passage  = self._batch2id( (query , passage ))
+            query , id_passage  = self._batch2id( (query , passage_taged ))
 
             passage_pos = self._pos2id(passage_pos)
 
