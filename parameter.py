@@ -14,8 +14,6 @@ parser.add_argument('--is_training', type=lambda s: s.lower() in ['true', 't', '
                     help='Ture means inference')
 parser.add_argument('--restore_path', type= str, default = "../modelRestor/word-level/",
                     help='the path of retore path ')
-parser.add_argument('--src_vocab_size', type= int, default = 17689,
-                    help='the size of vocab size ')
 
 parser.add_argument('--input_embedding_size', type= int, default = 200,
                     help='the size of embedding size ')
@@ -47,7 +45,7 @@ parser.add_argument('--pos_vocab_size', type= int, default = 30,
 parser.add_argument('--add_token_feature', type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
                     help='add_token_feature to be Ture of False')
 # model version 
-parser.add_argument('--version', action='version', version='%(prog)s 1.01')
+parser.add_argument('--version', action='version', version='%(prog)s 1.02')
 
 
 args = parser.parse_args()

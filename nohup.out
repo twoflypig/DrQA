@@ -1,0 +1,903 @@
+Building prefix dict from the default dictionary ...
+DEBUG:jieba:Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+DEBUG:jieba:Loading model from cache /tmp/jieba.cache
+Loading model cost 0.678 seconds.
+DEBUG:jieba:Loading model cost 0.678 seconds.
+Prefix dict has been built succesfully.
+DEBUG:jieba:Prefix dict has been built succesfully.
+processed finished
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.720 seconds.
+Prefix dict has been built succesfully.
+add_answer to vocab:True
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+2200
+2300
+2400
+2500
+2600
+2700
+2800
+2900
+3000
+3100
+3200
+3300
+3400
+3500
+3600
+3700
+3800
+3900
+4000
+4100
+4200
+4300
+4400
+4500
+4600
+4700
+4800
+4900
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.755 seconds.
+Prefix dict has been built succesfully.
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+2200
+2300
+2400
+2500
+2600
+2700
+2800
+2900
+3000
+3100
+3200
+3300
+3400
+3500
+3600
+3700
+3800
+3900
+4000
+4100
+4200
+4300
+4400
+4500
+4600
+4700
+4800
+4900
+finded answers:4950
+data length:5000
+finished
+Traceback (most recent call last):
+  File "train.py", line 8, in <module>
+    import model.model_add_aligned as model_add_aligned
+  File "/home/cadal/search/lib-word/model/model_add_aligned.py", line 66
+    alph_passage = tf.layers.dense(passage_inputs_embedded,activation=tf.nn.relu,200,name='aligned_dense',reuse=None)
+                                                                                ^
+SyntaxError: positional argument follows keyword argument
+Building prefix dict from the default dictionary ...
+DEBUG:jieba:Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+DEBUG:jieba:Loading model from cache /tmp/jieba.cache
+Loading model cost 0.683 seconds.
+DEBUG:jieba:Loading model cost 0.683 seconds.
+Prefix dict has been built succesfully.
+DEBUG:jieba:Prefix dict has been built succesfully.
+processed finished
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.673 seconds.
+Prefix dict has been built succesfully.
+add_answer to vocab:True
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+2200
+2300
+2400
+2500
+2600
+2700
+2800
+2900
+3000
+3100
+3200
+3300
+3400
+3500
+3600
+3700
+3800
+3900
+4000
+4100
+4200
+4300
+4400
+4500
+4600
+4700
+4800
+4900
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.755 seconds.
+Prefix dict has been built succesfully.
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+2200
+2300
+2400
+2500
+2600
+2700
+2800
+2900
+3000
+3100
+3200
+3300
+3400
+3500
+3600
+3700
+3800
+3900
+4000
+4100
+4200
+4300
+4400
+4500
+4600
+4700
+4800
+4900
+finded answers:4950
+data length:5000
+finished
+Traceback (most recent call last):
+  File "train.py", line 8, in <module>
+    import model.model_add_aligned as model_add_aligned
+  File "/home/cadal/search/lib-word/model/model_add_aligned.py", line 66
+    alph_passage = tf.layers.dense(passage_inputs_embedded,activation=tf.nn.relu,200,name='aligned_dense',reuse=None)
+                                                                                ^
+SyntaxError: positional argument follows keyword argument
+Building prefix dict from the default dictionary ...
+DEBUG:jieba:Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+DEBUG:jieba:Loading model from cache /tmp/jieba.cache
+Loading model cost 0.680 seconds.
+DEBUG:jieba:Loading model cost 0.680 seconds.
+Prefix dict has been built succesfully.
+DEBUG:jieba:Prefix dict has been built succesfully.
+processed finished
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.671 seconds.
+Prefix dict has been built succesfully.
+add_answer to vocab:True
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+2200
+2300
+2400
+2500
+2600
+2700
+2800
+2900
+3000
+3100
+3200
+3300
+3400
+3500
+3600
+3700
+3800
+3900
+4000
+4100
+4200
+4300
+4400
+4500
+4600
+4700
+4800
+4900
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.761 seconds.
+Prefix dict has been built succesfully.
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+2200
+2300
+2400
+2500
+2600
+2700
+2800
+2900
+3000
+3100
+3200
+3300
+3400
+3500
+3600
+3700
+3800
+3900
+4000
+4100
+4200
+4300
+4400
+4500
+4600
+4700
+4800
+4900
+finded answers:4950
+data length:5000
+finished
+2017-11-27 22:05:14.529682: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-11-27 22:05:14.532906: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-11-27 22:05:14.532919: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-11-27 22:05:14.532925: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-11-27 22:05:14.532930: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-11-27 22:05:14.770348: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:893] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2017-11-27 22:05:14.770708: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1050
+major: 6 minor: 1 memoryClockRate (GHz) 1.5185
+pciBusID 0000:01:00.0
+Total memory: 1.95GiB
+Free memory: 1.41GiB
+2017-11-27 22:05:14.770732: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2017-11-27 22:05:14.770738: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2017-11-27 22:05:14.770746: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1050, pci bus id: 0000:01:00.0)
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.689 seconds.
+Prefix dict has been built succesfully.
+load paramaters
+load vocab
+49728
+using vocab vectos training with models
+after adding pos vector, shape is:(?, 20, 257)
+Training :True
+Cant't load model,starting initial
+model path:
+iterator: 2 ，loss_start is :0.05127594947814942 , loss_end is:0.05127317905426025
+iterator: 202 ，loss_start is :2.7010585749149323 , loss_end is:2.5595584654808046
+question:关云长 是 哪 本书 里 的 人物,passage:关羽 是 哪里 人 关羽 ( ? - <unk> ) 本 字 长生 , 后 改字云长 , 河东 解 ( 今 山西 运城 ) 人 。 中国 东汉 末年 著名 将领 , 自 刘备 于 乡里 聚众 起兵 开始 追随 刘备 , 是 刘备 最为 信任 的 将领 之一 。 . </s>,answer:三国演义,answer_p:51,answer_e:51,pre:,start:51,end:51,sequence_len:52
+iterator: 403 ，loss_start is :1.7077863752841949 , loss_end is:1.723318265080452
+question:家庭教师 作者,passage:上传者 : 在 回想 里 漂流 评分 <unk> 评论 <unk> 下载 <unk> 次 收藏 <unk> 人 阅读 量 <unk> 简介 举报 简介 : 本 文档 为 《 家庭教师 的 作者 合格 的 家庭教师 <unk> 》 , 可 适用 于 初中 教育领域 , 主题 内容 包含 家庭教师 的 作者 合格 的 家庭教师 合格 的 家庭教师 我 有 一位 家庭教师 。 . </s>,answer:天野明,answer_p:60,answer_e:60,pre:,start:60,end:60,sequence_len:61
+iterator: 604 ，loss_start is :1.4925518923997878 , loss_end is:1.545664981007576
+question:南昌 师范学院 是 几本,passage:关于 南昌 师范学院 是 几本 这个 问题 由来已久 , 不得不 说明 的 是 , 部分 高校 在 不同 省份 的 招生 录取 批次 可能 是 不 一样 , 因此 会 出现 一个 情况 : 某大学 在 山东省 是 一本 招生 , 但 该 大学 在 广东省 是 二本 招生 的 。 . </s>,answer:2本,answer_p:47,answer_e:48,pre:二本 招生 的 。 .,start:47,end:52,sequence_len:53
+iterator: 805 ，loss_start is :1.309865282177925 , loss_end is:1.365369143486023
+question:石门 澳 产业园 在 莆田 哪个 区,passage:现将 相关 情况 公告 如下 : 一 、 函告 中 所 提及 协议 的 主要 内容 ( 一 ) 《 莆田市 秀屿区 石门 澳 工业园 热电 联产 项目 建设 合作 框架 协议 》 <unk> 、 莆田市 发改委 同意 福能 集团 ( 含福能 集团 全资 、 控股 子公司 ) 在 莆田市 秀屿区 石门 澳 工业园 内 建设 热电 联产 项目 , 主要 是 建设 <unk> 台 <unk> 等级 燃煤 供热 机组 , 对 石门 澳 工业园 、 秀屿 笏 石 工业园区 和 木材 加工区 等 实行 集中供热 , 计划 总 投资 <unk> 亿元 ( 含 热网 ) , 预计 <unk> 年 核准 , <unk> 年底 建成投产 。 . </s>,answer:秀屿区,answer_p:21,answer_e:22,pre:,start:107,end:107,sequence_len:108
+iterator: 1007 ，loss_start is :1.3463346391916275 , loss_end is:1.3976468539237976
+question:线电压 是 多少 伏,passage:相电压 是 <unk> 伏 , 线电压 是 <unk> 伏 . </s>,answer:380伏,answer_p:7,answer_e:9,pre:,start:10,end:10,sequence_len:11
+iterator: 1209 ，loss_start is :1.2739108487963677 , loss_end is:1.2984240975975991
+question:火影忍者 作者,passage:这部 剧场版 动画 的 情节 由 《 火影忍者 》 的 原作者 岸本 齐史 亲自 设定 。 时为 十六年 前 。 戴着 面具 的 神秘 男人 将 巨大 的 魔兽 · 九尾 解放出来 , 遭受 九尾 袭击 的 木叶 忍者 村 面临 毁灭 的 危机 。 . </s>,answer:岸本齐史,answer_p:11,answer_e:13,pre:,start:46,end:46,sequence_len:47
+iterator: 1411 ，loss_start is :1.297486541867256 , loss_end is:1.3126431304216384
+question:一 升水 等于 多少 毫升,passage:一千 喔 </s>,answer:10毫升,answer_p:2,answer_e:2,pre:喔,start:1,end:2,sequence_len:3
+iterator: 1614 ，loss_start is :1.1533118623495102 , loss_end is:1.1991871696710588
+question:江门市 潮连 大道 <unk> 号 在 哪个 区,passage:我们 为 您 查询 到 <unk> 家 酒店 , . 潮连 大道 <unk> 号 位于 潮连 大道 <unk> 号 . 酒店 点评 江门 万达 嘉华 酒店 : “ 健身房 和 恒温 游泳 . </s>,answer:蓬江区,answer_p:33,answer_e:33,pre:,start:33,end:33,sequence_len:34
+iterator: 1815 ，loss_start is :1.1757380044460297 , loss_end is:1.2396628612279892
+question:三门峡 是 哪个 省,passage:三门峡 是 河南省 地级市 </s>,answer:河南省,answer_p:2,answer_e:3,pre:河南省,start:2,end:3,sequence_len:5
+iterator: 2016 ，loss_start is :1.2441991963982582 , loss_end is:1.2583550164103507
+question:哆 啦 <unk> 梦 陪 了 大雄 多少 年,passage:句子 欣赏 评论 : “ 哆 啦 <unk> 梦 陪 了 大雄 <unk> 年 , 在 大雄 临死前 , 他 对 哆 啦 <unk> 梦 说 : “ 我 走 之后 你 就 回到 属于 你 的 地方 吧 。 ” 哆 啦 <unk> 梦 同意 了 , 大雄 死 后 , 哆 啦 <unk> 梦用 时光 机 回到 了 <unk> 年前 , 对 小时候 的 大雄 说 : “ 大 雄 你好 , 我 叫 哆 啦 <unk> 梦 。 ” - 突然 一种 莫名 的 心疼 人生 就 像 单行道 单行道 上 不能 调头 所以 错过 的 人 与 事 注定 只能 错过 ” </s>,answer:80年,answer_p:12,answer_e:14,pre:,start:106,end:106,sequence_len:107
+iterator: 2217 ，loss_start is :1.1281990212202073 , loss_end is:1.18470451682806
+iterator: 2418 ，loss_start is :1.1248261231184005 , loss_end is:1.1650774782896043
+question:马少 一点 是 什么 成语,passage:疯狂 猜 成语 文字 少 一点 是 哪个 成语 ? , 在 图片 显示 的 是 一个 不 “ 文 ” 字少 了 上面 的 那个 点 。 这是 什么 意思 呢 ? . </s>,answer:马失前蹄,answer_p:34,answer_e:34,pre:,start:34,end:34,sequence_len:35
+iterator: 2621 ，loss_start is :1.1603406378626824 , loss_end is:1.1703838884830475
+question:西宁市 属于 哪个 省份,passage:西宁市 属于 青海省 </s>,answer:青海省,answer_p:2,answer_e:3,pre:,start:3,end:3,sequence_len:4
+iterator: 2822 ，loss_start is :1.1564144141972066 , loss_end is:1.170024253576994
+question:傲虎 是 什么 牌子,passage:傲虎 汽车 , 我 爱车 , 傲虎 汽车 口碑 专区 为 您 提供 傲虎 汽车 的 所有 口碑 评论 , 包括 来 自傲 虎 汽车 博客 、 傲虎 汽车论坛 、 傲虎 车主 用户 、 傲虎 汽车 俱乐部 、 傲虎 车友会 等 方面 的 汽车 评论 。 还 提供 傲虎 汽车报价 、 傲虎 汽车 最新 价格 、 傲虎 汽车图片 、 傲虎 系列 车型 报价 、 傲虎 汽车 配置 、 傲虎 汽车 测评 等 精彩内容 </s>,answer:斯巴鲁,answer_p:73,answer_e:73,pre:,start:73,end:73,sequence_len:74
+iterator: 3023 ，loss_start is :1.0483827503025531 , loss_end is:1.0381539370119572
+question:高架 逆行 扣 多少 分,passage:不过 , 网友 “ 在 路上 的 小波 ” 根据 视频 内容 推测 : “ 司机 再 往前 逆行 <unk> 米 就是 高架 转盘 , 开 到 这里 就 不算 逆行 了 。 也就是说 冒险 <unk> 米 逆行 后 , 就 能 达成 司机 的 目标 , 进入 正常 的 车道 。 . </s>,answer:12分,answer_p:53,answer_e:53,pre:,start:53,end:53,sequence_len:54
+iterator: 3224 ，loss_start is :1.0248690465092658 , loss_end is:1.0483458426594734
+question:何眉 扮演者,passage:血色 浪漫 第一部 刘烨 饰演 钟跃民孙 俪 饰演 周晓白 傅彪 饰演 王 主任 赵有亮 饰演 钟 山岳 孙小平 饰演 黎援 朝 剧照 ( <unk> ) ( <unk> 张 ) 潘艺心 饰演 罗芸 马元 饰演 郑桐 叶静 饰演 宁伟 卢誉文 饰演 小混蛋 王春 饰演 吴满 囤 李佳 璇 饰演 珊 苏子 龙 饰演 高琦 邹正 饰演 李 东平 马刚 饰演 常贵 董然 饰演 马 主任 赵庭武 饰演 曹文清 董明 饰演 黎 春水 李靖飞 饰演 锤子 连奕名 饰演 张 海洋 陈宝国 饰演 周 镇南 赵奎娥 饰演 陈亦 君王 力可 饰演 秦岭 林好 饰演 高玥 刘亭作 饰演 袁军 崔彬斌 饰演 宁伟 ( 小 ) 李杰 饰演 李奎勇 王晴 饰演 蒋王春 饰演 吴满 囤 张含 饰演 叶楚良 孙赢 饰演 何眉雷嘉良 饰演 憨娃 李乃正 饰演 杜 . </s>,answer:梁爱琪,answer_p:122,answer_e:122,pre:,start:122,end:122,sequence_len:123
+iterator: 3425 ，loss_start is :1.0431912170350552 , loss_end is:1.0558066333830356
+question:离婚 律师 石姜 扮演者,passage:苑冉苑 冉 , <unk> 年 <unk> 月 <unk> 日出 生于 黑龙江省 哈尔滨市 。 中国 大陆 女演员 、 主持人 、 歌手 。 <unk> 年 毕业 于 北京舞蹈学院 中国 舞系 。 <unk> 年 开始 主持 中国中央电视台 《 动画城 》 节目 , 并 演唱 主题曲 《 快点 告诉 你 》 . </s>,answer:苑冉,answer_p:0,answer_e:1,pre:哈尔滨市 。 中国 大陆 女演员 、 主持人 、 歌手 。 <unk> 年 毕业 于 北京舞蹈学院 中国 舞系 。 <unk> 年 开始 主持 中国中央电视台 《 动画城 》 节目 , 并 演唱 主题曲 《 快点 告诉 你 》 .,start:11,end:48,sequence_len:49
+iterator: 3626 ，loss_start is :1.015744335949421 , loss_end is:1.045694136172533
+question:毕业证 相片 需要 多少 寸 的 照片,passage:<unk> 寸 的 照片 , 你 想 用 什么 底 就 什么 底 , 这个 没有 要求 , 不过 我们 学校 是 蓝底 的 </s>,answer:2寸,answer_p:0,answer_e:2,pre:,start:24,end:24,sequence_len:25
+iterator: 3827 ，loss_start is :0.9761232081055641 , loss_end is:0.9903111325204372
+question:天安门 前 什么 河,passage:天安门 前 金水河 西自 社稷 坦 ( 中山公园 ) 门前 , 东到 太庙 ( 劳动人民文化宫 ) 门前 。 全长 <unk> 米 , 河宽 <unk> 米 , 河深 约 <unk> 米 , 河北 岸边 沿距 天安门 墙基 <unk> 米 。 两岸 均 由 巨型 石条 砌成 , 岸上 筑 有 矮墙 。 . </s>,answer:金水河,answer_p:2,answer_e:3,pre:,start:52,end:52,sequence_len:53
+iterator: 4027 ，loss_start is :0.977596215903759 , loss_end is:1.0052330631017685
+question:漳平 属 那个 市,passage:和平 镇 地处 漳平市 北郊 , 辖区 内 地势 平坦 , 省 道福 三线 、 岭 禾线 、 永漳 公路 、 鹰厦铁路 、 漳龙 铁路 贯穿 其中 , 集镇 紧邻 漳平 火车站 , 区位 、 交通 优势 突出 。 和平 镇 [ 漳平 . </s>,answer:龙岩,answer_p:44,answer_e:44,pre:,start:44,end:44,sequence_len:45
+iterator: 4227 ，loss_start is :0.9856336263939738 , loss_end is:0.9310705668479204
+question:文玉禾 是 哪部 电视剧,passage:首先 是 范冰 饰演 的 文玉禾 这个 角色 与 范冰 本人 的 性格 非常 像 , 在 剧中 , 范冰 饰演 的 文玉禾 是 主轴 人物 , 所有 的 故事 都 围绕 她 展开 , 她 是 一个 外柔内刚 的 烈性 女子 , 替 父亲 还债 不得已 嫁入 辜家 。 她 一心 追求 自由 , 顽强 地 与 命运 抗争 , 无奈 却 一直 为 命运 所 累 , 最后 在 残酷 的 现实 中 杀出 一条 血路 , 圆满 了 自己 的 人生 。 . </s>,answer:胭脂雪,answer_p:86,answer_e:86,pre:,start:86,end:86,sequence_len:87
+iterator: 4428 ，loss_start is :0.8991428469121456 , loss_end is:0.8921169492602349
+question:<unk> 是 哪个 国家,passage:<unk> _ <unk> 关于 马姆 提斯 渡假 酒店 的 点评 : 我 在 布里斯班 ( <unk> ) 做 导游 。 在 我 的 职业生涯 里 , 我 住 过 <unk> 个 国家 <unk> 个 城市 的 <unk> 家 酒店 。 大多数 是 五星级 酒店 , 其中 <unk> 多家 是 超 五星 . </s>,answer:澳大利亚,answer_p:52,answer_e:52,pre:,start:52,end:52,sequence_len:53
+iterator: 4629 ，loss_start is :0.8844730584323406 , loss_end is:0.9044864087551833
+question:中国 最 古老 的 树,passage:本站 提供 <unk> 最全 中国 现存 最 古老 的 树木 内容 , 中国 最 古老 的 树木 以及 各种 小嫩 菊 专用 视频 合集 资源 , 在线 观看 高清 爱护 花草树木 的 标语 在线 阅读 , 第一 时间 更新 中国 现存 最早 的 山水画 图片 大全 , 值得 信赖 ! . 中国 最 古老 的 树木 中国 最 古老 的 姓氏 爱护 花草树木 的 标语 现存 最 古老 的 生物 中国 最贵 的 香烟 中国 最 有钱 的 人 是 谁 中国 最大 的 城市 中国 十大 最丑 男人 中国 十大 千年 古树 _ 百度 百科 </s>,answer:银杏树,answer_p:96,answer_e:96,pre:,start:96,end:96,sequence_len:97
+iterator: 4830 ，loss_start is :0.9455209651216865 , loss_end is:0.975682441405952
+question:一亿 是 几位数,passage:比 一亿 少 一千万 的 数是 九千万 比 一亿多 一千万 的 数是 一亿 一千万 </s>,answer:9位数,answer_p:14,answer_e:14,pre:,start:14,end:14,sequence_len:15
+iterator: 2 ，loss_start is :0.008035629391670226 , loss_end is:0.010267224311828613
+question:《 窃读 记 》 的 作者 的 作品,passage:课文 以 “ 窃读 ” 为 线索 , 以 放学 后 “ 我 ” 急匆 地 赶到 书店 , 到 晚上 依不舍 离开 的 时间 顺序 和 藏身 于 众多 顾客 , 借 雨天 读书 两个 场景 的 插入 , 细腻 生动 地 描绘 了 “ 窃读 ” 的 独特 感受 与 复杂 滋味 , 表现 了 “ 我 ” 对 读书 的 热爱 和 对 知识 的 渴望 。 . 作者 善于 通过 自语 式 的 独白 描绘 心境 , 表达 自己 的 感情 。 在 “ 窃读 ” 这种 氛围 中 , 一方面 享受 阅读 的 快乐 , 一方面 还要 时刻 关注 周围 的 环境 , 非常 形象 生动 地 表现 了 “ 我 ” 的 心情 变化 , 使人 如 历其境 。 . </s>,answer:林海音,answer_p:126,answer_e:126,pre:,start:126,end:126,sequence_len:127
+iterator: 203 ，loss_start is :0.7490094713494182 , loss_end is:0.7626928235217929
+question:双 凤县 是 我国 那个 省 ?,passage:凤县 门户网站 , 宣传 凤县 , 政治协商 , 民主监督 , 参政议政 </s>,answer:陕西省,answer_p:11,answer_e:11,pre:,start:11,end:11,sequence_len:12
+iterator: 404 ，loss_start is :0.5796031133830547 , loss_end is:0.604362070262432
+question:整字 被 拆 打 一 成语,passage:中字 八字 整字 散落 一地 打 一 成语 : 成语 俗语 是 一个 国家 或 民族语言 的 精华 所在 , 其中 包含 并 反映 着 该 国家 或 民族 的 特有 文化 , 包括 生态 文化 、 语言 文化 、 宗教 文化 、 物质 文化 和 社会 文化 。 . </s>,answer:化整为零,answer_p:50,answer_e:50,pre:,start:50,end:50,sequence_len:51
+iterator: 605 ，loss_start is :0.511180644033011 , loss_end is:0.567229839283973
+question:软体动物 无壳 像 蜗牛,passage:蛞蝓 吧 。 蛞蝓 , 又称 水 蜒蚰 , 中国 南方 某些 地区 称 蜒蚰 , 俗称 鼻涕虫 , 是 一种 软体动物 , 与 部分 蜗牛 组成 有 肺目 。 雌雄同体 , 外表 看起来 像 没壳 的 蜗牛 , 体表 湿润 有 黏液 , 民间 流传 在 其 身上 撒盐 使 其 脱水 而 死 的 扑杀 方法 。 . </s>,answer:蛞蝓,answer_p:0,answer_e:1,pre:蛞蝓,start:0,end:1,sequence_len:61
+iterator: 806 ，loss_start is :0.406614631973207 , loss_end is:0.413806578963995
+question:石门 澳 产业园 在 莆田 哪个 区,passage:与 莆田市 发展 和 改革 委员会 签署 相关 项目 合作 协议 的 公告 证券 代码 : <unk> 证券 简称 : 福能 股份 公告 编号 : <unk> - <unk> 福建 福能 股份 有限公司 关于 控股 东 与 莆田市 发展 和 改革 委员会 签署 相关 项目 合作 协 </s>,answer:秀屿区,answer_p:46,answer_e:46,pre:,start:46,end:46,sequence_len:47
+iterator: 1008 ，loss_start is :0.38920156960375607 , loss_end is:0.4347949016653001
+question:成人 本科 几年,passage:<unk> 年 半 </s>,answer:2年半,answer_p:0,answer_e:3,pre:,start:3,end:3,sequence_len:4
+iterator: 1209 ，loss_start is :0.42018921956419947 , loss_end is:0.48112093990668653
+question:火影忍者 作者,passage:人气 漫画 《 火影忍者 》 的 改编 剧场版 《 火影忍者 剧场版 : 博人 》 即将 在 今年 <unk> 月 <unk> 日 跟 广大观众 们 见面 。 而 近日 在 东京 举行 的 试映 会上 , 原作者 岸本 齐史 登台 , 并且 表示 : 我 不想 再画 火影 了 。 . </s>,answer:岸本齐史,answer_p:36,answer_e:38,pre:岸本 齐史 登台,start:36,end:39,sequence_len:51
+iterator: 1412 ，loss_start is :0.3736443654075265 , loss_end is:0.34771277078427376
+question:我 是 大 明星 哪个 省,passage:程亚丽 , <unk> 年 <unk> 月 <unk> 日 出生 在 河南省 , <unk> 岁 辍学 打工 赚钱 养家 来到 莱阳 定居 , <unk> 年 参加 山东 综艺 频道 第四季 《 我 是 大 明星 》 比赛 获得 总冠军 , <unk> 年 参加 《 春晚 总动员 》 为 嘉宾 评审 ! . </s>,answer:山东省,answer_p:51,answer_e:51,pre:,start:51,end:51,sequence_len:52
+iterator: 1615 ，loss_start is :0.28773003809154035 , loss_end is:0.3154775453964248
+question:衡水 学院 快递,passage:时间 : 来源 : 作者 : 点击 : 衡水 学院 <unk> 年 普通 高考 录取 通知书 已 通过 中国邮政 <unk> 特快专递 邮寄 , 现 开放 查询 。 . </s>,answer:圆通快递,answer_p:28,answer_e:28,pre:,start:28,end:28,sequence_len:29
+iterator: 1816 ，loss_start is :0.3409611210413277 , loss_end is:0.3694301234744489
+question:广东省 白云区 属于 哪个 市,passage:白云区 </s>,answer:广州市,answer_p:1,answer_e:1,pre:,start:1,end:1,sequence_len:2
+iterator: 2017 ，loss_start is :0.34521589437033984 , loss_end is:0.3403956081252545
+question:杏林 春满 的 主人公 是 谁,passage:如果 你 说 的 是 这个 典故 的话 , 那 就是 汉末 三国 的 一个 医生 , 叫 董奉 的 。 董奉 , 字君异 , 福建 侯官 ( 今 福州 ) 人 , 有 很 高 的 道术 和 医术 , 与 当时 的 华佗 、 张仲景 齐名 , 号称 “ 建安 三 神医 ” 。 . 如此一来 , 杏林 一词 便 渐 成为 医家 的 专用名词 , 人们 喜用 “ 杏林 春满 ” “ 誉满 杏林 ” “ 妙手回春 ” 这类 的 话语 来 赞美 象 董奉 一样 具有 高尚 医风 的 苍生 大医 , 也 常用 这 类 话语 称颂 医生 医术 的 高明 和 高尚 的 医德 。 . </s>,answer:董奉,answer_p:18,answer_e:19,pre:董奉,start:18,end:19,sequence_len:113
+iterator: 2218 ，loss_start is :0.3369136576913297 , loss_end is:0.34018694031517954
+question:佛教 的 创始人,passage:佛教 的 创始人 是 北 印度 迦 毗罗 卫国 净饭 王 的 太子 , 乔 达摩 . 悉达 多 , 十九岁 那年 , 他 放弃 了 荣华富贵 出家 修行 , 三十岁 得 道 , 成道 后 称为 释迦牟尼 佛 。 据 中国 历史 记载 , 他 诞生 在 周昭 . </s>,answer:释迦牟尼,answer_p:37,answer_e:38,pre:释迦牟尼,start:37,end:38,sequence_len:51
+iterator: 2419 ，loss_start is :0.31551074963994324 , loss_end is:0.3104255433566868
+question:古屋 打一 现代 作家,passage:千年 古屋 ( 打一 现代 作家 ) <unk> : 初一 离家 除夕 回 ( 猜一 成语 ) <unk> : 喜上眉梢 ( 打一字 ) <unk> : 大禹 称王 ( 打一 节气 ) <unk> : 琴盒 ( 打一 成语 ) <unk> : 妇女节 前夕 ( 打 一中 药名 ) <unk> : . </s>,answer:老舍,answer_p:50,answer_e:50,pre:,start:50,end:50,sequence_len:51
+iterator: 2621 ，loss_start is :0.38146945086307826 , loss_end is:0.3693561380822212
+question:西宁市 属于 哪个 省份,passage:西宁 在 哪个 省 ? 西宁 属于 哪里 ? 我 是 背包客 , 吃 的 住 的 这 一带 有没有 比较 适合 背包客 一族 的 。 另外 , 在 哪个 省 ? . </s>,answer:青海省,answer_p:33,answer_e:33,pre:,start:33,end:33,sequence_len:34
+iterator: 2823 ，loss_start is :0.2877184775099158 , loss_end is:0.2949078801262658
+question:内蒙古 阿荣旗 属于 哪个 市,passage:走 , 申通 , 黑龙江 齐 哈尔 市转 阿荣旗 交通 . 就 可以 . </s>,answer:呼伦贝尔市,answer_p:14,answer_e:14,pre:,start:14,end:14,sequence_len:15
+iterator: 3024 ，loss_start is :0.2719423761148937 , loss_end is:0.24696555654052646
+question:三星 产地 是 哪个 国家,passage:水货 主要 指 的 是 通过 非正规 渠道 进行 销售 的 商品 , 包括 一些 逃税 、 非 授权 、 无 代理 等 商品 。 水货 的 特点 是 价格低 , 品种 新 和 种类 全 , 由于 成本 低廉 , 往能 很快 在 市场 流通 。 . </s>,answer:韩国,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 3225 ，loss_start is :0.2979171131597832 , loss_end is:0.3092770618596114
+question:咸阳 是 哪个 省 的,passage:咸阳 也 没有 什么 名气 就是 一 说起 大家 会 想起 一连串 的 咸阳 典故 “ 秦晋之好 、 太公钓鱼 , 愿者上钩 、 掩耳盗铃 、 指鹿为马 ” 咸阳 的 面积 也 不是 很大 仅为 上海 的 <unk> 倍 , 纽约 的 <unk> 倍 , 香港 的 <unk> 倍 , 虽然 咸阳 真的 没 啥 , 就 只有 这些 但是 咸阳 就是 咸阳 我 是 咸阳 人 , 我 骄傲 咸阳 人顶 起 , 让 全世界 都 知道 咱们 咸阳 是 啥 样 </s>,answer:陕西省,answer_p:81,answer_e:81,pre:,start:81,end:81,sequence_len:82
+iterator: 3425 ，loss_start is :0.3472814864292741 , loss_end is:0.3011054023576435
+question:离婚 律师 石姜 扮演者,passage:[ 导读 ] : 电视剧 《 离婚 律师 》 正在 热播 , 剧中 饰演 汤 美玉 好友 石姜 的 演员 苑冉 资料 背景 也 引起 了 大家 的 好奇 , 在 剧中 石姜一 出现 就 引起 了 很多 网友 很 观众 的 好奇 , 而石 姜 的 扮演者 正是 内地 女演员 苑冉 。 《 离婚 律师 》 的 热播 让 剧情 很受 关注 , 而 剧中 的 演员 . </s>,answer:苑冉,answer_p:20,answer_e:21,pre:苑冉,start:20,end:21,sequence_len:70
+iterator: 3627 ，loss_start is :0.30692944893147794 , loss_end is:0.334375626007095
+question:南宁 玉洞 大道 几米 宽,passage:下半年 , 南宁 一大批 新路 新桥 将 陆续 通车 宽 <unk> 米 , 玉洞 大道 变 身 巨无霸 青山 - 英华 立交 , 英华 路 往凤 岭南 方向 已经 通车 。 广西 新闻网 - 当 </s>,answer:120米,answer_p:10,answer_e:12,pre:<unk> 米,start:10,end:12,sequence_len:36
+iterator: 3828 ，loss_start is :0.2657022922532633 , loss_end is:0.2837466157297604
+question:第一架 飞机 是 谁 发明 的,passage:<unk> 世纪 初 , 滑翔机 和 动力机械 已经 成熟 , 许多 飞行家 开始 将 动力机械 装 到 滑翔机 上 , 研究 动力 飞行 。 <unk> 年 , 俄国 的 莫查 伊斯 基 制造 过 一架 机翼 像 平板 似的 蒸汽 飞机 。 . </s>,answer:莱特兄弟,answer_p:43,answer_e:43,pre:,start:43,end:43,sequence_len:44
+iterator: 4028 ，loss_start is :0.26882798383012413 , loss_end is:0.2655915466020815
+question:启东市 属于 那个 市,passage:启东市 是 由 江苏省 南通市 代管 的 一个 县级市 , 地处 万里 长江 入海口 北侧 , 三面 环水 , 形似 半岛 , 集 黄金水道 、 黄金海岸 、 黄金 大通道 于 一身 , 是 出江 入海 的 重要 门户 , 也 是 江苏 日出 最早 的 地方 。 . </s>,answer:南通市,answer_p:4,answer_e:5,pre:南通市,start:4,end:5,sequence_len:49
+iterator: 4228 ，loss_start is :0.32171409856760874 , loss_end is:0.27825009217252955
+question:海南 鸡饭 是 东南亚 哪个 国家 的 国菜,passage:多种 吃法 的 海南 鸡饭 海南 鸡饭 就是 白切 鸡 再 加上 一碗 白米饭 , 配上 姜蓉 和 辣椒酱 或者 酱油 和 生抽 两 吃法 。 真正 的 好吃 是 在 饭 上 , 海南 鸡饭 的 白饭 空 口吃 也 非常 好吃 , 因为 在 煮 制 的 过程 中 加入 了 鸡油 和 鸡汤 , 使得 白饭 有股 咸鲜 的 味道 , 再配 上 蘸 了 佐料 的 鸡肉 , 那 自然 是 停 不了 口 。 . </s>,answer:新加坡,answer_p:80,answer_e:80,pre:,start:80,end:80,sequence_len:81
+iterator: 4429 ，loss_start is :0.26882250857306644 , loss_end is:0.23667757047223859
+question:身上 长红点 去 医院 看 什么 科,passage:你好 ! 属于 皮肤病 , 去 医院 看 皮肤科 </s>,answer:皮肤科,answer_p:8,answer_e:9,pre:皮肤科,start:8,end:9,sequence_len:10
+iterator: 4630 ，loss_start is :0.2319370242441073 , loss_end is:0.24943804543232545
+question:赵四 扮演者,passage:刘小光 小品 搞笑 赵四 特辑 . <unk> </s>,answer:张歆怡,answer_p:7,answer_e:7,pre:,start:7,end:7,sequence_len:8
+iterator: 4830 ，loss_start is :0.2650785820907913 , loss_end is:0.2864629528718069
+question:一亿 是 几位数,passage:<unk> 位数 , 后面 有 <unk> 个 零 </s>,answer:9位数,answer_p:0,answer_e:2,pre:<unk> 位数,start:0,end:2,sequence_len:9
+iterator: 2 ，loss_start is :0.0013521267473697663 , loss_end is:0.0005461518839001656
+question:《 窃读 记 》 的 作者 的 作品,passage:《 窃读 记 》 的 作者 林海音 的 原名 林海音 简介 林海音 , 女 , 原名 林含 英 , 原籍 台湾省 苗栗县 , 林海音 于 <unk> 年 <unk> 月 <unk> 日 生于 日本 大阪 , 不久 即 返台 , 当时 台湾 已 被 日本 帝国主义 侵占 , 其父 林焕父 不甘 在 日寇 铁蹄 下 生活 , 举家 迁居 北京 , 小英子 即 在 北京 长大 。 . </s>,answer:林海音,answer_p:6,answer_e:7,pre:林海音,start:6,end:7,sequence_len:68
+iterator: 203 ，loss_start is :0.19978056827501858 , loss_end is:0.2205633731733542
+question:双 凤县 是 我国 那个 省 ?,passage:凤县 是 国家 林业 总局 命名 的 中国 花椒 之 乡 , 凤县 花椒 也 是 国家 质检 总局 正式 公布 的 大红袍 花椒 原产 地域 保护 产品 。 <unk> 年 <unk> 月 , 国家林业局 正式 将 凤县 命名 为 “ 中国 花椒 之 乡 ” 。 . </s>,answer:陕西省,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 404 ，loss_start is :0.17212048815446906 , loss_end is:0.18145866791950538
+question:整字 被 拆 打 一 成语,passage:<unk> . 乞丐 相逢 ( 打一 成语 ) 同是天涯沦落人 <unk> . 装 假肢 的 人 ( 打一 成语 ) 铁腕人物 <unk> . 一毛不拔 ( 打一 成语 ) 铁公鸡 <unk> . 找 错字 ( 打一 成语 ) 挑字眼儿 <unk> . 主妇 买 小菜 ( 打一 成语 ) 挑剔 <unk> . 杂货店 的 买卖 ( 打一 成语 ) 挑拣 <unk> . 被 抓 的 刺猬 ( 打一 成语 ) 缩成一团 <unk> . 死 了 丈人 哭爹 ( 打一 成语 ) 随大流 [ <unk> ] 词条 图册 更 多 图册 参考资料 <unk> . 灯谜 的 进化 历程 . 网易 [ 引用 日期 <unk> - <unk> - <unk> ] <unk> . 灯谜 文化 源头 或 为 人类 远古 神话 . 新浪 历史 网 [ 引用 日期 <unk> - <unk> - <unk> ] . </s>,answer:化整为零,answer_p:129,answer_e:129,pre:,start:129,end:129,sequence_len:130
+iterator: 604 ，loss_start is :0.12077556689386255 , loss_end is:0.1420219649327919
+question:南昌 师范学院 是 几本,passage:南昌 师范学院 现有 青山湖 、 昌北 两个 校区 。 是 一所 省属 成人 高等师范 本科 院校 , 是 江西省 最早 举办 的 八所 本科 高校 之一 , 迄今已有 <unk> 年 的 办学 历史 。 . </s>,answer:2本,answer_p:35,answer_e:35,pre:,start:35,end:35,sequence_len:36
+iterator: 805 ，loss_start is :0.13757014214468655 , loss_end is:0.13085508347343422
+question:石门 澳 产业园 在 莆田 哪个 区,passage:受 秀屿区 住房 和 城乡 建设局 委托 , 根据 《 中华人民共和国政府 采购 法 》 等 有关 规定 , 现对 关于 秀屿区 石门 澳 产业园 道路 一期 工程项目 ( 编号 : ) 的 预 公告 进行 其他 招标 , 欢迎 合格 的 供应商 前来 投标 。 . </s>,answer:秀屿区,answer_p:1,answer_e:2,pre:秀屿区,start:1,end:2,sequence_len:47
+iterator: 1007 ，loss_start is :0.12171520337520633 , loss_end is:0.15547097657923586
+question:线电压 是 多少 伏,passage:星 接线 : 线电压 为 相电压 的 根号 <unk> 倍角 接线 : 线电压 等于 相电压 . </s>,answer:380伏,answer_p:16,answer_e:16,pre:,start:16,end:16,sequence_len:17
+iterator: 1209 ，loss_start is :0.12343741622142261 , loss_end is:0.1520288294996135
+question:火影忍者 作者,passage:作者 岸本 说 结局 早已 设定 好 了 。 基础 扫盲 篇 十多年 前 木叶 忍者 村 曾 遭受 九尾 妖狐 的 袭击 , 村长 第四代 火影 牺牲 自己 的 生命 , 将 妖狐 封印 在 当时 还是 婴儿 的 自己 儿子 漩涡 鸣人 身上 , 村子 也 因此 得救 。 . </s>,answer:岸本齐史,answer_p:52,answer_e:52,pre:,start:52,end:52,sequence_len:53
+iterator: 1411 ，loss_start is :0.15085025784559547 , loss_end is:0.1567570358334342
+question:一 升水 等于 多少 毫升,passage:一千 毫升 水 等于 一 千克 . 注意 : 是 水 ! 其他 的 就 变 了 , 但 你 可 参考 ! . 请问 一 升水 等于 多少 公斤 物质 的 密度 和 温度 以及 压力 有关 , 不能 简单 说 一 升水 是 多少 公斤 . 必须 指明 温度 和 压力 条件 . 当然 , 一般 不 严格要求 时 , 水 的 密度 为 <unk> <unk> / <unk> . 一 升水 等于 多少 千克 , 多少 克 ? . </s>,answer:10毫升,answer_p:81,answer_e:81,pre:,start:81,end:81,sequence_len:82
+iterator: 1614 ，loss_start is :0.11007814320935722 , loss_end is:0.10921224825593527
+question:江门市 潮连 大道 <unk> 号 在 哪个 区,passage:江门市 蓬江区 潮连 大道 六号 工作 情况 所学 专业 : 语文 教育 工作 经验 : 应届 毕业生 政治面貌 : 中国 共青团员 . </s>,answer:蓬江区,answer_p:1,answer_e:2,pre:蓬江区,start:1,end:2,sequence_len:23
+iterator: 1815 ，loss_start is :0.12377867270726711 , loss_end is:0.13665444757963996
+question:三门峡 是 哪个 省,passage:河南省 ! . </s>,answer:河南省,answer_p:0,answer_e:1,pre:河南省,start:0,end:1,sequence_len:4
+iterator: 2016 ，loss_start is :0.12035171637922758 , loss_end is:0.11409610796064953
+question:哆 啦 <unk> 梦 陪 了 大雄 多少 年,passage:连续 签到 <unk> 天送 <unk> 三倍 流畅 播放 <unk> 蓝光 画质 新剧 提前 看 <unk> 蓝光 画质 纯净 式 无框 播放器 三倍 流畅 播放 登录 之后 可以 开通 <unk> / 超级 影视 <unk> 看 大片 按住 画面 移动 小窗 不再 出现 在 页面 右下角 重新 打开 小窗 播放 通用 代码 支持 视频 在 <unk> / <unk> / <unk> 上 播放 扫码 分享 到 微信 扫描 二维码 随身 看 视频 正在 观看 : { <unk> } 已 看 至 { <unk> } 请 根据 您 的 设备 选择 下 </s>,answer:80年,answer_p:88,answer_e:88,pre:,start:88,end:88,sequence_len:89
+iterator: 2217 ，loss_start is :0.12676830952041201 , loss_end is:0.13262345129041933
+question:夏津 是 哪个 省,passage:夏津 是 个 开发 较 早 的 并 以 种植业 为主 的 农业区 。 主要 作物 有 棉花 、 小麦 、 玉米 、 谷子 、 花生 、 大豆 等 , 尤 以 植棉 见长 , 素有 “ 银 夏津 ” 之称 。 夏津 植棉 历史悠久 , 自 元朝 引种 棉花 , 明朝 洪武 <unk> 年 ( 公元 <unk> 年 ) 人均 植棉 <unk> 亩 , 清末 民初 棉田 占 耕地 的 <unk> 。 . </s>,answer:山东省,answer_p:74,answer_e:74,pre:,start:74,end:74,sequence_len:75
+iterator: 2418 ，loss_start is :0.0992915205922327 , loss_end is:0.10405289027949038
+question:马少 一点 是 什么 成语,passage:疯狂 猜 成语 文字 少 一点 是 哪个 成语 ? , 在 图片 显示 的 是 一个 不 “ 文 ” 字少 了 上面 的 那个 点 。 这是 什么 意思 呢 ? . </s>,answer:马失前蹄,answer_p:34,answer_e:34,pre:,start:34,end:34,sequence_len:35
+iterator: 2621 ，loss_start is :0.10932834081482724 , loss_end is:0.1148717165117705
+question:西宁市 属于 哪个 省份,passage:根据 下列 材料 , 结合 所学 知识 , 完成 ( <unk> ) — ( <unk> ) 题 材料 一 : <unk> - <unk> 年 西宁市 土地利用 类型 结构 变化 图 ( 图 <unk> ) 材料 二 : <unk> 年 西宁市 工业产值 结构图 ( 图 <unk> ) ( <unk> ) “ 到 西宁 避暑 , 请 带上 毛 . 根据 下列 材料 , 结合 所学 知识 , 完成 ( <unk> ) — ( <unk> ) 题 材料 一 : <unk> - <unk> 年 西宁市 土地利用 类型 结构 变化 图 ( 图 <unk> ) 材料 二 : <unk> 年 西宁市 工业产值 结构图 ( 图 <unk> ) ( <unk> ) “ 到 西宁 避暑 , 请 带上 毛 . </s>,answer:青海省,answer_p:116,answer_e:116,pre:,start:116,end:116,sequence_len:117
+iterator: 2823 ，loss_start is :0.07815830386200105 , loss_end is:0.07211940179753583
+question:内蒙古 阿荣旗 属于 哪个 市,passage:阿荣旗 是 隶属 内蒙古自治区 呼伦贝尔市 的 一个 旗 , 位于 大兴安岭 东麓 , 东经 <unk> ° <unk> ′ — <unk> ° <unk> ′ 、 北纬 <unk> ° <unk> ′ — <unk> ° <unk> ′ 。 西部 与 扎兰屯市 隔河相望 , 东部 与 扎格敦 山岭 和 莫力达瓦达斡尔族自治旗 为 邻 , 北部 和 鄂伦春 旗 相连 , 西北部 与 牙克石市 接壤 , 南以 金界壕 为界 与 黑龙江省 甘南县 毗邻 。 . </s>,answer:呼伦贝尔市,answer_p:4,answer_e:5,pre:呼伦贝尔市,start:4,end:5,sequence_len:70
+iterator: 3024 ，loss_start is :0.1384946753489203 , loss_end is:0.12057927356145229
+question:三星 产地 是 哪个 国家,passage:土巴兔 装修 问答 平台 为 网友 提供 各种 想 知道 三星 产地 是 哪个 国家 问题解答 。 土巴兔 装修 问答 汇聚 <unk> 万 业主 的 装修 经验 和 智慧 , 迅速 解决 装修 困惑 </s>,answer:韩国,answer_p:34,answer_e:34,pre:,start:34,end:34,sequence_len:35
+iterator: 3225 ，loss_start is :0.09967392896985984 , loss_end is:0.09880015232822188
+question:咸阳 是 哪个 省 的,passage:咸阳市 位于 陕西省 , 西安市 的 西边 。 </s>,answer:陕西省,answer_p:2,answer_e:3,pre:陕西省,start:2,end:3,sequence_len:9
+iterator: 3425 ，loss_start is :0.15862159850425087 , loss_end is:0.1209037310394342
+question:离婚 律师 石姜 扮演者,passage:从 <unk> 月 <unk> 日 《 离婚 律师 》 开播 以来 , 我 饰演 的 石姜 就 得到 了 广大观众 的 关注 , 非常 开心 能 有 越来越 多 的 观众 朋友 们 从 这部 戏 开始 认识 我 , 非常感谢 那些 素未谋面 的 热情 的 观众 朋友 们 的 支持 和 保护 , 虽然 没能 在 微 博里 一 回复 大家 , 但 你们 温暖 的 话语 经常 会 让 我 很 开心 , 很 感动 。 . </s>,answer:苑冉,answer_p:79,answer_e:79,pre:,start:79,end:79,sequence_len:80
+iterator: 3626 ，loss_start is :0.13737191559433995 , loss_end is:0.160289530599257
+question:毕业证 相片 需要 多少 寸 的 照片,passage:中专 毕业证 照片 是 几寸 的 : 问 你 老师 阿看 你 学校 要求 的 中专 毕业证 相片 是 大 一寸 还是 小 一寸 的 ? : 请问 : 小 一寸 照片 的 尺寸 是 多少 ? . </s>,answer:2寸,answer_p:38,answer_e:38,pre:,start:38,end:38,sequence_len:39
+iterator: 3827 ，loss_start is :0.12083378445284325 , loss_end is:0.11574292966779468
+question:天安门 前 什么 河,passage:河深 约 <unk> 米求 采纳 </s>,answer:金水河,answer_p:5,answer_e:5,pre:,start:5,end:5,sequence_len:6
+iterator: 4027 ，loss_start is :0.08506870943499961 , loss_end is:0.06070401224604211
+question:漳平 属 那个 市,passage:漳平市 是 福建省 的 一个 县级市 , 不是 漳州 的 , 是 龙岩市 的 , 在 泉州 漳州 龙岩 三市 交界 </s>,answer:龙岩,answer_p:12,answer_e:13,pre:龙岩市,start:12,end:13,sequence_len:22
+iterator: 4228 ，loss_start is :0.13062494528636306 , loss_end is:0.11827493427329046
+question:海南 鸡饭 是 东南亚 哪个 国家 的 国菜,passage:海南 鸡饭 起源于 中国 海南岛 的 文昌市 但 如今已是 一道 新加坡 的 国菜 。 主要 食材 是 鸡肉 和 大米 , 主要 烹饪 工艺 是 烫 煮 。 海南 人会 以 文昌 当地 的 白切 鸡 做法 , 同时 配以 鸡油 和 浸鸡水 烹煮 的 米饭 , 所以 </s>,answer:新加坡,answer_p:10,answer_e:11,pre:新加坡,start:10,end:11,sequence_len:49
+iterator: 4429 ，loss_start is :0.10186371980933473 , loss_end is:0.08178275247691999
+question:身上 长红点 去 医院 看 什么 科,passage:你 前 几天 就 应该 去 看 了 好 不 , 那么 多红点 看着 不 难受 啊 , 我 听 你 说 的 就 蛮 难受 的 。 最好 饮食 也 不要 吃 比较 鲜 的 东西 了 , 清淡 点儿 的 好 , 平时 多吃点 水果 ~ 你 这 得 找出 源头 才 . </s>,answer:皮肤科,answer_p:55,answer_e:55,pre:,start:55,end:55,sequence_len:56
+iterator: 4630 ，loss_start is :0.0880932626642243 , loss_end is:0.09709356922352526
+question:赵四 扮演者,passage:《 少帅 》 赵四 饰演者 张歆怡 , <unk> 年 <unk> 月 <unk> 日出 生于 江苏省 南京市 , 内地 女演员 。 <unk> 年 入学 南京艺术学院 附属 中等 艺术 学校 。 <unk> 年 , 出演 张艺谋 执导 的 电影 《 金陵 十三 钗 》 , 饰演 人物 孟书娟 。 . </s>,answer:张歆怡,answer_p:5,answer_e:6,pre:张歆怡,start:5,end:6,sequence_len:49
+iterator: 4830 ，loss_start is :0.08418617584713502 , loss_end is:0.09992816145226242
+question:一亿 是 几位数,passage:比 一亿 少 一千万 的 数是 九千万 比 一亿多 一千万 的 数是 一亿 一千万 </s>,answer:9位数,answer_p:14,answer_e:14,pre:,start:14,end:14,sequence_len:15
+iterator: 2 ，loss_start is :7.25925387814641e-05 , loss_end is:0.00019921204075217246
+question:《 窃读 记 》 的 作者 的 作品,passage:《 窃读 记 》 是 <unk> 年 上海 教育 出版社 出版 的 图书 , 作者 是 林海音 女士 , 以窃读 为 线索 , 描写 了 作者 放学 后 急匆 赶往 书店 , 藏身 于 众多 顾客 , 借 雨天 窃读 , 到 晚上 才 依不舍 离开 的 读书 过程 。 . </s>,answer:林海音,answer_p:16,answer_e:17,pre:林海音,start:16,end:17,sequence_len:52
+iterator: 203 ，loss_start is :0.09829198290783098 , loss_end is:0.10954755697384826
+question:双 凤县 是 我国 那个 省 ?,passage:这些 都 是 凤县 得天独厚 的 文化 资源 , 为 乡村 旅游 提供 了 丰富 的 文化底蕴 [ <unk> ] 。 凤县 有以 “ 马场 农家 ” , “ 百合 人家 ” 为 代表 的 <unk> 家农 . 国家旅游局 长 也 曾 表示 , 我国 乡村 旅游 正 处于 重要 的 发展 阶段 , 乡村 旅游 是 我国 旅游业 的 重要 组成部分 和 促进 旅游业 发展 的 重要 支撑 . </s>,answer:陕西省,answer_p:70,answer_e:70,pre:,start:70,end:70,sequence_len:71
+iterator: 404 ，loss_start is :0.07959528353818769 , loss_end is:0.0683122429370087
+question:整字 被 拆 打 一 成语,passage:化整为零 <unk> à <unk> ě <unk> é <unk> í <unk> 【 解释 】 把 一个 整体 分成 许多 零散 部分 . 【 出处 】 毛泽东 《 抗日 游击战争 的 战略 问题 》 : “ 一般地说 来 , 游击队 当 分散 使用 , 即 所谓 ‘ 化整为零 ’ . ” 【 结构 】 兼语 式 . 【 用法 】 与 “ 化零为整 ” 相对 应 . 多用 在 军事 上 ; 指 部队 一种 作战 方式 . 一般 作 谓语 、 宾语 、 定语 . 【 正音 】 为 ; 不能 读作 “ <unk> è <unk> ” . 【 辨形 】 整 ; 不能 写作 “ 正 ” ; 零 ; 不能 写作 “ 另 ” . 【 反义词 】 化零为整 【 例句 】 战士 们 把 炮 拆开 ; ~ ; 硬是 用 肩 扛 上 了 山 . 【 英译 】 <unk> </s>,answer:化整为零,answer_p:0,answer_e:1,pre:化整为零,start:0,end:1,sequence_len:144
+iterator: 605 ，loss_start is :0.06326316160471833 , loss_end is:0.04811845401502069
+question:软体动物 无壳 像 蜗牛,passage:河北 发现 史前 软体动物 — 无壳蜗牛 分享 给 朋友 : 扫码 用 手机 继续 看用 优酷 <unk> 或 微信 扫码 在 手机 上 继续 观看 二维码 <unk> 小时 内 有效 , 扫码 后 可 分享 给 好友 没有 优酷 <unk> ? 立即 下载 . </s>,answer:蛞蝓,answer_p:44,answer_e:44,pre:,start:44,end:44,sequence_len:45
+iterator: 806 ，loss_start is :0.07476339090158035 , loss_end is:0.0651375168454615
+question:时针 走 一圈 是 多少 小时,passage:· 应该 带 孩子 提前 到 幼儿园 转一转 中班 科学教案 : 转一转 活动 目标 : <unk> 、 通过 实验 , 探索 几种 物体 转动 的 动力 来源 , 并 进行 分类 。 . <unk> 、 我们 用手 来模 . · 小学 品德 与 社会 : 《 绕 着 边境 走 一圈 》 教学 设计 小学 品德 与 社会 : 《 绕 着 边境 走 一圈 》 教学 设计 . </s>,answer:12小时,answer_p:69,answer_e:69,pre:,start:69,end:69,sequence_len:70
+iterator: 1008 ，loss_start is :0.07479846389812338 , loss_end is:0.09202869428640498
+question:成人 本科 几年,passage:成人 高等教育 高起 本 教育 , 脱产 教学 <unk> 年 毕业 , 函授 和 业余教育 <unk> 年 毕业 ; 专升本 教育 , 脱产 教学 <unk> 年 毕业 , 函授 和 业余教育 <unk> ~ <unk> 年 毕业 。 成人 高等学校 招生 统一 考试 的 简称 成人高考 , 是 我国 成人 高等学校 选拔 合格 的 毕业生 以 进入 更 高层次 学历教育 的 入学考试 , 属于 国民教育 系列 , 列入 国家 招生 计划 , 参加 全国 招生 统一 考试 , 各省 、 自治区 、 直辖市 统一 组织 录取 。 . </s>,answer:2年半,answer_p:87,answer_e:87,pre:,start:87,end:87,sequence_len:88
+iterator: 1209 ，loss_start is :0.08505096330554807 , loss_end is:0.08261737309472665
+question:火影忍者 作者,passage:新闻 - 体育 - 娱乐 - 财经 - <unk> - 汽车 - 房产 - 女人 - 短信 - 彩信 - 校友录 - 邮件 - 商城 - <unk> - 搜狗 搜狐 首页 > 娱乐 频道 > 动漫 <unk> > 动漫 专题 汇总 > 《 火影忍者 》 专辑 > . </s>,answer:岸本齐史,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 1412 ，loss_start is :0.07525112350038399 , loss_end is:0.06239194086765565
+question:我 是 大 明星 哪个 省,passage:视频 : <unk> 《 我 是 大 明星 》 : 赛娜 表演 性感 肚皮舞 成功 晋级 编辑 : 王红霞 播放 次数 : <unk> 《 我 是 大 明星 》 : 赛娜 表演 性感 肚皮舞 成功 晋级 </s>,answer:山东省,answer_p:36,answer_e:36,pre:,start:36,end:36,sequence_len:37
+iterator: 1615 ，loss_start is :0.031079824121507046 , loss_end is:0.02915218095083219
+question:衡水 学院 快递,passage:辰 啊 , 你 太 悲情 了 , 还得哥 给 你 回答 . 这个 你 得 问 网上 的 商家 、 一般 的 地级市 都 没 问题 , 圆通 , 申通 , 宅急送 , 顺丰 , 等 , 你 可以 去 他们 的 网站 看 、 地址 就 写 衡水 学院 几号楼 、 几室 , 快递 员来 了 会 给 你 打电话 , 你 去 学院 门口 等 就 可以 了 、 你 说 的 收发室 指 的 是 平信 … 快递 没 这么 麻烦 </s>,answer:圆通快递,answer_p:85,answer_e:85,pre:,start:85,end:85,sequence_len:86
+iterator: 1816 ，loss_start is :0.05177999703367618 , loss_end is:0.0693582983681604
+question:广东省 白云区 属于 哪个 市,passage:尊敬 的 百度 用户 你好 ! 广东 阳江市 江城区 白云路 属于 观光 社区 居委会 </s>,answer:广州市,answer_p:14,answer_e:14,pre:,start:14,end:14,sequence_len:15
+iterator: 2017 ，loss_start is :0.06585168917297779 , loss_end is:0.06656218025630721
+question:杏林 春满 的 主人公 是 谁,passage:杏林 春满 、 程门立雪 、 愚公移山 的 主人公 是 谁 ? <unk> | 匿名 提交 答案 长度 必须 超过 <unk> 个 字 , 请勿 发布 无效 或 违法 言论 。 . </s>,answer:董奉,answer_p:31,answer_e:31,pre:,start:31,end:31,sequence_len:32
+iterator: 2218 ，loss_start is :0.061998282373915574 , loss_end is:0.060116581716470135
+question:佛教 的 创始人,passage:比方 大 海里 的 水 , 不管 多么 大 的 动物 , 不能 把 海里 的 水 喝尽 ; 不管 多么 小 的 虫儿 , 都 能 去 喝 一个 饱 ; 佛法 的 深广 也 和 大海 一样 , 虽然 绝顶聪明 的 人 不能 把 它 学尽 , 然而 一般 的 人 也 一样 能 学习 的 。 问 : 佛教 里 的 事情 也 可以 对 不学佛 的 人 说 吗 ? . </s>,answer:释迦牟尼,answer_p:75,answer_e:75,pre:,start:75,end:75,sequence_len:76
+iterator: 2419 ，loss_start is :0.048249489170787 , loss_end is:0.06687690829961866
+question:古屋 打一 现代 作家,passage:<unk> . 古屋 ( 打一 现代 作家 名 ) _ 老舍 <unk> . 欧洲 见闻录 ( 打 我国 一 古代 名著 ) _ 西游记 <unk> . 查户口 ( 打一 故事 影片 名 ) _ 一个 都 不能 少 <unk> . 鞠躬尽瘁 , 死而后已 ( 打 唐诗 两句 ) _ 春蚕到死丝方尽 , 蜡炬成灰泪始干 大家 答 的 都 不错 , 学习 并 仰慕 </s>,answer:老舍,answer_p:10,answer_e:11,pre:老舍,start:10,end:11,sequence_len:62
+iterator: 2622 ，loss_start is :0.062085842574645084 , loss_end is:0.0532430115049101
+question:黑 羽毛 红嘴 是 什么 鸟,passage:翡翠 科 <unk> 翡翠 属 <unk> 食鱼 鸟类 下图 为 蓝翡翠 <unk> 是 相当 大 的 翡翠 , 身体 长 <unk> 厘米 左右 , 头 黑 , 翅膀 上 的 羽毛 黑底 白点 , 上体 蓝色 或 紫色 , 下体 棕色 , 嘴 和 脚 均 为 红色 。 . </s>,answer:黑色,answer_p:50,answer_e:50,pre:,start:50,end:50,sequence_len:51
+iterator: 2823 ，loss_start is :0.04928654479806937 , loss_end is:0.04574477747738456
+question:内蒙古 阿荣旗 属于 哪个 市,passage:阿荣旗 就是 县 , 在 内蒙 县 就 叫 旗 , 县 = 旗 , </s>,answer:呼伦贝尔市,answer_p:15,answer_e:15,pre:,start:15,end:15,sequence_len:16
+iterator: 3024 ，loss_start is :0.07762777576415829 , loss_end is:0.0819443296864938
+question:三星 产地 是 哪个 国家,passage:三星 这个 牌子 是 韩国 的 , 至于 三星 手机 是 哪个 国家 产 的 那 就 不好 说 了 , 一般来说 售往 中国 大陆 的 都 是 大陆 本地 代工 厂商 生产 的 。 也 有 部分 是 三星电子 中国 制造 公司 生产 的 。 </s>,answer:韩国,answer_p:4,answer_e:5,pre:韩国,start:4,end:5,sequence_len:47
+iterator: 3225 ，loss_start is :0.03592212884492255 , loss_end is:0.04667570904040076
+question:咸阳 是 哪个 省 的,passage:咸阳 没 啥 吃 的 , 就是 有 咸阳 人 都 非常 喜欢 的 三秦 套餐 , 把 你 小肚 造 溜圆 ! 咸阳 没 啥 山 , 就是 有个 堪称 浑然天成 的 绿色 氧吧 — 仲山 生态 森林公园 . </s>,answer:陕西省,answer_p:40,answer_e:40,pre:,start:40,end:40,sequence_len:41
+iterator: 3425 ，loss_start is :0.07219937642587865 , loss_end is:0.05048066511647278
+question:离婚 律师 石姜 扮演者,passage:石姜 扮演者 是 动画城 主 . 顿时 整个 人 都 不好 了 。 毁 童年 啊 尼玛 这种 烂 角色 为何 要接 <unk> 使用 连续 签到 卡 离婚 律师 吧 看 贴 图片 精品 游戏 < 返回 离婚 律师 吧 只 看 楼主 回复 远航 者 <unk> 见习 律师 <unk> 凉城 <unk> 瞳子 . </s>,answer:苑冉,answer_p:54,answer_e:54,pre:,start:54,end:54,sequence_len:55
+iterator: 3627 ，loss_start is :0.07481351762156009 , loss_end is:0.08659874350144946
+question:南宁 玉洞 大道 几米 宽,passage:南宁 一批 新路 新桥 将 通车 玉洞 大道 宽 <unk> 米 超 霸气 , 去年 至今 , 南宁市 启动 了 多条 道路 改造 、 跨江 大桥 建设 , 以及 立交桥 等 多个 项目 。 . </s>,answer:120米,answer_p:9,answer_e:11,pre:<unk> 米,start:9,end:11,sequence_len:36
+iterator: 3828 ，loss_start is :0.06263570644587844 , loss_end is:0.0397058964074995
+question:第一架 飞机 是 谁 发明 的,passage:第一个 , 发明 飞机 人 是 那个 科学 匿名 我们 自己 动手做 吧 ! ” 被 称做 哥 的 男孩 一听 , 顿时 笑了起来 。 当天 晚上 , 弟兄 俩 就 把 这种 想法 告诉 了 妈 。 . </s>,answer:莱特兄弟,answer_p:39,answer_e:39,pre:,start:39,end:39,sequence_len:40
+iterator: 4028 ，loss_start is :0.04368088372701095 , loss_end is:0.02424025455555011
+question:启东市 属于 那个 市,passage:启东市 辖 镇 。 <unk> 年建 吕四镇 , <unk> 年 改 公社 , <unk> 年 复建 镇 , <unk> 年 大洋 港镇 并入 后 更名 吕四港 镇 。 位于 市境 西北部 , 距 市府 <unk> 公里 。 . </s>,answer:南通市,answer_p:38,answer_e:38,pre:,start:38,end:38,sequence_len:39
+iterator: 4228 ，loss_start is :0.08799333957638737 , loss_end is:0.07912440265243731
+question:海南 鸡饭 是 东南亚 哪个 国家 的 国菜,passage:海南 特色 的 海南 鸡饭 到底 是 什么 做 的 二 . 海南 鸡饭 的 相关 信息 海南 鸡饭 是 海南 特色美食 , 在 新 一些 东南亚 国家 被 称为 国 菜 。 主要 食材 是 鸡肉 和 大米 , 主要 烹饪 工艺 是 烫 煮 。 . </s>,answer:新加坡,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 4429 ，loss_start is :0.06391161235038453 , loss_end is:0.034031101755142575
+question:身上 长红点 去 医院 看 什么 科,passage:病情 分析 : 你好 , 这种 情况 考虑 属于 水痘 病毒感染 的 指导 意见 : 这个 问题 我 建议 及时 的 上药 继续 试 , 会慢 好转 的 </s>,answer:皮肤科,answer_p:28,answer_e:28,pre:,start:28,end:28,sequence_len:29
+iterator: 4630 ，loss_start is :0.04978915925756155 , loss_end is:0.05218296734275441
+question:赵四 扮演者,passage:近日 , 由 文章 宋佳 等 主演 的 民国 权谋 大戏 《 少帅 》 已经 开播 了 , 当然 , 少帅 中 张学良 一生 中有 两个 女人 , 一是 于凤至 , 另 一个 就是 赵四 , 那么 赵四 扮演者 是 谁 呢 ? </s>,answer:张歆怡,answer_p:43,answer_e:43,pre:,start:43,end:43,sequence_len:44
+iterator: 4831 ，loss_start is :0.040290871016550225 , loss_end is:0.04126284318228499
+question:江油 是 哪个 省 的,passage:四川 的 , 邓小平 的 故乡 嘛 </s>,answer:四川省,answer_p:7,answer_e:7,pre:,start:7,end:7,sequence_len:8
+iterator: 2 ，loss_start is :9.910962544381619e-06 , loss_end is:2.9958398081362247e-05
+question:《 窃读 记 》 的 作者 的 作品,passage:课文 以 “ 窃读 ” 为 线索 , 以 放学 后 “ 我 ” 急匆 地 赶到 书店 , 到 晚上 依不舍 离开 的 时间 顺序 和 藏身 于 众多 顾客 , 借 雨天 读书 两个 场景 的 插入 , 细腻 生动 地 描绘 了 “ 窃 . </s>,answer:林海音,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 203 ，loss_start is :0.0614787184658735 , loss_end is:0.05880751373847943
+question:双 凤县 是 我国 那个 省 ?,passage:凤县 是 国家 林业 总局 命名 的 中国 花椒 之 乡 , 凤县 花椒 也 是 国家 质检 总局 正式 公布 的 大红袍 花椒 原产 地域 保护 产品 。 <unk> 年 <unk> 月 , 国家林业局 正式 将 凤县 命名 为 “ 中国 花椒 之 乡 ” 。 . </s>,answer:陕西省,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 404 ，loss_start is :0.035712203601279385 , loss_end is:0.03678394342750835
+question:整字 被 拆 打 一 成语,passage:下面 小编 为 你 带来 答案 啦 , 欢迎 大家 学习 。 整字 拆散 打一 成语 化整为零 化整为零 的 词语 解析 [ 释义 ] 把 一个 整体 分成 许多 零散 部分 。 . </s>,answer:化整为零,answer_p:16,answer_e:17,pre:化整为零,start:16,end:17,sequence_len:34
+iterator: 604 ，loss_start is :0.021835073168235228 , loss_end is:0.022098592647862746
+question:南昌 师范学院 是 几本,passage:由 高三 网小编 收集整理 。 南昌 师范学院 在 各个 省份 录取 批次 情况 , 由于 并未 掌握 全部 省份 的 数据 , 部分 省份 的 考生 可能 看不到 南昌 师范学院 对应 的 招生 批次 , 不过 高三 网小 编会 不断更新 数据 , 供 各位 考生 及 家长 参考 , 想 了解 更 多 高校 信息 , 请 持续 关注 高三 网 大学 介绍 栏目 </s>,answer:2本,answer_p:64,answer_e:64,pre:,start:64,end:64,sequence_len:65
+iterator: 805 ，loss_start is :0.033159523786689536 , loss_end is:0.025073321357106125
+question:石门 澳 产业园 在 莆田 哪个 区,passage:与 莆田市 发展 和 改革 委员会 签署 相关 项目 合作 协议 的 公告 证券 代码 : <unk> 证券 简称 : 福能 股份 . </s>,answer:秀屿区,answer_p:23,answer_e:23,pre:,start:23,end:23,sequence_len:24
+iterator: 1007 ，loss_start is :0.0372315562971383 , loss_end is:0.0508504936192778
+question:线电压 是 多少 伏,passage:电压 互感器 <unk> - <unk> 接法 , 线电压 <unk> , <unk> - <unk> 接法 线电压 也 是 <unk> , 相电压 是 <unk> / √ <unk> = <unk> <unk> , <unk> - <unk> 接法 没有 零线 , 不 存在 相电压 评论 ( <unk> ) 问 吧 之星 <unk> . </s>,answer:380伏,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 1209 ，loss_start is :0.043500982659586025 , loss_end is:0.04012342667472467
+question:火影忍者 作者,passage:自从 <unk> 日本 地震 之后 , 有 很多 人想 知道 火影忍者 作者 死 了 吗 ? 火影忍者 作者 现状 , 下面 跟 小编 一起 来看 吧 ! . </s>,answer:岸本齐史,answer_p:28,answer_e:28,pre:,start:28,end:28,sequence_len:29
+iterator: 1412 ，loss_start is :0.05224252218684171 , loss_end is:0.06028583797736758
+question:我 是 大 明星 哪个 省,passage:我 是 大 明星 — 当明 王子 遇上 小糊 作者 : 王栎鑫 俞灏明 · 出版社 : 上海 锦绣 文章 出版社 , 上海文艺出版社 · 页码 : <unk> · <unk> : <unk> · 条码 : <unk> . </s>,answer:山东省,answer_p:35,answer_e:35,pre:,start:35,end:35,sequence_len:36
+iterator: 1614 ，loss_start is :0.024351717021908144 , loss_end is:0.028547456181333856
+question:江门市 潮连 大道 <unk> 号 在 哪个 区,passage:百度 地图 为 您 提供 江门 详细 的 公交 乘换 查询 服务 , 包括 从 广东省 江门市 蓬江区 潮连 大道 <unk> 号 到 广东省 江门市 蓬江区 环岛 东路 怎么 走 , 从 广东省 江门市 蓬江区 潮连 大道 <unk> 号 到 广东省 江门市 蓬江区 环岛 东路 如何 坐车 , 怎样 从 广东省 江门市 蓬江区 潮连 大道 <unk> 号 到 广东省 江门市 蓬江区 环岛 东路 怎么 坐 公交 、 最快 需要 需要 多长时间 等 信息 ! . </s>,answer:蓬江区,answer_p:17,answer_e:18,pre:蓬江区,start:17,end:18,sequence_len:76
+iterator: 1815 ，loss_start is :0.05033796657660673 , loss_end is:0.04462068329334727
+question:三门峡 是 哪个 省,passage:[ <unk> ] 三门峡 经济 概况 三门峡 综述 <unk> 年 , 三门峡 是 完成 生产总值 <unk> 亿元 , 比 <unk> 年 增长 <unk> , 增速 分别 高出 全国 、 全省 <unk> 和 <unk> 个 百分点 , 在 全省 各 省辖市 中列 第 <unk> 位 , 增速 与 <unk> 年 持平 。 在 生产总值 中 , 第一产业 增加值 <unk> 亿元 , 同比 增长 <unk> , 第二产业 增加值 <unk> 亿元 , 增长 <unk> , 第三产业 增加值 <unk> 亿元 , 增长 <unk> 。 [ <unk> ] 三门峡 第一产业 <unk> 年 , 三门峡市 粮食产量 <unk> 万吨 ; 烤烟 产量 <unk> 万吨 ; 棉花 产量 <unk> 吨 ; 油料 产量 <unk> 万吨 ; 肉类 总产量 <unk> 万吨 ; 禽蛋 产量 <unk> 万吨 ; 牛奶 产量 <unk> 万吨 。 . </s>,answer:河南省,answer_p:124,answer_e:124,pre:,start:124,end:124,sequence_len:125
+iterator: 2017 ，loss_start is :0.041360109269553504 , loss_end is:0.05008622910180996
+question:杏林 春满 的 主人公 是 谁,passage:董奉 。 人们 称颂 医术 高明 的 医生 , 经常 用 “ 杏林 春满 ” 或 “ 誉满 杏林 ” , 这里 有 这么 个 典故 : 众所周知 , “ 杏林 ” — 词是 中医界 常用 的 词汇 , 医家 每以 “ 杏林 中 人 ” 自居 。 . </s>,answer:董奉,answer_p:0,answer_e:1,pre:董奉,start:0,end:1,sequence_len:50
+iterator: 2217 ，loss_start is :0.06085817819372835 , loss_end is:0.04316462353780949
+question:夏津 是 哪个 省,passage:谷庄村 是 一个 村落 的 名称 , 在 我国 , 不同 的 省市 地区 有 同名 分布 , 他们 的 地理位置 不同 , 文化 、 经济 、 资源 分布 也 不同 。 </s>,answer:山东省,answer_p:32,answer_e:32,pre:,start:32,end:32,sequence_len:33
+iterator: 2418 ，loss_start is :0.0469603327916127 , loss_end is:0.03510315141595356
+question:马少 一点 是 什么 成语,passage:大写 的 马字 向 左 斜 是 什么 成语 一个 繁体 马字少 一点 , 是 什么 成语 ? </s>,answer:马失前蹄,answer_p:18,answer_e:18,pre:,start:18,end:18,sequence_len:19
+iterator: 2621 ，loss_start is :0.025337488815078472 , loss_end is:0.04146593765142313
+question:西宁市 属于 哪个 省份,passage:青海省 会 </s>,answer:青海省,answer_p:0,answer_e:1,pre:青海省,start:0,end:1,sequence_len:3
+iterator: 2823 ，loss_start is :0.0372611324438896 , loss_end is:0.02076605615365267
+question:内蒙古 阿荣旗 属于 哪个 市,passage:阿荣旗 就是 县 , 在 内蒙 县 就 叫 旗 , 县 = 旗 , </s>,answer:呼伦贝尔市,answer_p:15,answer_e:15,pre:,start:15,end:15,sequence_len:16
+iterator: 3024 ，loss_start is :0.055172121185268846 , loss_end is:0.03977491405360183
+question:三星 产地 是 哪个 国家,passage:中国 大陆 地区 上市 的 三星 手机 产地 为 : 天津 , 惠州 , 深圳 。 由于 市场 存在 山寨 机 、 水货 、 克隆 机等 , 通过 串号 、 <unk> 号 、 手机 产地 等 无法 准确 鉴别 手机 真伪 。 如果 您 要 鉴别 机器 是否是 中国 大陆 上市 的 行货 机器 , 请 您 带 好 购机 发票 、 包修 卡 和 机器 到 就近 的 三星 服务中心 , 咨询 服务中心 人员 机器 能否 享受 包修 , 如果 能够 包修 的 机器 就是 三星 正品 行货 机器 。 . </s>,answer:韩国,answer_p:92,answer_e:92,pre:,start:92,end:92,sequence_len:93
+iterator: 3225 ，loss_start is :0.04587674276873116 , loss_end is:0.036954348158961633
+question:咸阳 是 哪个 省 的,passage:咸阳 , 陕西省 地级市 , 位于 陕西省 八百里 秦川 腹地 , 渭水 穿南 , 嵕 山亘 北 , 山水 俱阳 , 故称 咸阳 。 咸阳 东邻 省会 西安 , 西接 国家级 杨凌农业高新技术产业示范区 , 西北 与 甘肃 接壤 。 . </s>,answer:陕西省,answer_p:2,answer_e:3,pre:陕西省,start:2,end:3,sequence_len:40
+iterator: 3425 ，loss_start is :0.04096213075459673 , loss_end is:0.06341720347484908
+question:离婚 律师 石姜 扮演者,passage:最新 的 剧情 是 “ 美玉 的 好友 石姜来 家 看 她 , 石姜 出国 多年 , 难得 回来 一趟 . 《 离婚 律师 》 的 热播 让 剧情 很受 关注 , 而 剧中 的 演员 也 成为 观众 热议 的 焦点 。 . </s>,answer:苑冉,answer_p:44,answer_e:44,pre:,start:44,end:44,sequence_len:45
+iterator: 3627 ，loss_start is :0.046204985608326296 , loss_end is:0.06507445948189229
+question:南宁 玉洞 大道 几米 宽,passage:记者 潘浩摄 南宁 新闻网 — 南宁 日报 讯 ( 记者 尹海明 ) 记者 <unk> 月 <unk> 日 从 南宁 城建 集团 所属 南宁 纵横 时代 建设 投资 有限公司 了解 到 , 位于 五象 新区 的 玉洞 大道 月底 将 “ 霸气 ” 亮相 , 路 宽 由 原来 的 <unk> 米 扩建 为 <unk> 米 , 共 <unk> 条 行车道 , 其中 还 设置 了 快速 公交 专用道 , 成为 南宁市 最 宽 的 市政道路 。 . </s>,answer:120米,answer_p:53,answer_e:55,pre:<unk> 米,start:53,end:55,sequence_len:78
+iterator: 3827 ，loss_start is :0.02867295626242765 , loss_end is:0.03661793099458926
+question:天安门 前 什么 河,passage:据 《 元 史 · 河渠 志 》 记载 : 其源 出于 京西 宛平县 玉泉山 , 流至义 和 门南 水门 入 京城 , 故得 金水 之名 。 清高宗 《 麦庄桥 记 》 曰 : “ 玉泉 会西 山诸泉 之 伏流 , 蓄极 湓 涌 , 至 是 始见 , 故其源 不竭 。 ” </s>,answer:金水河,answer_p:53,answer_e:53,pre:,start:53,end:53,sequence_len:54
+iterator: 4028 ，loss_start is :0.02443539974798483 , loss_end is:0.024155534345138677
+question:启东市 属于 那个 市,passage:启东市 江浙 菜 哪家 好吃 _ 大众点 评为 您 提供 最新 的 启东市 江浙 菜 哪家 好吃 相关 信息 , 启东市 江浙 菜 大全 , 找 启东 </s>,answer:南通市,answer_p:27,answer_e:27,pre:,start:27,end:27,sequence_len:28
+iterator: 4228 ，loss_start is :0.046657652410629 , loss_end is:0.04115991503294964
+question:海南 鸡饭 是 东南亚 哪个 国家 的 国菜,passage:海南 鸡饭 的 重中之重 就是 鸡 的 料理 方法 , 料理 适当 的 鸡 鲜嫩 爽脆 , 米饭 香 糯 适口 , 果真 国 菜 不是 浪得虚名 啊 ! . </s>,answer:新加坡,answer_p:30,answer_e:30,pre:,start:30,end:30,sequence_len:31
+iterator: 4429 ，loss_start is :0.03109565524599475 , loss_end is:0.020097918856393802
+question:身上 长红点 去 医院 看 什么 科,passage:你 前 几天 就 应该 去 看 了 好 不 , 那么 多红点 看着 不 难受 啊 , 我 听 你 说 的 就 蛮 难受 的 。 最好 饮食 也 不要 吃 比较 鲜 的 东西 了 , 清淡 点儿 的 好 , 平时 多吃点 水果 ~ 你 这 得 找出 源头 才 . </s>,answer:皮肤科,answer_p:55,answer_e:55,pre:,start:55,end:55,sequence_len:56
+iterator: 4630 ，loss_start is :0.03463322327245578 , loss_end is:0.05360106497690857
+question:赵四 扮演者,passage:赵四 扮演者 张歆怡 。 张学良 第三任 妻子 , 人称 赵四 小姐 。 陪伴 张学良 <unk> 年 , 是 中国 现代史 上 的 一位 颇具 神秘色彩 的 女性 。 . </s>,answer:张歆怡,answer_p:2,answer_e:3,pre:张歆怡,start:2,end:3,sequence_len:30
+iterator: 4830 ，loss_start is :0.029979237355879606 , loss_end is:0.028071368637314933
+question:一亿 是 几位数,passage:一亿 减去 <unk> 万 啊 </s>,answer:9位数,answer_p:5,answer_e:5,pre:,start:5,end:5,sequence_len:6
+iterator: 2 ，loss_start is :0.002106294482946396 , loss_end is:0.0023217892646789553
+question:《 窃读 记 》 的 作者 的 作品,passage:原 句式 杂糅 。 改为 : 《 窃读 记 》 是 台湾 作家 林海音 的 作品 。 或 : 《 窃读 记 》 的 作者 是 台湾 作家 林海音 。 </s>,answer:林海音,answer_p:13,answer_e:14,pre:林海音,start:13,end:14,sequence_len:31
+iterator: 202 ，loss_start is :0.025282105152625575 , loss_end is:0.024516827655651666
+question:关云长 是 哪 本书 里 的 人物,passage:关羽 是 哪里 人 关羽 ( ? - <unk> ) 本 字 长生 , 后 改字云长 , 河东 解 ( 今 山西 运城 ) 人 。 中国 东汉 末年 著名 将领 , 自 刘备 于 乡里 聚众 起兵 开始 追随 刘备 , 是 刘备 最为 信任 的 将领 之一 。 . </s>,answer:三国演义,answer_p:51,answer_e:51,pre:,start:51,end:51,sequence_len:52
+iterator: 403 ，loss_start is :0.03196767992762034 , loss_end is:0.03877399615714225
+question:家庭教师 作者,passage:上传者 : 在 回想 里 漂流 评分 <unk> 评论 <unk> 下载 <unk> 次 收藏 <unk> 人 阅读 量 <unk> 简介 举报 简介 : 本 文档 为 《 家庭教师 的 作者 合格 的 家庭教师 <unk> 》 , 可 适用 于 初中 教育领域 , 主题 内容 包含 家庭教师 的 作者 合格 的 家庭教师 合格 的 家庭教师 我 有 一位 家庭教师 。 . </s>,answer:天野明,answer_p:60,answer_e:60,pre:,start:60,end:60,sequence_len:61
+iterator: 604 ，loss_start is :0.028563084854984842 , loss_end is:0.02032672455984198
+question:南昌 师范学院 是 几本,passage:关于 南昌 师范学院 是 几本 这个 问题 由来已久 , 不得不 说明 的 是 , 部分 高校 在 不同 省份 的 招生 录取 批次 可能 是 不 一样 , 因此 会 出现 一个 情况 : 某大学 在 山东省 是 一本 招生 , 但 该 大学 在 广东省 是 二本 招生 的 。 . </s>,answer:2本,answer_p:47,answer_e:48,pre:二本,start:47,end:48,sequence_len:53
+iterator: 805 ，loss_start is :0.036534113215900194 , loss_end is:0.04243662135884845
+question:石门 澳 产业园 在 莆田 哪个 区,passage:现将 相关 情况 公告 如下 : 一 、 函告 中 所 提及 协议 的 主要 内容 ( 一 ) 《 莆田市 秀屿区 石门 澳 工业园 热电 联产 项目 建设 合作 框架 协议 》 <unk> 、 莆田市 发改委 同意 福能 集团 ( 含福能 集团 全资 、 控股 子公司 ) 在 莆田市 秀屿区 石门 澳 工业园 内 建设 热电 联产 项目 , 主要 是 建设 <unk> 台 <unk> 等级 燃煤 供热 机组 , 对 石门 澳 工业园 、 秀屿 笏 石 工业园区 和 木材 加工区 等 实行 集中供热 , 计划 总 投资 <unk> 亿元 ( 含 热网 ) , 预计 <unk> 年 核准 , <unk> 年底 建成投产 。 . </s>,answer:秀屿区,answer_p:21,answer_e:22,pre:秀屿区,start:21,end:22,sequence_len:108
+iterator: 1007 ，loss_start is :0.03458763312251079 , loss_end is:0.029871168419847435
+question:线电压 是 多少 伏,passage:相电压 是 <unk> 伏 , 线电压 是 <unk> 伏 . </s>,answer:380伏,answer_p:7,answer_e:9,pre:<unk> 伏,start:7,end:9,sequence_len:11
+iterator: 1209 ，loss_start is :0.03623939499085864 , loss_end is:0.03909329593133979
+question:火影忍者 作者,passage:这部 剧场版 动画 的 情节 由 《 火影忍者 》 的 原作者 岸本 齐史 亲自 设定 。 时为 十六年 前 。 戴着 面具 的 神秘 男人 将 巨大 的 魔兽 · 九尾 解放出来 , 遭受 九尾 袭击 的 木叶 忍者 村 面临 毁灭 的 危机 。 . </s>,answer:岸本齐史,answer_p:11,answer_e:13,pre:岸本 齐史,start:11,end:13,sequence_len:47
+iterator: 1411 ，loss_start is :0.02197531843737728 , loss_end is:0.011502175378115567
+question:一 升水 等于 多少 毫升,passage:一千 喔 </s>,answer:10毫升,answer_p:2,answer_e:2,pre:,start:2,end:2,sequence_len:3
+iterator: 1614 ，loss_start is :0.02143346696804887 , loss_end is:0.021456833951662677
+question:江门市 潮连 大道 <unk> 号 在 哪个 区,passage:我们 为 您 查询 到 <unk> 家 酒店 , . 潮连 大道 <unk> 号 位于 潮连 大道 <unk> 号 . 酒店 点评 江门 万达 嘉华 酒店 : “ 健身房 和 恒温 游泳 . </s>,answer:蓬江区,answer_p:33,answer_e:33,pre:,start:33,end:33,sequence_len:34
+iterator: 1815 ，loss_start is :0.03024105296616529 , loss_end is:0.02891785787217211
+question:三门峡 是 哪个 省,passage:三门峡 是 河南省 地级市 </s>,answer:河南省,answer_p:2,answer_e:3,pre:河南省,start:2,end:3,sequence_len:5
+iterator: 2016 ，loss_start is :0.021640597542031372 , loss_end is:0.014836457851386235
+question:哆 啦 <unk> 梦 陪 了 大雄 多少 年,passage:句子 欣赏 评论 : “ 哆 啦 <unk> 梦 陪 了 大雄 <unk> 年 , 在 大雄 临死前 , 他 对 哆 啦 <unk> 梦 说 : “ 我 走 之后 你 就 回到 属于 你 的 地方 吧 。 ” 哆 啦 <unk> 梦 同意 了 , 大雄 死 后 , 哆 啦 <unk> 梦用 时光 机 回到 了 <unk> 年前 , 对 小时候 的 大雄 说 : “ 大 雄 你好 , 我 叫 哆 啦 <unk> 梦 。 ” - 突然 一种 莫名 的 心疼 人生 就 像 单行道 单行道 上 不能 调头 所以 错过 的 人 与 事 注定 只能 错过 ” </s>,answer:80年,answer_p:12,answer_e:14,pre:<unk> 年,start:12,end:14,sequence_len:107
+iterator: 2217 ，loss_start is :0.025780495716018415 , loss_end is:0.025093807617995748
+question:夏津 是 哪个 省,passage:山西 没有 夏津县 , 山东省 德州市 有 夏津县 , 你 说 的 应该 是 这里 吧 ? 它 属于 德州市 。 </s>,answer:山东省,answer_p:4,answer_e:5,pre:山东省,start:4,end:5,sequence_len:22
+iterator: 2418 ，loss_start is :0.023779187230462125 , loss_end is:0.0249248636164031
+question:马少 一点 是 什么 成语,passage:疯狂 猜 成语 文字 少 一点 是 哪个 成语 ? , 在 图片 显示 的 是 一个 不 “ 文 ” 字少 了 上面 的 那个 点 。 这是 什么 意思 呢 ? . </s>,answer:马失前蹄,answer_p:34,answer_e:34,pre:,start:34,end:34,sequence_len:35
+iterator: 2621 ，loss_start is :0.03892112057905777 , loss_end is:0.032434635354292175
+question:西宁市 属于 哪个 省份,passage:西宁市 属于 青海省 </s>,answer:青海省,answer_p:2,answer_e:3,pre:青海省,start:2,end:3,sequence_len:4
+iterator: 2822 ，loss_start is :0.025358653319040345 , loss_end is:0.014727681671599662
+question:傲虎 是 什么 牌子,passage:傲虎 汽车 , 我 爱车 , 傲虎 汽车 口碑 专区 为 您 提供 傲虎 汽车 的 所有 口碑 评论 , 包括 来 自傲 虎 汽车 博客 、 傲虎 汽车论坛 、 傲虎 车主 用户 、 傲虎 汽车 俱乐部 、 傲虎 车友会 等 方面 的 汽车 评论 。 还 提供 傲虎 汽车报价 、 傲虎 汽车 最新 价格 、 傲虎 汽车图片 、 傲虎 系列 车型 报价 、 傲虎 汽车 配置 、 傲虎 汽车 测评 等 精彩内容 </s>,answer:斯巴鲁,answer_p:73,answer_e:73,pre:,start:73,end:73,sequence_len:74
+iterator: 3023 ，loss_start is :0.033828954730672704 , loss_end is:0.03727280476619578
+question:高架 逆行 扣 多少 分,passage:不过 , 网友 “ 在 路上 的 小波 ” 根据 视频 内容 推测 : “ 司机 再 往前 逆行 <unk> 米 就是 高架 转盘 , 开 到 这里 就 不算 逆行 了 。 也就是说 冒险 <unk> 米 逆行 后 , 就 能 达成 司机 的 目标 , 进入 正常 的 车道 。 . </s>,answer:12分,answer_p:53,answer_e:53,pre:,start:53,end:53,sequence_len:54
+iterator: 3224 ，loss_start is :0.027839220898453226 , loss_end is:0.01965003892784443
+question:何眉 扮演者,passage:血色 浪漫 第一部 刘烨 饰演 钟跃民孙 俪 饰演 周晓白 傅彪 饰演 王 主任 赵有亮 饰演 钟 山岳 孙小平 饰演 黎援 朝 剧照 ( <unk> ) ( <unk> 张 ) 潘艺心 饰演 罗芸 马元 饰演 郑桐 叶静 饰演 宁伟 卢誉文 饰演 小混蛋 王春 饰演 吴满 囤 李佳 璇 饰演 珊 苏子 龙 饰演 高琦 邹正 饰演 李 东平 马刚 饰演 常贵 董然 饰演 马 主任 赵庭武 饰演 曹文清 董明 饰演 黎 春水 李靖飞 饰演 锤子 连奕名 饰演 张 海洋 陈宝国 饰演 周 镇南 赵奎娥 饰演 陈亦 君王 力可 饰演 秦岭 林好 饰演 高玥 刘亭作 饰演 袁军 崔彬斌 饰演 宁伟 ( 小 ) 李杰 饰演 李奎勇 王晴 饰演 蒋王春 饰演 吴满 囤 张含 饰演 叶楚良 孙赢 饰演 何眉雷嘉良 饰演 憨娃 李乃正 饰演 杜 . </s>,answer:梁爱琪,answer_p:122,answer_e:122,pre:,start:122,end:122,sequence_len:123
+iterator: 3425 ，loss_start is :0.059813632195101114 , loss_end is:0.03768137730737982
+question:离婚 律师 石姜 扮演者,passage:苑冉苑 冉 , <unk> 年 <unk> 月 <unk> 日出 生于 黑龙江省 哈尔滨市 。 中国 大陆 女演员 、 主持人 、 歌手 。 <unk> 年 毕业 于 北京舞蹈学院 中国 舞系 。 <unk> 年 开始 主持 中国中央电视台 《 动画城 》 节目 , 并 演唱 主题曲 《 快点 告诉 你 》 . </s>,answer:苑冉,answer_p:0,answer_e:1,pre:苑冉苑,start:0,end:1,sequence_len:49
+iterator: 3626 ，loss_start is :0.03785441576303145 , loss_end is:0.04045076234033331
+question:毕业证 相片 需要 多少 寸 的 照片,passage:<unk> 寸 的 照片 , 你 想 用 什么 底 就 什么 底 , 这个 没有 要求 , 不过 我们 学校 是 蓝底 的 </s>,answer:2寸,answer_p:0,answer_e:2,pre:<unk> 寸,start:0,end:2,sequence_len:25
+iterator: 3827 ，loss_start is :0.029401361328725405 , loss_end is:0.03839788035684833
+question:天安门 前 什么 河,passage:天安门 前 金水河 西自 社稷 坦 ( 中山公园 ) 门前 , 东到 太庙 ( 劳动人民文化宫 ) 门前 。 全长 <unk> 米 , 河宽 <unk> 米 , 河深 约 <unk> 米 , 河北 岸边 沿距 天安门 墙基 <unk> 米 。 两岸 均 由 巨型 石条 砌成 , 岸上 筑 有 矮墙 。 . </s>,answer:金水河,answer_p:2,answer_e:3,pre:金水河,start:2,end:3,sequence_len:53
+iterator: 4027 ，loss_start is :0.025189094046387483 , loss_end is:0.013050799591798636
+question:漳平 属 那个 市,passage:和平 镇 地处 漳平市 北郊 , 辖区 内 地势 平坦 , 省 道福 三线 、 岭 禾线 、 永漳 公路 、 鹰厦铁路 、 漳龙 铁路 贯穿 其中 , 集镇 紧邻 漳平 火车站 , 区位 、 交通 优势 突出 。 和平 镇 [ 漳平 . </s>,answer:龙岩,answer_p:44,answer_e:44,pre:,start:44,end:44,sequence_len:45
+iterator: 4227 ，loss_start is :0.049992028056732016 , loss_end is:0.023691388297465393
+question:文玉禾 是 哪部 电视剧,passage:首先 是 范冰 饰演 的 文玉禾 这个 角色 与 范冰 本人 的 性格 非常 像 , 在 剧中 , 范冰 饰演 的 文玉禾 是 主轴 人物 , 所有 的 故事 都 围绕 她 展开 , 她 是 一个 外柔内刚 的 烈性 女子 , 替 父亲 还债 不得已 嫁入 辜家 。 她 一心 追求 自由 , 顽强 地 与 命运 抗争 , 无奈 却 一直 为 命运 所 累 , 最后 在 残酷 的 现实 中 杀出 一条 血路 , 圆满 了 自己 的 人生 。 . </s>,answer:胭脂雪,answer_p:86,answer_e:86,pre:,start:86,end:86,sequence_len:87
+iterator: 4428 ，loss_start is :0.12199705945831928 , loss_end is:0.04400588955283756
+question:<unk> 是 哪个 国家,passage:<unk> _ <unk> 关于 马姆 提斯 渡假 酒店 的 点评 : 我 在 布里斯班 ( <unk> ) 做 导游 。 在 我 的 职业生涯 里 , 我 住 过 <unk> 个 国家 <unk> 个 城市 的 <unk> 家 酒店 。 大多数 是 五星级 酒店 , 其中 <unk> 多家 是 超 五星 . </s>,answer:澳大利亚,answer_p:52,answer_e:52,pre:,start:52,end:52,sequence_len:53
+iterator: 4629 ，loss_start is :0.027355830689478607 , loss_end is:0.0387703786166486
+question:中国 最 古老 的 树,passage:本站 提供 <unk> 最全 中国 现存 最 古老 的 树木 内容 , 中国 最 古老 的 树木 以及 各种 小嫩 菊 专用 视频 合集 资源 , 在线 观看 高清 爱护 花草树木 的 标语 在线 阅读 , 第一 时间 更新 中国 现存 最早 的 山水画 图片 大全 , 值得 信赖 ! . 中国 最 古老 的 树木 中国 最 古老 的 姓氏 爱护 花草树木 的 标语 现存 最 古老 的 生物 中国 最贵 的 香烟 中国 最 有钱 的 人 是 谁 中国 最大 的 城市 中国 十大 最丑 男人 中国 十大 千年 古树 _ 百度 百科 </s>,answer:银杏树,answer_p:96,answer_e:96,pre:,start:96,end:96,sequence_len:97
+iterator: 4830 ，loss_start is :0.03542997171663508 , loss_end is:0.034247261566313796
+question:一亿 是 几位数,passage:比 一亿 少 一千万 的 数是 九千万 比 一亿多 一千万 的 数是 一亿 一千万 </s>,answer:9位数,answer_p:14,answer_e:14,pre:,start:14,end:14,sequence_len:15
+iterator: 2 ，loss_start is :2.3102744307834656e-06 , loss_end is:6.57459968351759e-07
+question:《 窃读 记 》 的 作者 的 作品,passage:课文 以 “ 窃读 ” 为 线索 , 以 放学 后 “ 我 ” 急匆 地 赶到 书店 , 到 晚上 依不舍 离开 的 时间 顺序 和 藏身 于 众多 顾客 , 借 雨天 读书 两个 场景 的 插入 , 细腻 生动 地 描绘 了 “ 窃读 ” 的 独特 感受 与 复杂 滋味 , 表现 了 “ 我 ” 对 读书 的 热爱 和 对 知识 的 渴望 。 . 作者 善于 通过 自语 式 的 独白 描绘 心境 , 表达 自己 的 感情 。 在 “ 窃读 ” 这种 氛围 中 , 一方面 享受 阅读 的 快乐 , 一方面 还要 时刻 关注 周围 的 环境 , 非常 形象 生动 地 表现 了 “ 我 ” 的 心情 变化 , 使人 如 历其境 。 . </s>,answer:林海音,answer_p:126,answer_e:126,pre:,start:126,end:126,sequence_len:127
+iterator: 203 ，loss_start is :0.022735825604241543 , loss_end is:0.03102125199314365
+question:双 凤县 是 我国 那个 省 ?,passage:凤县 门户网站 , 宣传 凤县 , 政治协商 , 民主监督 , 参政议政 </s>,answer:陕西省,answer_p:11,answer_e:11,pre:,start:11,end:11,sequence_len:12
+iterator: 404 ，loss_start is :0.02209413076633486 , loss_end is:0.009122475902860909
+question:整字 被 拆 打 一 成语,passage:中字 八字 整字 散落 一地 打 一 成语 : 成语 俗语 是 一个 国家 或 民族语言 的 精华 所在 , 其中 包含 并 反映 着 该 国家 或 民族 的 特有 文化 , 包括 生态 文化 、 语言 文化 、 宗教 文化 、 物质 文化 和 社会 文化 。 . </s>,answer:化整为零,answer_p:50,answer_e:50,pre:,start:50,end:50,sequence_len:51
+iterator: 605 ，loss_start is :0.019410612098492912 , loss_end is:0.020417247448979516
+question:软体动物 无壳 像 蜗牛,passage:蛞蝓 吧 。 蛞蝓 , 又称 水 蜒蚰 , 中国 南方 某些 地区 称 蜒蚰 , 俗称 鼻涕虫 , 是 一种 软体动物 , 与 部分 蜗牛 组成 有 肺目 。 雌雄同体 , 外表 看起来 像 没壳 的 蜗牛 , 体表 湿润 有 黏液 , 民间 流传 在 其 身上 撒盐 使 其 脱水 而 死 的 扑杀 方法 。 . </s>,answer:蛞蝓,answer_p:0,answer_e:1,pre:蛞蝓,start:0,end:1,sequence_len:61
+iterator: 806 ，loss_start is :0.030063870315792194 , loss_end is:0.0256518221587309
+question:石门 澳 产业园 在 莆田 哪个 区,passage:与 莆田市 发展 和 改革 委员会 签署 相关 项目 合作 协议 的 公告 证券 代码 : <unk> 证券 简称 : 福能 股份 公告 编号 : <unk> - <unk> 福建 福能 股份 有限公司 关于 控股 东 与 莆田市 发展 和 改革 委员会 签署 相关 项目 合作 协 </s>,answer:秀屿区,answer_p:46,answer_e:46,pre:,start:46,end:46,sequence_len:47
+iterator: 1008 ，loss_start is :0.0428497400427032 , loss_end is:0.044712905307859076
+question:成人 本科 几年,passage:<unk> 年 半 </s>,answer:2年半,answer_p:0,answer_e:3,pre:<unk> 年 半,start:0,end:3,sequence_len:4
+iterator: 1209 ，loss_start is :0.02869777949981403 , loss_end is:0.027119056184245986
+question:火影忍者 作者,passage:人气 漫画 《 火影忍者 》 的 改编 剧场版 《 火影忍者 剧场版 : 博人 》 即将 在 今年 <unk> 月 <unk> 日 跟 广大观众 们 见面 。 而 近日 在 东京 举行 的 试映 会上 , 原作者 岸本 齐史 登台 , 并且 表示 : 我 不想 再画 火影 了 。 . </s>,answer:岸本齐史,answer_p:36,answer_e:38,pre:岸本 齐史,start:36,end:38,sequence_len:51
+iterator: 1412 ，loss_start is :0.07265554386908132 , loss_end is:0.014759177665812029
+question:我 是 大 明星 哪个 省,passage:程亚丽 , <unk> 年 <unk> 月 <unk> 日 出生 在 河南省 , <unk> 岁 辍学 打工 赚钱 养家 来到 莱阳 定居 , <unk> 年 参加 山东 综艺 频道 第四季 《 我 是 大 明星 》 比赛 获得 总冠军 , <unk> 年 参加 《 春晚 总动员 》 为 嘉宾 评审 ! . </s>,answer:山东省,answer_p:51,answer_e:51,pre:,start:51,end:51,sequence_len:52
+iterator: 1615 ，loss_start is :0.027844989512221544 , loss_end is:0.0614803768898172
+question:衡水 学院 快递,passage:时间 : 来源 : 作者 : 点击 : 衡水 学院 <unk> 年 普通 高考 录取 通知书 已 通过 中国邮政 <unk> 特快专递 邮寄 , 现 开放 查询 。 . </s>,answer:圆通快递,answer_p:28,answer_e:28,pre:,start:28,end:28,sequence_len:29
+iterator: 1816 ，loss_start is :0.060564276248727254 , loss_end is:0.06857225248109244
+question:广东省 白云区 属于 哪个 市,passage:白云区 </s>,answer:广州市,answer_p:1,answer_e:1,pre:,start:1,end:1,sequence_len:2
+iterator: 2017 ，loss_start is :0.03417390182008304 , loss_end is:0.04045475003339405
+question:杏林 春满 的 主人公 是 谁,passage:如果 你 说 的 是 这个 典故 的话 , 那 就是 汉末 三国 的 一个 医生 , 叫 董奉 的 。 董奉 , 字君异 , 福建 侯官 ( 今 福州 ) 人 , 有 很 高 的 道术 和 医术 , 与 当时 的 华佗 、 张仲景 齐名 , 号称 “ 建安 三 神医 ” 。 . 如此一来 , 杏林 一词 便 渐 成为 医家 的 专用名词 , 人们 喜用 “ 杏林 春满 ” “ 誉满 杏林 ” “ 妙手回春 ” 这类 的 话语 来 赞美 象 董奉 一样 具有 高尚 医风 的 苍生 大医 , 也 常用 这 类 话语 称颂 医生 医术 的 高明 和 高尚 的 医德 。 . </s>,answer:董奉,answer_p:18,answer_e:19,pre:董奉,start:18,end:19,sequence_len:113
+iterator: 2218 ，loss_start is :0.02173554247207342 , loss_end is:0.029316364887593663
+question:佛教 的 创始人,passage:佛教 的 创始人 是 北 印度 迦 毗罗 卫国 净饭 王 的 太子 , 乔 达摩 . 悉达 多 , 十九岁 那年 , 他 放弃 了 荣华富贵 出家 修行 , 三十岁 得 道 , 成道 后 称为 释迦牟尼 佛 。 据 中国 历史 记载 , 他 诞生 在 周昭 . </s>,answer:释迦牟尼,answer_p:37,answer_e:38,pre:释迦牟尼,start:37,end:38,sequence_len:51
+iterator: 2419 ，loss_start is :0.022679566791213867 , loss_end is:0.014252676609882685
+question:古屋 打一 现代 作家,passage:千年 古屋 ( 打一 现代 作家 ) <unk> : 初一 离家 除夕 回 ( 猜一 成语 ) <unk> : 喜上眉梢 ( 打一字 ) <unk> : 大禹 称王 ( 打一 节气 ) <unk> : 琴盒 ( 打一 成语 ) <unk> : 妇女节 前夕 ( 打 一中 药名 ) <unk> : . </s>,answer:老舍,answer_p:50,answer_e:50,pre:,start:50,end:50,sequence_len:51
+iterator: 2621 ，loss_start is :0.0189891047945075 , loss_end is:0.046177520414574645
+question:西宁市 属于 哪个 省份,passage:西宁 在 哪个 省 ? 西宁 属于 哪里 ? 我 是 背包客 , 吃 的 住 的 这 一带 有没有 比较 适合 背包客 一族 的 。 另外 , 在 哪个 省 ? . </s>,answer:青海省,answer_p:33,answer_e:33,pre:,start:33,end:33,sequence_len:34
+iterator: 2823 ，loss_start is :0.022109837422265598 , loss_end is:0.03285338493316942
+question:内蒙古 阿荣旗 属于 哪个 市,passage:走 , 申通 , 黑龙江 齐 哈尔 市转 阿荣旗 交通 . 就 可以 . </s>,answer:呼伦贝尔市,answer_p:14,answer_e:14,pre:,start:14,end:14,sequence_len:15
+iterator: 3024 ，loss_start is :0.010895896685853118 , loss_end is:0.00944993501775917
+question:三星 产地 是 哪个 国家,passage:水货 主要 指 的 是 通过 非正规 渠道 进行 销售 的 商品 , 包括 一些 逃税 、 非 授权 、 无 代理 等 商品 。 水货 的 特点 是 价格低 , 品种 新 和 种类 全 , 由于 成本 低廉 , 往能 很快 在 市场 流通 。 . </s>,answer:韩国,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 3225 ，loss_start is :0.044373265484354614 , loss_end is:0.03183298802927823
+question:咸阳 是 哪个 省 的,passage:咸阳 也 没有 什么 名气 就是 一 说起 大家 会 想起 一连串 的 咸阳 典故 “ 秦晋之好 、 太公钓鱼 , 愿者上钩 、 掩耳盗铃 、 指鹿为马 ” 咸阳 的 面积 也 不是 很大 仅为 上海 的 <unk> 倍 , 纽约 的 <unk> 倍 , 香港 的 <unk> 倍 , 虽然 咸阳 真的 没 啥 , 就 只有 这些 但是 咸阳 就是 咸阳 我 是 咸阳 人 , 我 骄傲 咸阳 人顶 起 , 让 全世界 都 知道 咱们 咸阳 是 啥 样 </s>,answer:陕西省,answer_p:81,answer_e:81,pre:,start:81,end:81,sequence_len:82
+iterator: 3425 ，loss_start is :0.016201683943966146 , loss_end is:0.02837342040999104
+question:离婚 律师 石姜 扮演者,passage:[ 导读 ] : 电视剧 《 离婚 律师 》 正在 热播 , 剧中 饰演 汤 美玉 好友 石姜 的 演员 苑冉 资料 背景 也 引起 了 大家 的 好奇 , 在 剧中 石姜一 出现 就 引起 了 很多 网友 很 观众 的 好奇 , 而石 姜 的 扮演者 正是 内地 女演员 苑冉 。 《 离婚 律师 》 的 热播 让 剧情 很受 关注 , 而 剧中 的 演员 . </s>,answer:苑冉,answer_p:20,answer_e:21,pre:苑冉,start:20,end:21,sequence_len:70
+iterator: 3627 ，loss_start is :0.02785455030909489 , loss_end is:0.03378227078490403
+question:南宁 玉洞 大道 几米 宽,passage:下半年 , 南宁 一大批 新路 新桥 将 陆续 通车 宽 <unk> 米 , 玉洞 大道 变 身 巨无霸 青山 - 英华 立交 , 英华 路 往凤 岭南 方向 已经 通车 。 广西 新闻网 - 当 </s>,answer:120米,answer_p:10,answer_e:12,pre:<unk> 米,start:10,end:12,sequence_len:36
+iterator: 3828 ，loss_start is :0.02185055281392259 , loss_end is:0.013778577682558843
+question:第一架 飞机 是 谁 发明 的,passage:<unk> 世纪 初 , 滑翔机 和 动力机械 已经 成熟 , 许多 飞行家 开始 将 动力机械 装 到 滑翔机 上 , 研究 动力 飞行 。 <unk> 年 , 俄国 的 莫查 伊斯 基 制造 过 一架 机翼 像 平板 似的 蒸汽 飞机 。 . </s>,answer:莱特兄弟,answer_p:43,answer_e:43,pre:,start:43,end:43,sequence_len:44
+iterator: 4028 ，loss_start is :0.02278089956806034 , loss_end is:0.020454204064427783
+question:启东市 属于 那个 市,passage:启东市 是 由 江苏省 南通市 代管 的 一个 县级市 , 地处 万里 长江 入海口 北侧 , 三面 环水 , 形似 半岛 , 集 黄金水道 、 黄金海岸 、 黄金 大通道 于 一身 , 是 出江 入海 的 重要 门户 , 也 是 江苏 日出 最早 的 地方 。 . </s>,answer:南通市,answer_p:4,answer_e:5,pre:南通市,start:4,end:5,sequence_len:49
+iterator: 4228 ，loss_start is :0.014660769369911293 , loss_end is:0.015294216278824244
+question:海南 鸡饭 是 东南亚 哪个 国家 的 国菜,passage:多种 吃法 的 海南 鸡饭 海南 鸡饭 就是 白切 鸡 再 加上 一碗 白米饭 , 配上 姜蓉 和 辣椒酱 或者 酱油 和 生抽 两 吃法 。 真正 的 好吃 是 在 饭 上 , 海南 鸡饭 的 白饭 空 口吃 也 非常 好吃 , 因为 在 煮 制 的 过程 中 加入 了 鸡油 和 鸡汤 , 使得 白饭 有股 咸鲜 的 味道 , 再配 上 蘸 了 佐料 的 鸡肉 , 那 自然 是 停 不了 口 。 . </s>,answer:新加坡,answer_p:80,answer_e:80,pre:,start:80,end:80,sequence_len:81
+iterator: 4429 ，loss_start is :0.013477911065122986 , loss_end is:0.02157028385652733
+question:身上 长红点 去 医院 看 什么 科,passage:你好 ! 属于 皮肤病 , 去 医院 看 皮肤科 </s>,answer:皮肤科,answer_p:8,answer_e:9,pre:皮肤科,start:8,end:9,sequence_len:10
+iterator: 4630 ，loss_start is :0.09275999591828633 , loss_end is:0.05506296529797149
+question:赵四 扮演者,passage:刘小光 小品 搞笑 赵四 特辑 . <unk> </s>,answer:张歆怡,answer_p:7,answer_e:7,pre:,start:7,end:7,sequence_len:8
+iterator: 4830 ，loss_start is :0.1649230679392132 , loss_end is:0.1477058814611792
+question:一亿 是 几位数,passage:<unk> 位数 , 后面 有 <unk> 个 零 </s>,answer:9位数,answer_p:0,answer_e:2,pre:<unk> 位数,start:0,end:2,sequence_len:9
+iterator: 2 ，loss_start is :5.52820973098278e-06 , loss_end is:1.6724034212529658e-05
+question:《 窃读 记 》 的 作者 的 作品,passage:《 窃读 记 》 的 作者 林海音 的 原名 林海音 简介 林海音 , 女 , 原名 林含 英 , 原籍 台湾省 苗栗县 , 林海音 于 <unk> 年 <unk> 月 <unk> 日 生于 日本 大阪 , 不久 即 返台 , 当时 台湾 已 被 日本 帝国主义 侵占 , 其父 林焕父 不甘 在 日寇 铁蹄 下 生活 , 举家 迁居 北京 , 小英子 即 在 北京 长大 。 . </s>,answer:林海音,answer_p:6,answer_e:7,pre:林海音,start:6,end:7,sequence_len:68
+iterator: 203 ，loss_start is :0.04308495122652916 , loss_end is:0.033289563776837665
+question:双 凤县 是 我国 那个 省 ?,passage:凤县 是 国家 林业 总局 命名 的 中国 花椒 之 乡 , 凤县 花椒 也 是 国家 质检 总局 正式 公布 的 大红袍 花椒 原产 地域 保护 产品 。 <unk> 年 <unk> 月 , 国家林业局 正式 将 凤县 命名 为 “ 中国 花椒 之 乡 ” 。 . </s>,answer:陕西省,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 404 ，loss_start is :0.03798694421996906 , loss_end is:0.030530131452763242
+question:整字 被 拆 打 一 成语,passage:<unk> . 乞丐 相逢 ( 打一 成语 ) 同是天涯沦落人 <unk> . 装 假肢 的 人 ( 打一 成语 ) 铁腕人物 <unk> . 一毛不拔 ( 打一 成语 ) 铁公鸡 <unk> . 找 错字 ( 打一 成语 ) 挑字眼儿 <unk> . 主妇 买 小菜 ( 打一 成语 ) 挑剔 <unk> . 杂货店 的 买卖 ( 打一 成语 ) 挑拣 <unk> . 被 抓 的 刺猬 ( 打一 成语 ) 缩成一团 <unk> . 死 了 丈人 哭爹 ( 打一 成语 ) 随大流 [ <unk> ] 词条 图册 更 多 图册 参考资料 <unk> . 灯谜 的 进化 历程 . 网易 [ 引用 日期 <unk> - <unk> - <unk> ] <unk> . 灯谜 文化 源头 或 为 人类 远古 神话 . 新浪 历史 网 [ 引用 日期 <unk> - <unk> - <unk> ] . </s>,answer:化整为零,answer_p:129,answer_e:129,pre:,start:129,end:129,sequence_len:130
+iterator: 604 ，loss_start is :0.04949880033604218 , loss_end is:0.04284887883808288
+question:南昌 师范学院 是 几本,passage:南昌 师范学院 现有 青山湖 、 昌北 两个 校区 。 是 一所 省属 成人 高等师范 本科 院校 , 是 江西省 最早 举办 的 八所 本科 高校 之一 , 迄今已有 <unk> 年 的 办学 历史 。 . </s>,answer:2本,answer_p:35,answer_e:35,pre:,start:35,end:35,sequence_len:36
+iterator: 805 ，loss_start is :0.034300136307117944 , loss_end is:0.030903172769410788
+question:石门 澳 产业园 在 莆田 哪个 区,passage:受 秀屿区 住房 和 城乡 建设局 委托 , 根据 《 中华人民共和国政府 采购 法 》 等 有关 规定 , 现对 关于 秀屿区 石门 澳 产业园 道路 一期 工程项目 ( 编号 : ) 的 预 公告 进行 其他 招标 , 欢迎 合格 的 供应商 前来 投标 。 . </s>,answer:秀屿区,answer_p:1,answer_e:2,pre:秀屿区,start:1,end:2,sequence_len:47
+iterator: 1007 ，loss_start is :0.038664332047205756 , loss_end is:0.031840825423425693
+question:线电压 是 多少 伏,passage:星 接线 : 线电压 为 相电压 的 根号 <unk> 倍角 接线 : 线电压 等于 相电压 . </s>,answer:380伏,answer_p:16,answer_e:16,pre:,start:16,end:16,sequence_len:17
+iterator: 1209 ，loss_start is :0.05972872891211221 , loss_end is:0.03618854002454147
+question:火影忍者 作者,passage:作者 岸本 说 结局 早已 设定 好 了 。 基础 扫盲 篇 十多年 前 木叶 忍者 村 曾 遭受 九尾 妖狐 的 袭击 , 村长 第四代 火影 牺牲 自己 的 生命 , 将 妖狐 封印 在 当时 还是 婴儿 的 自己 儿子 漩涡 鸣人 身上 , 村子 也 因此 得救 。 . </s>,answer:岸本齐史,answer_p:52,answer_e:52,pre:,start:52,end:52,sequence_len:53
+iterator: 1411 ，loss_start is :0.02095881974236356 , loss_end is:0.01258163043154152
+question:一 升水 等于 多少 毫升,passage:一千 毫升 水 等于 一 千克 . 注意 : 是 水 ! 其他 的 就 变 了 , 但 你 可 参考 ! . 请问 一 升水 等于 多少 公斤 物质 的 密度 和 温度 以及 压力 有关 , 不能 简单 说 一 升水 是 多少 公斤 . 必须 指明 温度 和 压力 条件 . 当然 , 一般 不 严格要求 时 , 水 的 密度 为 <unk> <unk> / <unk> . 一 升水 等于 多少 千克 , 多少 克 ? . </s>,answer:10毫升,answer_p:81,answer_e:81,pre:,start:81,end:81,sequence_len:82
+iterator: 1614 ，loss_start is :0.03373698187596892 , loss_end is:0.01924319698265137
+question:江门市 潮连 大道 <unk> 号 在 哪个 区,passage:江门市 蓬江区 潮连 大道 六号 工作 情况 所学 专业 : 语文 教育 工作 经验 : 应届 毕业生 政治面貌 : 中国 共青团员 . </s>,answer:蓬江区,answer_p:1,answer_e:2,pre:蓬江区,start:1,end:2,sequence_len:23
+iterator: 1815 ，loss_start is :0.03432482117882375 , loss_end is:0.03413339376400428
+question:三门峡 是 哪个 省,passage:河南省 ! . </s>,answer:河南省,answer_p:0,answer_e:1,pre:河南省,start:0,end:1,sequence_len:4
+iterator: 2016 ，loss_start is :0.01601465335972752 , loss_end is:0.014274452671990217
+question:哆 啦 <unk> 梦 陪 了 大雄 多少 年,passage:连续 签到 <unk> 天送 <unk> 三倍 流畅 播放 <unk> 蓝光 画质 新剧 提前 看 <unk> 蓝光 画质 纯净 式 无框 播放器 三倍 流畅 播放 登录 之后 可以 开通 <unk> / 超级 影视 <unk> 看 大片 按住 画面 移动 小窗 不再 出现 在 页面 右下角 重新 打开 小窗 播放 通用 代码 支持 视频 在 <unk> / <unk> / <unk> 上 播放 扫码 分享 到 微信 扫描 二维码 随身 看 视频 正在 观看 : { <unk> } 已 看 至 { <unk> } 请 根据 您 的 设备 选择 下 </s>,answer:80年,answer_p:88,answer_e:88,pre:,start:88,end:88,sequence_len:89
+iterator: 2217 ，loss_start is :0.05134679441747528 , loss_end is:0.06317839530687969
+question:夏津 是 哪个 省,passage:夏津 是 个 开发 较 早 的 并 以 种植业 为主 的 农业区 。 主要 作物 有 棉花 、 小麦 、 玉米 、 谷子 、 花生 、 大豆 等 , 尤 以 植棉 见长 , 素有 “ 银 夏津 ” 之称 。 夏津 植棉 历史悠久 , 自 元朝 引种 棉花 , 明朝 洪武 <unk> 年 ( 公元 <unk> 年 ) 人均 植棉 <unk> 亩 , 清末 民初 棉田 占 耕地 的 <unk> 。 . </s>,answer:山东省,answer_p:74,answer_e:74,pre:,start:74,end:74,sequence_len:75
+iterator: 2418 ，loss_start is :0.02547618980976523 , loss_end is:0.031032710236023844
+question:马少 一点 是 什么 成语,passage:疯狂 猜 成语 文字 少 一点 是 哪个 成语 ? , 在 图片 显示 的 是 一个 不 “ 文 ” 字少 了 上面 的 那个 点 。 这是 什么 意思 呢 ? . </s>,answer:马失前蹄,answer_p:34,answer_e:34,pre:,start:34,end:34,sequence_len:35
+iterator: 2621 ，loss_start is :0.044751617895444934 , loss_end is:0.02132561664143102
+question:西宁市 属于 哪个 省份,passage:根据 下列 材料 , 结合 所学 知识 , 完成 ( <unk> ) — ( <unk> ) 题 材料 一 : <unk> - <unk> 年 西宁市 土地利用 类型 结构 变化 图 ( 图 <unk> ) 材料 二 : <unk> 年 西宁市 工业产值 结构图 ( 图 <unk> ) ( <unk> ) “ 到 西宁 避暑 , 请 带上 毛 . 根据 下列 材料 , 结合 所学 知识 , 完成 ( <unk> ) — ( <unk> ) 题 材料 一 : <unk> - <unk> 年 西宁市 土地利用 类型 结构 变化 图 ( 图 <unk> ) 材料 二 : <unk> 年 西宁市 工业产值 结构图 ( 图 <unk> ) ( <unk> ) “ 到 西宁 避暑 , 请 带上 毛 . </s>,answer:青海省,answer_p:116,answer_e:116,pre:,start:116,end:116,sequence_len:117
+iterator: 2823 ，loss_start is :0.03066773671990786 , loss_end is:0.027686738099004692
+question:内蒙古 阿荣旗 属于 哪个 市,passage:阿荣旗 是 隶属 内蒙古自治区 呼伦贝尔市 的 一个 旗 , 位于 大兴安岭 东麓 , 东经 <unk> ° <unk> ′ — <unk> ° <unk> ′ 、 北纬 <unk> ° <unk> ′ — <unk> ° <unk> ′ 。 西部 与 扎兰屯市 隔河相望 , 东部 与 扎格敦 山岭 和 莫力达瓦达斡尔族自治旗 为 邻 , 北部 和 鄂伦春 旗 相连 , 西北部 与 牙克石市 接壤 , 南以 金界壕 为界 与 黑龙江省 甘南县 毗邻 。 . </s>,answer:呼伦贝尔市,answer_p:4,answer_e:5,pre:呼伦贝尔市,start:4,end:5,sequence_len:70
+iterator: 3024 ，loss_start is :0.02109698382430717 , loss_end is:0.0262355733299251
+question:三星 产地 是 哪个 国家,passage:土巴兔 装修 问答 平台 为 网友 提供 各种 想 知道 三星 产地 是 哪个 国家 问题解答 。 土巴兔 装修 问答 汇聚 <unk> 万 业主 的 装修 经验 和 智慧 , 迅速 解决 装修 困惑 </s>,answer:韩国,answer_p:34,answer_e:34,pre:,start:34,end:34,sequence_len:35
+iterator: 3225 ，loss_start is :0.01890620114064234 , loss_end is:0.009550136743453806
+question:咸阳 是 哪个 省 的,passage:咸阳市 位于 陕西省 , 西安市 的 西边 。 </s>,answer:陕西省,answer_p:2,answer_e:3,pre:陕西省,start:2,end:3,sequence_len:9
+iterator: 3425 ，loss_start is :0.024628359473468767 , loss_end is:0.020325527956367394
+question:离婚 律师 石姜 扮演者,passage:从 <unk> 月 <unk> 日 《 离婚 律师 》 开播 以来 , 我 饰演 的 石姜 就 得到 了 广大观众 的 关注 , 非常 开心 能 有 越来越 多 的 观众 朋友 们 从 这部 戏 开始 认识 我 , 非常感谢 那些 素未谋面 的 热情 的 观众 朋友 们 的 支持 和 保护 , 虽然 没能 在 微 博里 一 回复 大家 , 但 你们 温暖 的 话语 经常 会 让 我 很 开心 , 很 感动 。 . </s>,answer:苑冉,answer_p:79,answer_e:79,pre:,start:79,end:79,sequence_len:80
+iterator: 3626 ，loss_start is :0.024451152759288865 , loss_end is:0.032184650965954714
+question:毕业证 相片 需要 多少 寸 的 照片,passage:中专 毕业证 照片 是 几寸 的 : 问 你 老师 阿看 你 学校 要求 的 中专 毕业证 相片 是 大 一寸 还是 小 一寸 的 ? : 请问 : 小 一寸 照片 的 尺寸 是 多少 ? . </s>,answer:2寸,answer_p:38,answer_e:38,pre:,start:38,end:38,sequence_len:39
+iterator: 3827 ，loss_start is :0.016707957891536153 , loss_end is:0.02702450272642917
+question:天安门 前 什么 河,passage:河深 约 <unk> 米求 采纳 </s>,answer:金水河,answer_p:5,answer_e:5,pre:,start:5,end:5,sequence_len:6
+iterator: 4027 ，loss_start is :0.011990082026976595 , loss_end is:0.01972993804892588
+question:漳平 属 那个 市,passage:漳平市 是 福建省 的 一个 县级市 , 不是 漳州 的 , 是 龙岩市 的 , 在 泉州 漳州 龙岩 三市 交界 </s>,answer:龙岩,answer_p:12,answer_e:13,pre:龙岩市,start:12,end:13,sequence_len:22
+iterator: 4228 ，loss_start is :0.054377598950835146 , loss_end is:0.041347918493200596
+question:海南 鸡饭 是 东南亚 哪个 国家 的 国菜,passage:海南 鸡饭 起源于 中国 海南岛 的 文昌市 但 如今已是 一道 新加坡 的 国菜 。 主要 食材 是 鸡肉 和 大米 , 主要 烹饪 工艺 是 烫 煮 。 海南 人会 以 文昌 当地 的 白切 鸡 做法 , 同时 配以 鸡油 和 浸鸡水 烹煮 的 米饭 , 所以 </s>,answer:新加坡,answer_p:10,answer_e:11,pre:新加坡,start:10,end:11,sequence_len:49
+iterator: 4429 ，loss_start is :0.028651469044820032 , loss_end is:0.030188017424106216
+question:身上 长红点 去 医院 看 什么 科,passage:你 前 几天 就 应该 去 看 了 好 不 , 那么 多红点 看着 不 难受 啊 , 我 听 你 说 的 就 蛮 难受 的 。 最好 饮食 也 不要 吃 比较 鲜 的 东西 了 , 清淡 点儿 的 好 , 平时 多吃点 水果 ~ 你 这 得 找出 源头 才 . </s>,answer:皮肤科,answer_p:55,answer_e:55,pre:,start:55,end:55,sequence_len:56
+iterator: 4630 ，loss_start is :0.012500884294267305 , loss_end is:0.02069172572850702
+question:赵四 扮演者,passage:《 少帅 》 赵四 饰演者 张歆怡 , <unk> 年 <unk> 月 <unk> 日出 生于 江苏省 南京市 , 内地 女演员 。 <unk> 年 入学 南京艺术学院 附属 中等 艺术 学校 。 <unk> 年 , 出演 张艺谋 执导 的 电影 《 金陵 十三 钗 》 , 饰演 人物 孟书娟 。 . </s>,answer:张歆怡,answer_p:5,answer_e:6,pre:张歆怡,start:5,end:6,sequence_len:49
+iterator: 4830 ，loss_start is :0.040958868133765376 , loss_end is:0.04243589575970457
+question:一亿 是 几位数,passage:比 一亿 少 一千万 的 数是 九千万 比 一亿多 一千万 的 数是 一亿 一千万 </s>,answer:9位数,answer_p:14,answer_e:14,pre:,start:14,end:14,sequence_len:15
+iterator: 2 ，loss_start is :5.087174213258549e-07 , loss_end is:5.988326302031055e-07
+question:《 窃读 记 》 的 作者 的 作品,passage:《 窃读 记 》 是 <unk> 年 上海 教育 出版社 出版 的 图书 , 作者 是 林海音 女士 , 以窃读 为 线索 , 描写 了 作者 放学 后 急匆 赶往 书店 , 藏身 于 众多 顾客 , 借 雨天 窃读 , 到 晚上 才 依不舍 离开 的 读书 过程 。 . </s>,answer:林海音,answer_p:16,answer_e:17,pre:林海音,start:16,end:17,sequence_len:52
+iterator: 203 ，loss_start is :0.01945112022932584 , loss_end is:0.03483975482517916
+question:双 凤县 是 我国 那个 省 ?,passage:这些 都 是 凤县 得天独厚 的 文化 资源 , 为 乡村 旅游 提供 了 丰富 的 文化底蕴 [ <unk> ] 。 凤县 有以 “ 马场 农家 ” , “ 百合 人家 ” 为 代表 的 <unk> 家农 . 国家旅游局 长 也 曾 表示 , 我国 乡村 旅游 正 处于 重要 的 发展 阶段 , 乡村 旅游 是 我国 旅游业 的 重要 组成部分 和 促进 旅游业 发展 的 重要 支撑 . </s>,answer:陕西省,answer_p:70,answer_e:70,pre:,start:70,end:70,sequence_len:71
+iterator: 404 ，loss_start is :0.02038863393212715 , loss_end is:0.01473982413394352
+question:整字 被 拆 打 一 成语,passage:化整为零 <unk> à <unk> ě <unk> é <unk> í <unk> 【 解释 】 把 一个 整体 分成 许多 零散 部分 . 【 出处 】 毛泽东 《 抗日 游击战争 的 战略 问题 》 : “ 一般地说 来 , 游击队 当 分散 使用 , 即 所谓 ‘ 化整为零 ’ . ” 【 结构 】 兼语 式 . 【 用法 】 与 “ 化零为整 ” 相对 应 . 多用 在 军事 上 ; 指 部队 一种 作战 方式 . 一般 作 谓语 、 宾语 、 定语 . 【 正音 】 为 ; 不能 读作 “ <unk> è <unk> ” . 【 辨形 】 整 ; 不能 写作 “ 正 ” ; 零 ; 不能 写作 “ 另 ” . 【 反义词 】 化零为整 【 例句 】 战士 们 把 炮 拆开 ; ~ ; 硬是 用 肩 扛 上 了 山 . 【 英译 】 <unk> </s>,answer:化整为零,answer_p:0,answer_e:1,pre:化整为零,start:0,end:1,sequence_len:144
+iterator: 605 ，loss_start is :0.023405599936500945 , loss_end is:0.017003007191592107
+question:软体动物 无壳 像 蜗牛,passage:河北 发现 史前 软体动物 — 无壳蜗牛 分享 给 朋友 : 扫码 用 手机 继续 看用 优酷 <unk> 或 微信 扫码 在 手机 上 继续 观看 二维码 <unk> 小时 内 有效 , 扫码 后 可 分享 给 好友 没有 优酷 <unk> ? 立即 下载 . </s>,answer:蛞蝓,answer_p:44,answer_e:44,pre:,start:44,end:44,sequence_len:45
+iterator: 806 ，loss_start is :0.028775342319541063 , loss_end is:0.022006393967211012
+question:时针 走 一圈 是 多少 小时,passage:· 应该 带 孩子 提前 到 幼儿园 转一转 中班 科学教案 : 转一转 活动 目标 : <unk> 、 通过 实验 , 探索 几种 物体 转动 的 动力 来源 , 并 进行 分类 。 . <unk> 、 我们 用手 来模 . · 小学 品德 与 社会 : 《 绕 着 边境 走 一圈 》 教学 设计 小学 品德 与 社会 : 《 绕 着 边境 走 一圈 》 教学 设计 . </s>,answer:12小时,answer_p:69,answer_e:69,pre:,start:69,end:69,sequence_len:70
+iterator: 1008 ，loss_start is :0.02953650843237819 , loss_end is:0.03341795456376193
+question:成人 本科 几年,passage:成人 高等教育 高起 本 教育 , 脱产 教学 <unk> 年 毕业 , 函授 和 业余教育 <unk> 年 毕业 ; 专升本 教育 , 脱产 教学 <unk> 年 毕业 , 函授 和 业余教育 <unk> ~ <unk> 年 毕业 。 成人 高等学校 招生 统一 考试 的 简称 成人高考 , 是 我国 成人 高等学校 选拔 合格 的 毕业生 以 进入 更 高层次 学历教育 的 入学考试 , 属于 国民教育 系列 , 列入 国家 招生 计划 , 参加 全国 招生 统一 考试 , 各省 、 自治区 、 直辖市 统一 组织 录取 。 . </s>,answer:2年半,answer_p:87,answer_e:87,pre:,start:87,end:87,sequence_len:88
+iterator: 1209 ，loss_start is :0.011918357061083337 , loss_end is:0.017046829607511967
+question:火影忍者 作者,passage:新闻 - 体育 - 娱乐 - 财经 - <unk> - 汽车 - 房产 - 女人 - 短信 - 彩信 - 校友录 - 邮件 - 商城 - <unk> - 搜狗 搜狐 首页 > 娱乐 频道 > 动漫 <unk> > 动漫 专题 汇总 > 《 火影忍者 》 专辑 > . </s>,answer:岸本齐史,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 1412 ，loss_start is :0.02446833251659057 , loss_end is:0.03734397328292898
+question:我 是 大 明星 哪个 省,passage:视频 : <unk> 《 我 是 大 明星 》 : 赛娜 表演 性感 肚皮舞 成功 晋级 编辑 : 王红霞 播放 次数 : <unk> 《 我 是 大 明星 》 : 赛娜 表演 性感 肚皮舞 成功 晋级 </s>,answer:山东省,answer_p:36,answer_e:36,pre:,start:36,end:36,sequence_len:37
+iterator: 1615 ，loss_start is :0.014800196081055957 , loss_end is:0.008446663839656416
+question:衡水 学院 快递,passage:辰 啊 , 你 太 悲情 了 , 还得哥 给 你 回答 . 这个 你 得 问 网上 的 商家 、 一般 的 地级市 都 没 问题 , 圆通 , 申通 , 宅急送 , 顺丰 , 等 , 你 可以 去 他们 的 网站 看 、 地址 就 写 衡水 学院 几号楼 、 几室 , 快递 员来 了 会 给 你 打电话 , 你 去 学院 门口 等 就 可以 了 、 你 说 的 收发室 指 的 是 平信 … 快递 没 这么 麻烦 </s>,answer:圆通快递,answer_p:85,answer_e:85,pre:,start:85,end:85,sequence_len:86
+iterator: 1816 ，loss_start is :0.00883552477482338 , loss_end is:0.012906771763957554
+question:广东省 白云区 属于 哪个 市,passage:尊敬 的 百度 用户 你好 ! 广东 阳江市 江城区 白云路 属于 观光 社区 居委会 </s>,answer:广州市,answer_p:14,answer_e:14,pre:,start:14,end:14,sequence_len:15
+iterator: 2017 ，loss_start is :0.015583572382163444 , loss_end is:0.020288404449987026
+question:杏林 春满 的 主人公 是 谁,passage:杏林 春满 、 程门立雪 、 愚公移山 的 主人公 是 谁 ? <unk> | 匿名 提交 答案 长度 必须 超过 <unk> 个 字 , 请勿 发布 无效 或 违法 言论 。 . </s>,answer:董奉,answer_p:31,answer_e:31,pre:,start:31,end:31,sequence_len:32
+iterator: 2218 ，loss_start is :0.027229267003517653 , loss_end is:0.02106736389982622
+question:佛教 的 创始人,passage:比方 大 海里 的 水 , 不管 多么 大 的 动物 , 不能 把 海里 的 水 喝尽 ; 不管 多么 小 的 虫儿 , 都 能 去 喝 一个 饱 ; 佛法 的 深广 也 和 大海 一样 , 虽然 绝顶聪明 的 人 不能 把 它 学尽 , 然而 一般 的 人 也 一样 能 学习 的 。 问 : 佛教 里 的 事情 也 可以 对 不学佛 的 人 说 吗 ? . </s>,answer:释迦牟尼,answer_p:75,answer_e:75,pre:,start:75,end:75,sequence_len:76
+iterator: 2419 ，loss_start is :0.017239790975556675 , loss_end is:0.014467362302861816
+question:古屋 打一 现代 作家,passage:<unk> . 古屋 ( 打一 现代 作家 名 ) _ 老舍 <unk> . 欧洲 见闻录 ( 打 我国 一 古代 名著 ) _ 西游记 <unk> . 查户口 ( 打一 故事 影片 名 ) _ 一个 都 不能 少 <unk> . 鞠躬尽瘁 , 死而后已 ( 打 唐诗 两句 ) _ 春蚕到死丝方尽 , 蜡炬成灰泪始干 大家 答 的 都 不错 , 学习 并 仰慕 </s>,answer:老舍,answer_p:10,answer_e:11,pre:老舍,start:10,end:11,sequence_len:62
+iterator: 2622 ，loss_start is :0.03588868023981655 , loss_end is:0.03794398687533894
+question:黑 羽毛 红嘴 是 什么 鸟,passage:翡翠 科 <unk> 翡翠 属 <unk> 食鱼 鸟类 下图 为 蓝翡翠 <unk> 是 相当 大 的 翡翠 , 身体 长 <unk> 厘米 左右 , 头 黑 , 翅膀 上 的 羽毛 黑底 白点 , 上体 蓝色 或 紫色 , 下体 棕色 , 嘴 和 脚 均 为 红色 。 . </s>,answer:黑色,answer_p:50,answer_e:50,pre:,start:50,end:50,sequence_len:51
+iterator: 2823 ，loss_start is :0.014417323944968191 , loss_end is:0.019204196988947944
+question:内蒙古 阿荣旗 属于 哪个 市,passage:阿荣旗 就是 县 , 在 内蒙 县 就 叫 旗 , 县 = 旗 , </s>,answer:呼伦贝尔市,answer_p:15,answer_e:15,pre:,start:15,end:15,sequence_len:16
+iterator: 3024 ，loss_start is :0.022034137700454624 , loss_end is:0.016293443441729245
+question:三星 产地 是 哪个 国家,passage:三星 这个 牌子 是 韩国 的 , 至于 三星 手机 是 哪个 国家 产 的 那 就 不好 说 了 , 一般来说 售往 中国 大陆 的 都 是 大陆 本地 代工 厂商 生产 的 。 也 有 部分 是 三星电子 中国 制造 公司 生产 的 。 </s>,answer:韩国,answer_p:4,answer_e:5,pre:韩国,start:4,end:5,sequence_len:47
+iterator: 3225 ，loss_start is :0.027380498804689894 , loss_end is:0.03598005764482351
+question:咸阳 是 哪个 省 的,passage:咸阳 没 啥 吃 的 , 就是 有 咸阳 人 都 非常 喜欢 的 三秦 套餐 , 把 你 小肚 造 溜圆 ! 咸阳 没 啥 山 , 就是 有个 堪称 浑然天成 的 绿色 氧吧 — 仲山 生态 森林公园 . </s>,answer:陕西省,answer_p:40,answer_e:40,pre:,start:40,end:40,sequence_len:41
+iterator: 3425 ，loss_start is :0.009479321166382846 , loss_end is:0.01519700020676769
+question:离婚 律师 石姜 扮演者,passage:石姜 扮演者 是 动画城 主 . 顿时 整个 人 都 不好 了 。 毁 童年 啊 尼玛 这种 烂 角色 为何 要接 <unk> 使用 连续 签到 卡 离婚 律师 吧 看 贴 图片 精品 游戏 < 返回 离婚 律师 吧 只 看 楼主 回复 远航 者 <unk> 见习 律师 <unk> 凉城 <unk> 瞳子 . </s>,answer:苑冉,answer_p:54,answer_e:54,pre:,start:54,end:54,sequence_len:55
+iterator: 3627 ，loss_start is :0.027301038860432277 , loss_end is:0.04279631386383746
+question:南宁 玉洞 大道 几米 宽,passage:南宁 一批 新路 新桥 将 通车 玉洞 大道 宽 <unk> 米 超 霸气 , 去年 至今 , 南宁市 启动 了 多条 道路 改造 、 跨江 大桥 建设 , 以及 立交桥 等 多个 项目 。 . </s>,answer:120米,answer_p:9,answer_e:11,pre:<unk> 米,start:9,end:11,sequence_len:36
+iterator: 3828 ，loss_start is :0.04554822120739714 , loss_end is:0.04082342912124041
+question:第一架 飞机 是 谁 发明 的,passage:第一个 , 发明 飞机 人 是 那个 科学 匿名 我们 自己 动手做 吧 ! ” 被 称做 哥 的 男孩 一听 , 顿时 笑了起来 。 当天 晚上 , 弟兄 俩 就 把 这种 想法 告诉 了 妈 。 . </s>,answer:莱特兄弟,answer_p:39,answer_e:39,pre:,start:39,end:39,sequence_len:40
+iterator: 4028 ，loss_start is :0.024530398301558166 , loss_end is:0.03096993977250449
+question:启东市 属于 那个 市,passage:启东市 辖 镇 。 <unk> 年建 吕四镇 , <unk> 年 改 公社 , <unk> 年 复建 镇 , <unk> 年 大洋 港镇 并入 后 更名 吕四港 镇 。 位于 市境 西北部 , 距 市府 <unk> 公里 。 . </s>,answer:南通市,answer_p:38,answer_e:38,pre:,start:38,end:38,sequence_len:39
+iterator: 4228 ，loss_start is :0.051419603672240084 , loss_end is:0.028649964866422267
+question:海南 鸡饭 是 东南亚 哪个 国家 的 国菜,passage:海南 特色 的 海南 鸡饭 到底 是 什么 做 的 二 . 海南 鸡饭 的 相关 信息 海南 鸡饭 是 海南 特色美食 , 在 新 一些 东南亚 国家 被 称为 国 菜 。 主要 食材 是 鸡肉 和 大米 , 主要 烹饪 工艺 是 烫 煮 。 . </s>,answer:新加坡,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 4429 ，loss_start is :0.01891283547981617 , loss_end is:0.012723970270988198
+question:身上 长红点 去 医院 看 什么 科,passage:病情 分析 : 你好 , 这种 情况 考虑 属于 水痘 病毒感染 的 指导 意见 : 这个 问题 我 建议 及时 的 上药 继续 试 , 会慢 好转 的 </s>,answer:皮肤科,answer_p:28,answer_e:28,pre:,start:28,end:28,sequence_len:29
+iterator: 4630 ，loss_start is :0.024946377454570783 , loss_end is:0.02896098748588752
+question:赵四 扮演者,passage:近日 , 由 文章 宋佳 等 主演 的 民国 权谋 大戏 《 少帅 》 已经 开播 了 , 当然 , 少帅 中 张学良 一生 中有 两个 女人 , 一是 于凤至 , 另 一个 就是 赵四 , 那么 赵四 扮演者 是 谁 呢 ? </s>,answer:张歆怡,answer_p:43,answer_e:43,pre:,start:43,end:43,sequence_len:44
+iterator: 4831 ，loss_start is :0.028683356612777898 , loss_end is:0.01433487508511349
+question:江油 是 哪个 省 的,passage:四川 的 , 邓小平 的 故乡 嘛 </s>,answer:四川省,answer_p:7,answer_e:7,pre:,start:7,end:7,sequence_len:8
+iterator: 2 ，loss_start is :1.5370660548796878e-07 , loss_end is:3.9496739191235974e-07
+question:《 窃读 记 》 的 作者 的 作品,passage:课文 以 “ 窃读 ” 为 线索 , 以 放学 后 “ 我 ” 急匆 地 赶到 书店 , 到 晚上 依不舍 离开 的 时间 顺序 和 藏身 于 众多 顾客 , 借 雨天 读书 两个 场景 的 插入 , 细腻 生动 地 描绘 了 “ 窃 . </s>,answer:林海音,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 203 ，loss_start is :0.01887596497136589 , loss_end is:0.022326778890733933
+question:双 凤县 是 我国 那个 省 ?,passage:凤县 是 国家 林业 总局 命名 的 中国 花椒 之 乡 , 凤县 花椒 也 是 国家 质检 总局 正式 公布 的 大红袍 花椒 原产 地域 保护 产品 。 <unk> 年 <unk> 月 , 国家林业局 正式 将 凤县 命名 为 “ 中国 花椒 之 乡 ” 。 . </s>,answer:陕西省,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 404 ，loss_start is :0.00825800230992014 , loss_end is:0.016070433202811943
+question:整字 被 拆 打 一 成语,passage:下面 小编 为 你 带来 答案 啦 , 欢迎 大家 学习 。 整字 拆散 打一 成语 化整为零 化整为零 的 词语 解析 [ 释义 ] 把 一个 整体 分成 许多 零散 部分 。 . </s>,answer:化整为零,answer_p:16,answer_e:17,pre:化整为零,start:16,end:17,sequence_len:34
+iterator: 604 ，loss_start is :0.023104166815710238 , loss_end is:0.035472104461439266
+question:南昌 师范学院 是 几本,passage:由 高三 网小编 收集整理 。 南昌 师范学院 在 各个 省份 录取 批次 情况 , 由于 并未 掌握 全部 省份 的 数据 , 部分 省份 的 考生 可能 看不到 南昌 师范学院 对应 的 招生 批次 , 不过 高三 网小 编会 不断更新 数据 , 供 各位 考生 及 家长 参考 , 想 了解 更 多 高校 信息 , 请 持续 关注 高三 网 大学 介绍 栏目 </s>,answer:2本,answer_p:64,answer_e:64,pre:,start:64,end:64,sequence_len:65
+iterator: 805 ，loss_start is :0.017477553633298493 , loss_end is:0.015123966864433892
+question:石门 澳 产业园 在 莆田 哪个 区,passage:与 莆田市 发展 和 改革 委员会 签署 相关 项目 合作 协议 的 公告 证券 代码 : <unk> 证券 简称 : 福能 股份 . </s>,answer:秀屿区,answer_p:23,answer_e:23,pre:,start:23,end:23,sequence_len:24
+iterator: 1007 ，loss_start is :0.024359238125871388 , loss_end is:0.04600806859105029
+question:线电压 是 多少 伏,passage:电压 互感器 <unk> - <unk> 接法 , 线电压 <unk> , <unk> - <unk> 接法 线电压 也 是 <unk> , 相电压 是 <unk> / √ <unk> = <unk> <unk> , <unk> - <unk> 接法 没有 零线 , 不 存在 相电压 评论 ( <unk> ) 问 吧 之星 <unk> . </s>,answer:380伏,answer_p:48,answer_e:48,pre:,start:48,end:48,sequence_len:49
+iterator: 1209 ，loss_start is :0.04286389512875305 , loss_end is:0.03668515822784242
+question:火影忍者 作者,passage:自从 <unk> 日本 地震 之后 , 有 很多 人想 知道 火影忍者 作者 死 了 吗 ? 火影忍者 作者 现状 , 下面 跟 小编 一起 来看 吧 ! . </s>,answer:岸本齐史,answer_p:28,answer_e:28,pre:,start:28,end:28,sequence_len:29
+iterator: 1412 ，loss_start is :0.04082047238055313 , loss_end is:0.03226326508216
+question:我 是 大 明星 哪个 省,passage:我 是 大 明星 — 当明 王子 遇上 小糊 作者 : 王栎鑫 俞灏明 · 出版社 : 上海 锦绣 文章 出版社 , 上海文艺出版社 · 页码 : <unk> · <unk> : <unk> · 条码 : <unk> . </s>,answer:山东省,answer_p:35,answer_e:35,pre:,start:35,end:35,sequence_len:36
+iterator: 1614 ，loss_start is :0.024679699660024104 , loss_end is:0.023077939175483043
+question:江门市 潮连 大道 <unk> 号 在 哪个 区,passage:百度 地图 为 您 提供 江门 详细 的 公交 乘换 查询 服务 , 包括 从 广东省 江门市 蓬江区 潮连 大道 <unk> 号 到 广东省 江门市 蓬江区 环岛 东路 怎么 走 , 从 广东省 江门市 蓬江区 潮连 大道 <unk> 号 到 广东省 江门市 蓬江区 环岛 东路 如何 坐车 , 怎样 从 广东省 江门市 蓬江区 潮连 大道 <unk> 号 到 广东省 江门市 蓬江区 环岛 东路 怎么 坐 公交 、 最快 需要 需要 多长时间 等 信息 ! . </s>,answer:蓬江区,answer_p:17,answer_e:18,pre:蓬江区,start:17,end:18,sequence_len:76
+iterator: 1815 ，loss_start is :0.011669886216764009 , loss_end is:0.02523771606047385
+question:三门峡 是 哪个 省,passage:[ <unk> ] 三门峡 经济 概况 三门峡 综述 <unk> 年 , 三门峡 是 完成 生产总值 <unk> 亿元 , 比 <unk> 年 增长 <unk> , 增速 分别 高出 全国 、 全省 <unk> 和 <unk> 个 百分点 , 在 全省 各 省辖市 中列 第 <unk> 位 , 增速 与 <unk> 年 持平 。 在 生产总值 中 , 第一产业 增加值 <unk> 亿元 , 同比 增长 <unk> , 第二产业 增加值 <unk> 亿元 , 增长 <unk> , 第三产业 增加值 <unk> 亿元 , 增长 <unk> 。 [ <unk> ] 三门峡 第一产业 <unk> 年 , 三门峡市 粮食产量 <unk> 万吨 ; 烤烟 产量 <unk> 万吨 ; 棉花 产量 <unk> 吨 ; 油料 产量 <unk> 万吨 ; 肉类 总产量 <unk> 万吨 ; 禽蛋 产量 <unk> 万吨 ; 牛奶 产量 <unk> 万吨 。 . </s>,answer:河南省,answer_p:124,answer_e:124,pre:,start:124,end:124,sequence_len:125
+iterator: 2017 ，loss_start is :0.01740088890167133 , loss_end is:0.029763924548299982
+question:杏林 春满 的 主人公 是 谁,passage:董奉 。 人们 称颂 医术 高明 的 医生 , 经常 用 “ 杏林 春满 ” 或 “ 誉满 杏林 ” , 这里 有 这么 个 典故 : 众所周知 , “ 杏林 ” — 词是 中医界 常用 的 词汇 , 医家 每以 “ 杏林 中 人 ” 自居 。 . </s>,answer:董奉,answer_p:0,answer_e:1,pre:董奉,start:0,end:1,sequence_len:50
+iterator: 2217 ，loss_start is :0.023164487923210134 , loss_end is:0.009395608903503544
+question:夏津 是 哪个 省,passage:谷庄村 是 一个 村落 的 名称 , 在 我国 , 不同 的 省市 地区 有 同名 分布 , 他们 的 地理位置 不同 , 文化 、 经济 、 资源 分布 也 不同 。 </s>,answer:山东省,answer_p:32,answer_e:32,pre:,start:32,end:32,sequence_len:33
+iterator: 2418 ，loss_start is :0.019172575054207018 , loss_end is:0.009720311838893866
+question:马少 一点 是 什么 成语,passage:大写 的 马字 向 左 斜 是 什么 成语 一个 繁体 马字少 一点 , 是 什么 成语 ? </s>,answer:马失前蹄,answer_p:18,answer_e:18,pre:,start:18,end:18,sequence_len:19
+iterator: 2621 ，loss_start is :0.014414919515952392 , loss_end is:0.01860916865101311
+question:西宁市 属于 哪个 省份,passage:青海省 会 </s>,answer:青海省,answer_p:0,answer_e:1,pre:青海省,start:0,end:1,sequence_len:3
+iterator: 2823 ，loss_start is :0.006358518527129728 , loss_end is:0.00850471672709757
+question:内蒙古 阿荣旗 属于 哪个 市,passage:阿荣旗 就是 县 , 在 内蒙 县 就 叫 旗 , 县 = 旗 , </s>,answer:呼伦贝尔市,answer_p:15,answer_e:15,pre:,start:15,end:15,sequence_len:16
+iterator: 3024 ，loss_start is :0.015941001485373613 , loss_end is:0.01681297407167481
+question:三星 产地 是 哪个 国家,passage:中国 大陆 地区 上市 的 三星 手机 产地 为 : 天津 , 惠州 , 深圳 。 由于 市场 存在 山寨 机 、 水货 、 克隆 机等 , 通过 串号 、 <unk> 号 、 手机 产地 等 无法 准确 鉴别 手机 真伪 。 如果 您 要 鉴别 机器 是否是 中国 大陆 上市 的 行货 机器 , 请 您 带 好 购机 发票 、 包修 卡 和 机器 到 就近 的 三星 服务中心 , 咨询 服务中心 人员 机器 能否 享受 包修 , 如果 能够 包修 的 机器 就是 三星 正品 行货 机器 。 . </s>,answer:韩国,answer_p:92,answer_e:92,pre:,start:92,end:92,sequence_len:93
+iterator: 3225 ，loss_start is :0.008810811774357923 , loss_end is:0.007471892216261553
+question:咸阳 是 哪个 省 的,passage:咸阳 , 陕西省 地级市 , 位于 陕西省 八百里 秦川 腹地 , 渭水 穿南 , 嵕 山亘 北 , 山水 俱阳 , 故称 咸阳 。 咸阳 东邻 省会 西安 , 西接 国家级 杨凌农业高新技术产业示范区 , 西北 与 甘肃 接壤 。 . </s>,answer:陕西省,answer_p:2,answer_e:3,pre:陕西省,start:2,end:3,sequence_len:40
+iterator: 3425 ，loss_start is :0.027303109374300315 , loss_end is:0.022377941315341855
+question:离婚 律师 石姜 扮演者,passage:最新 的 剧情 是 “ 美玉 的 好友 石姜来 家 看 她 , 石姜 出国 多年 , 难得 回来 一趟 . 《 离婚 律师 》 的 热播 让 剧情 很受 关注 , 而 剧中 的 演员 也 成为 观众 热议 的 焦点 。 . </s>,answer:苑冉,answer_p:44,answer_e:44,pre:,start:44,end:44,sequence_len:45
+iterator: 3627 ，loss_start is :0.04205047354742176 , loss_end is:0.04419178795521855
+question:南宁 玉洞 大道 几米 宽,passage:记者 潘浩摄 南宁 新闻网 — 南宁 日报 讯 ( 记者 尹海明 ) 记者 <unk> 月 <unk> 日 从 南宁 城建 集团 所属 南宁 纵横 时代 建设 投资 有限公司 了解 到 , 位于 五象 新区 的 玉洞 大道 月底 将 “ 霸气 ” 亮相 , 路 宽 由 原来 的 <unk> 米 扩建 为 <unk> 米 , 共 <unk> 条 行车道 , 其中 还 设置 了 快速 公交 专用道 , 成为 南宁市 最 宽 的 市政道路 。 . </s>,answer:120米,answer_p:53,answer_e:55,pre:<unk> 米,start:53,end:55,sequence_len:78
+iterator: 3827 ，loss_start is :0.009922011242921434 , loss_end is:0.016298942367662397
+question:天安门 前 什么 河,passage:据 《 元 史 · 河渠 志 》 记载 : 其源 出于 京西 宛平县 玉泉山 , 流至义 和 门南 水门 入 京城 , 故得 金水 之名 。 清高宗 《 麦庄桥 记 》 曰 : “ 玉泉 会西 山诸泉 之 伏流 , 蓄极 湓 涌 , 至 是 始见 , 故其源 不竭 。 ” </s>,answer:金水河,answer_p:53,answer_e:53,pre:,start:53,end:53,sequence_len:54
+iterator: 4028 ，loss_start is :0.012902744907016555 , loss_end is:0.008720138621623068
+question:启东市 属于 那个 市,passage:启东市 江浙 菜 哪家 好吃 _ 大众点 评为 您 提供 最新 的 启东市 江浙 菜 哪家 好吃 相关 信息 , 启东市 江浙 菜 大全 , 找 启东 </s>,answer:南通市,answer_p:27,answer_e:27,pre:,start:27,end:27,sequence_len:28
+iterator: 4228 ，loss_start is :0.03910900865374397 , loss_end is:0.027826144442123182
+question:海南 鸡饭 是 东南亚 哪个 国家 的 国菜,passage:海南 鸡饭 的 重中之重 就是 鸡 的 料理 方法 , 料理 适当 的 鸡 鲜嫩 爽脆 , 米饭 香 糯 适口 , 果真 国 菜 不是 浪得虚名 啊 ! . </s>,answer:新加坡,answer_p:30,answer_e:30,pre:,start:30,end:30,sequence_len:31
+iterator: 4429 ，loss_start is :0.02561096595563588 , loss_end is:0.014354825355792711
+question:身上 长红点 去 医院 看 什么 科,passage:你 前 几天 就 应该 去 看 了 好 不 , 那么 多红点 看着 不 难受 啊 , 我 听 你 说 的 就 蛮 难受 的 。 最好 饮食 也 不要 吃 比较 鲜 的 东西 了 , 清淡 点儿 的 好 , 平时 多吃点 水果 ~ 你 这 得 找出 源头 才 . </s>,answer:皮肤科,answer_p:55,answer_e:55,pre:,start:55,end:55,sequence_len:56
+iterator: 4630 ，loss_start is :0.021582922556360167 , loss_end is:0.019111314703246327
+question:赵四 扮演者,passage:赵四 扮演者 张歆怡 。 张学良 第三任 妻子 , 人称 赵四 小姐 。 陪伴 张学良 <unk> 年 , 是 中国 现代史 上 的 一位 颇具 神秘色彩 的 女性 。 . </s>,answer:张歆怡,answer_p:2,answer_e:3,pre:张歆怡,start:2,end:3,sequence_len:30
+iterator: 4830 ，loss_start is :0.018974371708957723 , loss_end is:0.017535308541879208
+question:一亿 是 几位数,passage:一亿 减去 <unk> 万 啊 </s>,answer:9位数,answer_p:5,answer_e:5,pre:,start:5,end:5,sequence_len:6
+finished

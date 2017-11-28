@@ -1,6 +1,10 @@
 import json
 import codecs
 from ultize import *
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
 #训练的时候随便多少个batch都可以，但是在inference的时候要改下
 class Reader(object):
     def __init__(self , config, vocab  ):
@@ -48,6 +52,7 @@ class Reader(object):
         return vocab
     def get_batch(self):
         """
+        batch the data returned by next_batch
         return [batch_size,length]
         """
         batch_query_ls  = []
@@ -64,13 +69,13 @@ class Reader(object):
             # add </s> to the passage
             passage.append('</s>')
 
+            logging.info("before id query:{},passage:{}".format(query,passage))
             #perform word2id
             query , passage  = self._batch2id( (query , passage ))
 
             # for the pos of </s>       
             passage_pos.append("end")
             #perform pos2id
-
             passage_pos = self._pos2id(passage_pos)
 
             # because we add </s> so the len must bigger than 1
@@ -85,7 +90,7 @@ class Reader(object):
                 passage_pos_ls.append(passage_pos)
                 if answer_p :
                     answer_p_s.append(answer_p[0])
-                    answer_p_e.append(answer_p[1]+1) # here we plus 1 because we less 1 in adding answer points
+                    answer_p_e.append(answer_p[1]) # we use [start_p,end_p] to indicate the answer rather than [start_p,end_p)
                 else:
                     # note here should be the end of the sentence
                     # I add </s> to th end of the passage so we can set None p to the end
@@ -96,8 +101,13 @@ class Reader(object):
         self.question_index = 0
         self.line  = json.loads(self.data[self.question_index])
     def next_batch(self):
-        # load one json line from file
-        # question
+        """
+        load one json line from file
+
+        performing cut on passage ,query. And then replacing English words and numbers with TAG
+        """
+
+
 
         query , _  =   token_pos(self.line['query'] ,use_pos = self.config.add_token_feature)
         # passage

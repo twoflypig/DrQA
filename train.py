@@ -11,6 +11,8 @@ import logging
 # the commandline parameters 
 from  parameter import args
 
+logging.basicConfig(level=logging.INFO)
+
 # Read cha_vectors.bin
 if args.use_pretrain_vector is False:
     vocab = loadvocab(args.vocab_path)
@@ -105,7 +107,7 @@ for m_epoch in range(args.epoch):
                     answer_ls[0],
                     answer_p_s[0],
                     answer_p_e[0],
-                    id2word(passage_ls[0][s_p:e_p],id_vocab),
+                    id2word(passage_ls[0][s_p:e_p+1],id_vocab), # because in slicing list is [)
                     s_p,
                     e_p,
                     len(passage_ls[0])))

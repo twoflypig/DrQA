@@ -63,9 +63,9 @@ class model(object):
         with tf.variable_scope('alligned'):
             # tf.layers.dense operates on the last
             # shape of alph_passage is [?,20,1]
-            alph_passage = tf.layers.dense(passage_inputs_embedded,200,name='aligned_dense',reuse=None)
+            alph_passage = tf.layers.dense(passage_inputs_embedded,200,activation=tf.nn.relu,name='aligned_dense',reuse=None)
             # shape of alph_question is [?,20,1]
-            alph_question = tf.layers.dense(query_inputs_embedded ,200,name='aligned_dense',reuse=True)
+            alph_question = tf.layers.dense(query_inputs_embedded ,200,activation=tf.nn.relu,name='aligned_dense',reuse=True)
             # result:[batch_size,? ,?] the result of matmul between [20,?,1] and [20,1,?]
             # so dimension = 1 means passage pi , and simension =2 means question qi
             batch_martix = tf.matmul( tf.transpose(alph_passage,[1,0,2]) , tf.transpose(alph_question,[1,2,0]) )
