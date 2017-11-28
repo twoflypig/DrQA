@@ -5,3 +5,6 @@
 how to process space ???
 
 query whether to repalce with tags ?
+
+I want to plus a beam search 
+move end point to one position is better! 

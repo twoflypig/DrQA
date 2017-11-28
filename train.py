@@ -81,9 +81,9 @@ for m_epoch in range(args.epoch):
         
         feed = set_dict(trainModel,query_ls , passage_ls, answer_p_s, answer_p_e,passage_pos_ls,add_token_feature = args.add_token_feature)
         
-        toSee = [trainModel.cross_entropy_start,trainModel.cross_entropy_end,trainModel.summary_op,trainModel.start_train_op,trainModel.end_train_op]
+        toSee = [trainModel.cross_entropy_start,trainModel.cross_entropy_end,trainModel.summary_op,trainModel.train_op]
         
-        loss_start,loss_end, summary_re, _, _ = sess.run(toSee,feed_dict=feed)
+        loss_start,loss_end, summary_re, _ = sess.run(toSee,feed_dict=feed)
         
         per_loss_start  += loss_start
         
@@ -107,7 +107,7 @@ for m_epoch in range(args.epoch):
                     answer_ls[0],
                     answer_p_s[0],
                     answer_p_e[0],
-                    id2word(passage_ls[0][s_p:e_p+1],id_vocab), # because in slicing list is [)
+                    id2word(passage_ls[0][s_p:e_p],id_vocab), # because in slicing list is [)
                     s_p,
                     e_p,
                     len(passage_ls[0])))

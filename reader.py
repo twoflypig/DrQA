@@ -90,7 +90,7 @@ class Reader(object):
                 passage_pos_ls.append(passage_pos)
                 if answer_p :
                     answer_p_s.append(answer_p[0])
-                    answer_p_e.append(answer_p[1]) # we use [start_p,end_p] to indicate the answer rather than [start_p,end_p)
+                    answer_p_e.append(answer_p[1] +1 ) #  [start_p,end_p) is better
                 else:
                     # note here should be the end of the sentence
                     # I add </s> to th end of the passage so we can set None p to the end

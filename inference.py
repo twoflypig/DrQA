@@ -108,18 +108,18 @@ for step in range(Lenght):
             pre_s ,pre_e =sess.run([evaluate_model.start_pro,evaluate_model.end_pro],feed_dict=feed)
             s_p = np.argmax(pre_s[0])
             e_p = np.argmax(pre_e[0])
-            s_p_max = np.max(pre_s[0])
-            e_p_max = np.max(pre_e[0])
-            if s_p <=e_p and s_p!= len(origin_passage[i])-1 and s_p +5 >e_p:
+            s_p_max = pre_s[0][s_p]#np.max(pre_s[0])
+            e_p_max = pre_s[0][e_p]#np.max(pre_e[0])
+            if s_p <e_p and s_p +5 >e_p :#and s_p!= len(origin_passage[i])-1 :
 
                 
                 passage_split = origin_passage[i]
                 #print(passage_split)
                 #print(pre_s[0])
-                buffer_answer = "".join(passage_split[s_p:e_p+1]) 
+                buffer_answer = "".join(passage_split[s_p:e_p]) 
 
                 max_pro = s_p_max*e_p_max
-                print("s_p:{},e_p:{},pro:{},answer:{},pasage len:{}".format(s_p,e_p,max_pro,buffer_answer,len(passage_split)))
+                print("s_p:{},e_p:{},pro:{},query:{},answer:{},pasage len:{}".format(s_p,e_p,max_pro,id2word(query_ls[i],id_vocab),buffer_answer,len(passage_split)))
                 #print(buffer_answer)
                 result_buffer.append( (query_id_ls[0],buffer_answer,s_p,e_p,max_pro))
                 #print(id2word(query_ls[i],id_vocab) + '\t'+ id2word(passage_ls[i],id_vocab)+ buffer_answer +":" +str(s_p_max)+"\t"+ str(e_p_max))
@@ -128,7 +128,7 @@ for step in range(Lenght):
                 #            + buffer_answer +":" +str(s_p_max)+"\t"+ str(e_p_max) +'\n')
         if len(result_buffer):
             line = max(result_buffer,key = lambda item:item[3])
-            print("In integration pro:{},finally chosing:{}".format(line[3],line[1]))
+            print("In integration pro:{},finally chosing:{}".format(line[4],line[1]))
             result_list.append( line)
         else:
             result_list.append( (query_id_ls[0],'None'))

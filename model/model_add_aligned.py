@@ -67,9 +67,10 @@ class model(object):
             # layerW = tf.get_variable('denserlayerW',[.get_shape().as_list()[2] , 200],
             #                            initializer=,
             #                             dtype=tf.float32)
-            alph_passage = tf.layers.dense(passage_inputs_embedded,200,kernel_initializer =tf.random_uniform_initializer(-0.5, 0.5, seed=12),activation=tf.nn.relu,name='aligned_dense',reuse=None)
+            # ,kernel_initializer =tf.random_uniform_initializer(-0.5, 0.5, seed=12)
+            alph_passage = tf.layers.dense(passage_inputs_embedded,200,activation=tf.nn.relu,name='aligned_dense',reuse=None)
             # shape of alph_question is [?,20,1]
-            alph_question = tf.layers.dense(query_inputs_embedded ,200,kernel_initializer =tf.random_uniform_initializer(-0.5, 0.5, seed=12),activation=tf.nn.relu,name='aligned_dense',reuse=True)
+            alph_question = tf.layers.dense(query_inputs_embedded ,200,activation=tf.nn.relu,name='aligned_dense',reuse=True)
             # result:[batch_size,? ,?] the result of matmul between [20,?,1] and [20,1,?]
             # so dimension = 1 means passage pi , and simension =2 means question qi
             batch_martix = tf.matmul( tf.transpose(alph_passage,[1,0,2]) , tf.transpose(alph_question,[1,2,0]) )
@@ -95,8 +96,8 @@ class model(object):
                 fuse_passage_encoding = tf.concat(  [fuse_passage_encoding , tf.transpose(passages_pos_vectors,[1,0,2]) ],axis =2 )
 
             print("after adding pos vector, shape is:{}".format(fuse_passage_encoding.shape))
-            forward_cell = tf.contrib.rnn.LSTMCell(self.num_units)
-            backward_cell = tf.contrib.rnn.LSTMCell(self.num_units)
+            forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
+            backward_cell = tf.contrib.rnn.GRUCell(self.num_units)
             with tf.variable_scope('passage_dynamic_rnn'):
                 # time_major -> False: (batch, time step, input); True: (time step, batch, input)
                 bi_outputs, encoder_state = tf.nn.bidirectional_dynamic_rnn(
@@ -112,9 +113,9 @@ class model(object):
                 W = tf.Variable(tf.truncated_normal([passage_shape[2],1], stddev=0.1))
 
             with tf.variable_scope('forward'):
-                q_forward_cell = tf.contrib.rnn.LSTMCell(self.num_units)
+                q_forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
             with tf.variable_scope('backward'):
-                q_backward_cell = tf.contrib.rnn.LSTMCell(self.num_units)
+                q_backward_cell = tf.contrib.rnn.GRUCell(self.num_units)
             with tf.variable_scope('question_dynamic_rnn'):
                 q_bi_outputs, q_encoder_state = tf.nn.bidirectional_dynamic_rnn(
                     q_forward_cell, q_backward_cell, query_inputs_embedded,
@@ -176,27 +177,26 @@ class model(object):
             self.cross_entropy_start = tf.reduce_mean(pre_q_s_loss)
 
 
-        with tf.name_scope("train_op") as scope:
-            with tf.name_scope("train_op_start") as scope:
-                
-                start_parameters = tf.trainable_variables()
-                start_gradients = tf.gradients(self.cross_entropy_start , start_parameters)
-                start_clipped_gradients, start_gradient_norm = tf.clip_by_global_norm(start_gradients, self.max_gradient_norm)
+        with tf.name_scope("train_op") as scope:   
 
-                """add train op"""
-                start_optimizer = tf.train.AdamOptimizer( self.learning_rate)
-                # Attention: here self.global_step will increment by one after the variables have been updated.
-                self.start_train_op = start_optimizer.apply_gradients(zip(start_clipped_gradients, start_parameters),global_step= self.global_step)
+            start_parameters = tf.trainable_variables()
+            start_gradients = tf.gradients(self.cross_entropy_start +self.cross_entropy_end , start_parameters)
+            start_clipped_gradients, start_gradient_norm = tf.clip_by_global_norm(start_gradients, self.max_gradient_norm)
 
-            with tf.name_scope("train_op_end") as scope:
-                end_parameters = tf.trainable_variables()
-                end_gradients = tf.gradients(self.cross_entropy_end, end_parameters)
-                end_clipped_gradients, end_gradient_norm = tf.clip_by_global_norm(end_gradients, self.max_gradient_norm)
+            """add train op"""
+            start_optimizer = tf.train.AdamOptimizer( self.learning_rate)
+            # Attention: here self.global_step will increment by one after the variables have been updated.
+            self.train_op = start_optimizer.apply_gradients(zip(start_clipped_gradients, start_parameters),global_step= self.global_step)
 
-                """add train op"""
-                end_optimizer = tf.train.AdamOptimizer( self.learning_rate)
-                # Attention: here self.global_step will increment by one after the variables have been updated.
-                self.end_train_op = end_optimizer.apply_gradients(zip(end_clipped_gradients, end_parameters),global_step= self.global_step)
+            # with tf.name_scope("train_op_end") as scope:
+            #     end_parameters = tf.trainable_variables()
+            #     end_gradients = tf.gradients(self.cross_entropy_end, end_parameters)
+            #     end_clipped_gradients, end_gradient_norm = tf.clip_by_global_norm(end_gradients, self.max_gradient_norm)
+
+            #     """add train op"""
+            #     end_optimizer = tf.train.AdamOptimizer( self.learning_rate)
+            #     # Attention: here self.global_step will increment by one after the variables have been updated.
+            #     self.end_train_op = end_optimizer.apply_gradients(zip(end_clipped_gradients, end_parameters),global_step= self.global_step)
 
         # record weight change 
 
