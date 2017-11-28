@@ -11,7 +11,7 @@ import logging
 # the commandline parameters 
 from  parameter import args
 
-logging.basicConfig(level=logging.INFO)
+#logging.basicConfig(level=logging.NOTSET)
 
 # Read cha_vectors.bin
 if args.use_pretrain_vector is False:

@@ -3,7 +3,7 @@ import codecs
 from ultize import *
 import logging
 
-logging.basicConfig(level=logging.INFO)
+#logging.basicConfig(level=logging.NOTSET)
 
 #训练的时候随便多少个batch都可以，但是在inference的时候要改下
 class Reader(object):
@@ -38,7 +38,7 @@ class Reader(object):
 
         self.config = config # store configs
 
-        print(self.num_examples)
+        print("traing numbers:{}".format(self.num_examples))
 
     def _load_pos_vocab(self,filename):
         # load pos vocab
@@ -69,7 +69,7 @@ class Reader(object):
             # add </s> to the passage
             passage.append('</s>')
 
-            logging.info("before id query:{},passage:{}".format(query,passage))
+            #logging.info("before id query:{},passage:{}".format(query,passage))
             #perform word2id
             query , passage  = self._batch2id( (query , passage ))
 
@@ -106,8 +106,6 @@ class Reader(object):
 
         performing cut on passage ,query. And then replacing English words and numbers with TAG
         """
-
-
 
         query , _  =   token_pos(self.line['query'] ,use_pos = self.config.add_token_feature)
         # passage

@@ -45,7 +45,7 @@ parser.add_argument('--pos_vocab_size', type= int, default = 30,
 parser.add_argument('--add_token_feature', type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
                     help='add_token_feature to be Ture of False')
 # model version 
-parser.add_argument('--version', action='version', version='%(prog)s 1.02')
+parser.add_argument('--version', action='version', version='%(prog)s 1.03')
 
 
 args = parser.parse_args()
@@ -53,6 +53,6 @@ args = parser.parse_args()
 with codecs.open("tag_vocab","r","utf8") as fp:
     # load tag vocab
     data = fp.readlines()
-    args.EN_TAG  = data[0]
-    args.NUM_TAG = data[1]
+    args.EN_TAG  = data[0].strip()
+    args.NUM_TAG = data[1].strip()
 print("load paramaters")

@@ -1,4 +1,5 @@
 import tensorflow as tf
+
 class model(object):
     def __init__(self,config):
         self.config = config
@@ -13,16 +14,16 @@ class model(object):
         # as time-major
         with tf.variable_scope("input") as scope:
             # time major
-            self.passage_inputs = tf.placeholder(shape=(None,self.batch_size), dtype=tf.int32, name='self.passage_inputs')
+            self.passage_inputs = tf.placeholder(shape=(None,self.batch_size), dtype=tf.int32, name='passage_inputs')
             self.passage_sequence_length = tf.placeholder(shape=([self.batch_size]), dtype=tf.int32, name='passage_length')
             # query
-            self.query_inputs = tf.placeholder(shape=(None,self.batch_size), dtype=tf.int32, name='self.query_inputs')
+            self.query_inputs = tf.placeholder(shape=(None,self.batch_size), dtype=tf.int32, name='query_inputs')
             self.query_sequence_length = tf.placeholder(shape=([self.batch_size]), dtype=tf.int32, name='query_length')
 
-            # binary_vector
+            # binary_vector size is [max_length,batch_size]
             self.binary_inputs = tf.placeholder(shape=(None,self.batch_size), dtype=tf.float32, name='binary_vector')
             # answer_pi
-            self.passage_start_pos =  tf.placeholder(shape=([self.batch_size]), dtype=tf.int32, name='self.passage_start_pos')
+            self.passage_start_pos =  tf.placeholder(shape=([self.batch_size]), dtype=tf.int32, name='passage_start_pos')
             self.passage_end_pos =  tf.placeholder(shape=([self.batch_size]), dtype=tf.int32, name='passage_end_pos')
             self.passage_logit_pro_start =tf.one_hot(self.passage_start_pos, depth= tf.reduce_max(self.passage_sequence_length) )     #tf.placeholder(shape=(1, passage_max), dtype=tf.int32, name='self.passage_logit_pro_start')
             self.passage_logit_pro_end = tf.one_hot(self.passage_end_pos,    depth= tf.reduce_max(self.passage_sequence_length) )  #tf.placeholder(shape=(1, passage_max), dtype=tf.int32, name='self.passage_logit_pro_end')
@@ -55,7 +56,7 @@ class model(object):
             query_inputs_embedded = tf.nn.embedding_lookup(embeddings, self.query_inputs)
 
             # set global_step
-            self.global_step = tf.Variable(0, trainable= self.config.is_training)
+            self.global_step = tf.Variable(0, trainable=False)
 
         """
         需要对输入向量增加三个特征，第一个是与问题对齐的特征
@@ -63,9 +64,12 @@ class model(object):
         with tf.variable_scope('alligned'):
             # tf.layers.dense operates on the last
             # shape of alph_passage is [?,20,1]
-            alph_passage = tf.layers.dense(passage_inputs_embedded,200,activation=tf.nn.relu,name='aligned_dense',reuse=None)
+            # layerW = tf.get_variable('denserlayerW',[.get_shape().as_list()[2] , 200],
+            #                            initializer=,
+            #                             dtype=tf.float32)
+            alph_passage = tf.layers.dense(passage_inputs_embedded,200,kernel_initializer =tf.random_uniform_initializer(-0.5, 0.5, seed=12),activation=tf.nn.relu,name='aligned_dense',reuse=None)
             # shape of alph_question is [?,20,1]
-            alph_question = tf.layers.dense(query_inputs_embedded ,200,activation=tf.nn.relu,name='aligned_dense',reuse=True)
+            alph_question = tf.layers.dense(query_inputs_embedded ,200,kernel_initializer =tf.random_uniform_initializer(-0.5, 0.5, seed=12),activation=tf.nn.relu,name='aligned_dense',reuse=True)
             # result:[batch_size,? ,?] the result of matmul between [20,?,1] and [20,1,?]
             # so dimension = 1 means passage pi , and simension =2 means question qi
             batch_martix = tf.matmul( tf.transpose(alph_passage,[1,0,2]) , tf.transpose(alph_question,[1,2,0]) )
@@ -76,6 +80,8 @@ class model(object):
             aligned_question_embeding=  tf.matmul(batch_softmax_martix, tf.transpose(query_inputs_embedded,[1,0,2]) )
 
 
+            # for debuging
+
         with tf.name_scope("passage_rnn") as scope:
 
             fuse_passage_encoding = tf.concat(  [passage_inputs_embedded ,tf.transpose(aligned_question_embeding ,[1,0,2]) ],axis =2 )
@@ -85,11 +91,12 @@ class model(object):
             
             if self.config.add_token_feature is True:
                 # adding token feature
+                print("Adding pos feature")
                 fuse_passage_encoding = tf.concat(  [fuse_passage_encoding , tf.transpose(passages_pos_vectors,[1,0,2]) ],axis =2 )
 
             print("after adding pos vector, shape is:{}".format(fuse_passage_encoding.shape))
-            forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
-            backward_cell = tf.contrib.rnn.GRUCell(self.num_units)
+            forward_cell = tf.contrib.rnn.LSTMCell(self.num_units)
+            backward_cell = tf.contrib.rnn.LSTMCell(self.num_units)
             with tf.variable_scope('passage_dynamic_rnn'):
                 # time_major -> False: (batch, time step, input); True: (time step, batch, input)
                 bi_outputs, encoder_state = tf.nn.bidirectional_dynamic_rnn(
@@ -105,15 +112,16 @@ class model(object):
                 W = tf.Variable(tf.truncated_normal([passage_shape[2],1], stddev=0.1))
 
             with tf.variable_scope('forward'):
-                q_forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
+                q_forward_cell = tf.contrib.rnn.LSTMCell(self.num_units)
             with tf.variable_scope('backward'):
-                q_backward_cell = tf.contrib.rnn.GRUCell(self.num_units)
+                q_backward_cell = tf.contrib.rnn.LSTMCell(self.num_units)
             with tf.variable_scope('question_dynamic_rnn'):
                 q_bi_outputs, q_encoder_state = tf.nn.bidirectional_dynamic_rnn(
                     q_forward_cell, q_backward_cell, query_inputs_embedded,
                     sequence_length=self.query_sequence_length, time_major=True,dtype = tf.float32)
             #<tf.Tensor 'concat:0' shape=(?, self.batch_size, hidden_units*2) dtype=float32>
             question_outputs  = tf.concat(q_bi_outputs, -1)
+            
             # a list of [?,400],len is self.batch_size
             question_outputs_unstack  = tf.unstack(question_outputs,axis=1)
             # a list of [?,1] , len is self.batch_size
