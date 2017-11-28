@@ -9,3 +9,4 @@ dist
 build
 word-vector
 __pycache__/
+nohup.out
