@@ -9,6 +9,20 @@ class model(object):
         self.input_embedding_size = config.input_embedding_size
         self.max_gradient_norm = 1
         self.learning_rate = 0.001
+
+    def bilayer(self, inputs,layer_index):
+
+        with  tf.variable_scope( "layer"+str(layer_index), reuse=False) as scope:
+            output = inputs
+            #for n in range(1):
+
+            forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
+            backward_cell = tf.contrib.rnn.GRUCell(self.num_units)
+            output, _states = tf.nn.bidirectional_dynamic_rnn(forward_cell, backward_cell, output,
+                                                              sequence_length=self.passage_sequence_length, time_major=True,dtype = tf.float32)
+            output =  tf.concat(output, -1)
+            output = tf.nn.dropout(output,0)
+        return output
     def build_model(self):
         # passage
         # as time-major
@@ -49,7 +63,7 @@ class model(object):
             else:
                 print("using vocab vectos training with models")
                 embeddings = tf.get_variable('W',[self.src_vocab_size , self.input_embedding_size],
-                                                       initializer=tf.random_uniform_initializer(-0.1, 0.1, seed=123),
+                                                       initializer=tf.random_uniform_initializer(-0.2, 0.2, seed=123),
                                                         dtype=tf.float32)
 
             passage_inputs_embedded = tf.nn.embedding_lookup(embeddings, self.passage_inputs)
@@ -96,16 +110,25 @@ class model(object):
                 fuse_passage_encoding = tf.concat(  [fuse_passage_encoding , tf.transpose(passages_pos_vectors,[1,0,2]) ],axis =2 )
 
             print("after adding pos vector, shape is:{}".format(fuse_passage_encoding.shape))
-            forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
-            backward_cell = tf.contrib.rnn.GRUCell(self.num_units)
-            with tf.variable_scope('passage_dynamic_rnn'):
-                # time_major -> False: (batch, time step, input); True: (time step, batch, input)
-                bi_outputs, encoder_state = tf.nn.bidirectional_dynamic_rnn(
-                    forward_cell, backward_cell, fuse_passage_encoding,
-                    sequence_length=self.passage_sequence_length, time_major=True,dtype = tf.float32)
-                # the size of passage_outputs is  [words_number, self.batch_size, hidden_contact_vector_length]
-                passage_outputs = tf.concat(bi_outputs, -1)
+
+
+            data_in = fuse_passage_encoding
+            for i in range(self.config.num_layer):
+                data_in = bilayer(data_in,i)
+            passage_outputs =data_in
             passage_shape = passage_outputs.get_shape().as_list()
+            
+            # forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
+            # backward_cell = tf.contrib.rnn.GRUCell(self.num_units)
+
+            # with tf.variable_scope('passage_dynamic_rnn'):
+            #     # time_major -> False: (batch, time step, input); True: (time step, batch, input)
+            #     bi_outputs, encoder_state = tf.nn.bidirectional_dynamic_rnn(
+            #         forward_cell, backward_cell, fuse_passage_encoding,
+            #         sequence_length=self.passage_sequence_length, time_major=True,dtype = tf.float32)
+            #     # the size of passage_outputs is  [words_number, self.batch_size, hidden_contact_vector_length]
+            #     passage_outputs = tf.concat(bi_outputs, -1)
+            # passage_shape = passage_outputs.get_shape().as_list()
 
         with tf.name_scope("question_rnn") as scope:
             with tf.variable_scope('w'):
@@ -179,14 +202,14 @@ class model(object):
 
         with tf.name_scope("train_op") as scope:   
 
-            start_parameters = tf.trainable_variables()
-            start_gradients = tf.gradients(self.cross_entropy_start +self.cross_entropy_end , start_parameters)
-            start_clipped_gradients, start_gradient_norm = tf.clip_by_global_norm(start_gradients, self.max_gradient_norm)
+            parameters = tf.trainable_variables()
+            gradients = tf.gradients(self.cross_entropy_start +self.cross_entropy_end , parameters)
+            clipped_gradients, gradient_norm = tf.clip_by_global_norm(gradients, self.max_gradient_norm)
 
             """add train op"""
-            start_optimizer = tf.train.AdamOptimizer( self.learning_rate)
+            optimizer = tf.train.AdamOptimizer( self.learning_rate)
             # Attention: here self.global_step will increment by one after the variables have been updated.
-            self.train_op = start_optimizer.apply_gradients(zip(start_clipped_gradients, start_parameters),global_step= self.global_step)
+            self.train_op = optimizer.apply_gradients(zip(clipped_gradients, parameters),global_step= self.global_step)
 
             # with tf.name_scope("train_op_end") as scope:
             #     end_parameters = tf.trainable_variables()

@@ -45,7 +45,7 @@ parser.add_argument('--pos_vocab_size', type= int, default = 30,
 parser.add_argument('--add_token_feature', type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
                     help='add_token_feature to be Ture of False')
 # model version 
-parser.add_argument('--version', action='version', version='%(prog)s 1.03')
+parser.add_argument('--version', action='version', version='%(prog)s 1.10')
 
 
 args = parser.parse_args()

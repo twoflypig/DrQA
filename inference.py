@@ -118,7 +118,7 @@ for step in range(Lenght):
                 #print(pre_s[0])
                 buffer_answer = "".join(passage_split[s_p:e_p]) 
 
-                max_pro = s_p_max*e_p_max
+                max_pro = s_p_max*e_p_max /10000000
                 print("s_p:{},e_p:{},pro:{},query:{},answer:{},pasage len:{}".format(s_p,e_p,max_pro,id2word(query_ls[i],id_vocab),buffer_answer,len(passage_split)))
                 #print(buffer_answer)
                 result_buffer.append( (query_id_ls[0],buffer_answer,s_p,e_p,max_pro))
