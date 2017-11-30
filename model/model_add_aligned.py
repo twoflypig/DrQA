@@ -13,7 +13,9 @@ class model(object):
     def bilayer(self, inputs,layer_index):
 
         with  tf.variable_scope( "layer"+str(layer_index), reuse=False) as scope:
-            output = inputs
+
+            output = tf.nn.dropout(inputs,self.config.keep_pro) 
+            print("layer{},keep_pro:{}".format(layer_index,self.config.keep_pro)) 
             #for n in range(1):
 
             forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
@@ -21,7 +23,7 @@ class model(object):
             output, _states = tf.nn.bidirectional_dynamic_rnn(forward_cell, backward_cell, output,
                                                               sequence_length=self.passage_sequence_length, time_major=True,dtype = tf.float32)
             output =  tf.concat(output, -1)
-            output = tf.nn.dropout(output,0)
+            
         return output
     def build_model(self):
         # passage
@@ -114,7 +116,7 @@ class model(object):
 
             data_in = fuse_passage_encoding
             for i in range(self.config.num_layer):
-                data_in = bilayer(data_in,i)
+                data_in = self.bilayer(data_in,i)
             passage_outputs =data_in
             passage_shape = passage_outputs.get_shape().as_list()
             
@@ -184,17 +186,22 @@ class model(object):
                     self.p_We_q.append(tf.matmul(passage_outputs_unstack[i] ,We_q_unstacked[i]))
                 self.p_We_q = tf.concat(self.p_We_q,axis= -1)
                 self.p_We_q = tf.transpose(self.p_We_q ,[1,0])
-        print("Training :{}".format(self.config.is_training))
+
+        print("Training state :{}".format(self.config.is_training))
         if self.config.is_training is False :
             # I need to see probalities:
-            self.end_pro = tf.exp(self.p_We_q)
-            self.start_pro = tf.exp(self.p_W_q)
+            self.end_pro = self.p_We_q
+            self.start_pro = self.p_W_q
             print("In inference process")
             return
         with tf.name_scope("compute_loss") as scope:
             # start point
+            
+
             pre_q_e_loss = tf.nn.softmax_cross_entropy_with_logits(labels= self.passage_logit_pro_end, logits=self.p_We_q)
+            print("pre_q_e_loss shape:{}".format(pre_q_e_loss.get_shape()))
             self.cross_entropy_end = tf.reduce_mean(pre_q_e_loss)
+            print("After reduce_mean loss shape:{}".format(self.cross_entropy_end.get_shape()))
             # end point
             pre_q_s_loss = tf.nn.softmax_cross_entropy_with_logits(labels= self.passage_logit_pro_start,logits=self.p_W_q)
             self.cross_entropy_start = tf.reduce_mean(pre_q_s_loss)
@@ -211,21 +218,12 @@ class model(object):
             # Attention: here self.global_step will increment by one after the variables have been updated.
             self.train_op = optimizer.apply_gradients(zip(clipped_gradients, parameters),global_step= self.global_step)
 
-            # with tf.name_scope("train_op_end") as scope:
-            #     end_parameters = tf.trainable_variables()
-            #     end_gradients = tf.gradients(self.cross_entropy_end, end_parameters)
-            #     end_clipped_gradients, end_gradient_norm = tf.clip_by_global_norm(end_gradients, self.max_gradient_norm)
-
-            #     """add train op"""
-            #     end_optimizer = tf.train.AdamOptimizer( self.learning_rate)
-            #     # Attention: here self.global_step will increment by one after the variables have been updated.
-            #     self.end_train_op = end_optimizer.apply_gradients(zip(end_clipped_gradients, end_parameters),global_step= self.global_step)
 
         # record weight change 
 
         tf.summary.scalar("cross_entropy_start", self.cross_entropy_start)
         tf.summary.scalar("cross_entropy_end", self.cross_entropy_end)
-        #tf.summary.scalar("learning_rate", learning_rate)
+        tf.summary.scalar("sum_loss", self.cross_entropy_start +self.cross_entropy_end )
         #tf.summary.scalar("gradient_norm", gradient_norm)
 
         tf.summary.histogram("Ws",Ws)

@@ -13,4 +13,5 @@ python toSimply.py  --data_path ../input/valid --aim_path ../output/valid_pred
 
 # in inference.py --is_training  default is false
 python inference.py --vocab_path ../output/vocab --test inference --data_path ../output/valid_pred \
-	--use_pretrain_vector  false --vector_path word-vector --num_units 128 --input_embedding_size 200
+	--use_pretrain_vector  false --vector_path word-vector --num_units 128 --input_embedding_size 200\
+	--keep_pro 1

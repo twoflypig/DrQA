@@ -72,7 +72,9 @@ def convert_ch2num(string):
     return "".join(temp_str)
 
 def replace_numdotnum_withtag(sentence,tag):
-    
+    """
+    will be discard in version 1.2
+    """
     # input tag must be a string
     # replacing strings like 3.2
     # used in make_vocab.py
@@ -81,7 +83,9 @@ def replace_numdotnum_withtag(sentence,tag):
     return line 
 
 def replace_num_withtag(sentence,tag):
-    
+    """
+    will be discard in version 1.2
+    """ 
     # input tag must be a string
     # replacing strings like 32
     # used in make_vocab.py
@@ -90,7 +94,9 @@ def replace_num_withtag(sentence,tag):
     return line 
 
 def replace_englist_withtag(sentence,tag):
-    
+    """
+    will be discard in version 1.2
+    """
     # input tag must be a string
     # replacing strings like  apple 
     # used in make_vocab.py
@@ -99,13 +105,35 @@ def replace_englist_withtag(sentence,tag):
     return line 
 
 def replace_fuse(sentence,tag_nn,tagnum,tagen):
+    """
+    will be discard in version 1.2
+    """
     # performing vocab replacing all 
     line = replace_englist_withtag(sentence , tagen)
     line = replace_numdotnum_withtag(line,tag_nn)
     line = replace_num_withtag(line , tagnum)
 
     return line 
+def make_answer_dict(id_answer_ls):
+    """
+    used in inference.py to record the answer we produce 
+    the form of id_answer_ls like this : (query_id_ls[0],buffer_answer,s_p,e_p,max_pro)
+    the input is a list ,and return a buffer_answer,probality dict list
+    """
+    result = [] 
+    if id_answer_ls: 
 
+        temp_dict={}
+        for item in id_answer_ls:
+            temp_dict['buffer_answer'] = item[1]
+            temp_dict['max_pro'] = int(item[4])
+            result.append(temp_dict)
+    else:
+        temp_dict={}
+        temp_dict['buffer_answer'] = "None"
+        temp_dict['max_pro'] = 1
+        result.append(temp_dict) 
+    return result
 def check_nunber_en(words_ls , tagnum,tagen):
 
     result = []

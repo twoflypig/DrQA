@@ -80,6 +80,8 @@ if args.test == "test":
 else:
     Lenght = reader.length
 
+store_json_list= [] # result list to write
+
 for step in range(Lenght):
 
         print('step:'+ str(step))
@@ -92,7 +94,7 @@ for step in range(Lenght):
                           get_numpys(query_ls , passage_ls,passage_pos_ls,args.add_token_feature)
 
         result_buffer= []
-
+        store_json_dict= {} # now data
         for i in range(len(passage_ls)):
             feed={
               evaluate_model.passage_inputs:passage_batch[:,i].reshape((-1,1)),
@@ -118,7 +120,7 @@ for step in range(Lenght):
                 #print(pre_s[0])
                 buffer_answer = "".join(passage_split[s_p:e_p]) 
 
-                max_pro = s_p_max*e_p_max /10000000
+                max_pro = s_p_max*e_p_max
                 print("s_p:{},e_p:{},pro:{},query:{},answer:{},pasage len:{}".format(s_p,e_p,max_pro,id2word(query_ls[i],id_vocab),buffer_answer,len(passage_split)))
                 #print(buffer_answer)
                 result_buffer.append( (query_id_ls[0],buffer_answer,s_p,e_p,max_pro))
@@ -127,16 +129,32 @@ for step in range(Lenght):
                 # result_fp.write(id2word(query_ls[i],id_vocab) + '\t'+ id2word(passage_ls[i],id_vocab)
                 #            + buffer_answer +":" +str(s_p_max)+"\t"+ str(e_p_max) +'\n')
         if len(result_buffer):
+
             line = max(result_buffer,key = lambda item:item[3])
-            print("In integration pro:{},finally chosing:{}".format(line[4],line[1]))
+            #print("In integration pro:{},finally chosing:{}".format(line[4],line[1]))
             result_list.append( line)
         else:
             result_list.append( (query_id_ls[0],'None'))
-            print("In integration pro:{},finally chosing:{}".format(0,"None"))
+            #print("In integration pro:{},finally chosing:{}".format(0,"None"))
             unkown_counts+=1
+
+        # store answer we produce
+        store_json_dict['query_id']  = int(query_id_ls[0])
+        store_json_dict['query']   =  id2word(query_ls[i],id_vocab)
+        store_json_dict['answer_ls'] = make_answer_dict(result_buffer)
+        store_json_list.append( json.dumps(store_json_dict))
+        
 end_time =time.time()
 print("spend:{}".format(end_time-start_time))
 for line in result_list:
     result_fp.write( str(line[0])+'\t'+line[1]+'\n')
 result_fp.close()
 print("unknow:{}".format(unkown_counts))
+
+path = "../output/infer_answer.json"
+print("writing answers to {}".format(path))
+with codecs.open(path,'w','utf8') as fp:
+    for line in store_json_list:
+        fp.write(line +'\n')
+print("writing finished")
+

@@ -55,7 +55,7 @@ ckpt_state = tf.train.get_checkpoint_state(args.restore_path)
 
 if ckpt_state == None:
     print("Cant't load model,starting initial")
-    sess.run(tf.global_variables_initializer())
+    exit(0)
     # load embedding
     if args.use_pretrain_vector:
         sess.run(trainModel.embedding_init, feed_dict={trainModel.embedding_placeholder: embd})
@@ -92,14 +92,12 @@ for m_epoch in range(args.epoch):
 
         logging.info("answer_one_hot:{},max_length:{}".format(answer_one_hot,max(feed[trainModel.passage_sequence_length])))
 
-        toSee = [trainModel.cross_entropy_start,trainModel.cross_entropy_end,trainModel.summary_op,trainModel.start_train_op,trainModel.end_train_op]
+        toSee = [trainModel.p_We_q,trainModel.p_W_q]
         
-        loss_start,loss_end, summary_re, _, _ = sess.run(toSee,feed_dict=feed)
+        p_We_q,p_W_q= sess.run(toSee,feed_dict=feed)
         
-        per_loss_start  += loss_start
-        
-        per_loss_end    += loss_end
-        
+
+        print("p_We_q:{},p_W_q:{}".format(p_We_q,p_W_q))
         # save summary
         if step % 100 ==0:
             print("iterator: {} ，loss_start is :{} , loss_end is:{}".format(reader.question_index, per_loss_start /100,per_loss_end/100 ))
