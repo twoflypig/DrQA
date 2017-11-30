@@ -121,18 +121,11 @@ def make_answer_dict(id_answer_ls):
     the input is a list ,and return a buffer_answer,probality dict list
     """
     result = [] 
-    if id_answer_ls: 
-
-        temp_dict={}
-        for item in id_answer_ls:
-            temp_dict['buffer_answer'] = item[1]
-            temp_dict['max_pro'] = int(item[4])
-            result.append(temp_dict)
+    
+    if id_answer_ls:
+        result = [ {'buffer_answer':item[1],'max_pro':int(item[4])} for item in id_answer_ls ] 
     else:
-        temp_dict={}
-        temp_dict['buffer_answer'] = "None"
-        temp_dict['max_pro'] = 1
-        result.append(temp_dict) 
+        result =  [ {'buffer_answer':'None','max_pro': 1}]
     return result
 def check_nunber_en(words_ls , tagnum,tagen):
 

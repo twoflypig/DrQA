@@ -10,18 +10,41 @@ class model(object):
         self.max_gradient_norm = 1
         self.learning_rate = 0.001
 
-    def bilayer(self, inputs,layer_index):
+    def MultiBiRNN(self,inputs,hidden_units,num_layers,sequence_length,dropout_output,name):
 
-        with  tf.variable_scope( "layer"+str(layer_index), reuse=False) as scope:
+        data_in = inputs
 
-            output = tf.nn.dropout(inputs,self.config.keep_pro) 
-            print("layer{},keep_pro:{}".format(layer_index,self.config.keep_pro)) 
-            #for n in range(1):
+        for i in range(num_layers):
+
+            with  tf.variable_scope( name +str(i), reuse=False) as scope:
+                
+                if dropout_output < 1:
+                    output = tf.nn.dropout(data_in,dropout_output) 
+
+                forward_cell = tf.contrib.rnn.LSTMCell(hidden_units)
+                backward_cell = tf.contrib.rnn.LSTMCell(hidden_units)
+
+                output, _states = tf.nn.bidirectional_dynamic_rnn(forward_cell, backward_cell, output,
+                                                sequence_length=sequence_length, time_major=True,dtype = tf.float32)
+                output =  tf.concat(output, -1)
+
+        if dropout_output < 1:
+            output = tf.nn.dropout(output,dropout_output) 
+
+        return output
+
+    def bilayer(self, inputs,layer_index,sequence_length , name):
+
+        with  tf.variable_scope( name +str(layer_index), reuse=False) as scope:
+
+            if self.config.keep_pro < 1:
+                output = tf.nn.dropout(inputs,self.config.keep_pro) 
+                print("{} rnn layer{} input,keep_pro:{}".format(name,layer_index,self.config.keep_pro)) 
 
             forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
             backward_cell = tf.contrib.rnn.GRUCell(self.num_units)
             output, _states = tf.nn.bidirectional_dynamic_rnn(forward_cell, backward_cell, output,
-                                                              sequence_length=self.passage_sequence_length, time_major=True,dtype = tf.float32)
+                                                              sequence_length=sequence_length, time_major=True,dtype = tf.float32)
             output =  tf.concat(output, -1)
             
         return output
@@ -116,38 +139,33 @@ class model(object):
 
             data_in = fuse_passage_encoding
             for i in range(self.config.num_layer):
-                data_in = self.bilayer(data_in,i)
+                data_in = self.bilayer(data_in,i,self.passage_sequence_length , "passage")
+
+            if self.config.keep_pro < 1:
+                data_in = tf.nn.dropout(data_in,self.config.keep_pro) 
+                print("passage rnn layer output,keep_pro:{}".format(self.config.keep_pro)) 
+
+            
             passage_outputs =data_in
             passage_shape = passage_outputs.get_shape().as_list()
             
-            # forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
-            # backward_cell = tf.contrib.rnn.GRUCell(self.num_units)
-
-            # with tf.variable_scope('passage_dynamic_rnn'):
-            #     # time_major -> False: (batch, time step, input); True: (time step, batch, input)
-            #     bi_outputs, encoder_state = tf.nn.bidirectional_dynamic_rnn(
-            #         forward_cell, backward_cell, fuse_passage_encoding,
-            #         sequence_length=self.passage_sequence_length, time_major=True,dtype = tf.float32)
-            #     # the size of passage_outputs is  [words_number, self.batch_size, hidden_contact_vector_length]
-            #     passage_outputs = tf.concat(bi_outputs, -1)
-            # passage_shape = passage_outputs.get_shape().as_list()
 
         with tf.name_scope("question_rnn") as scope:
             with tf.variable_scope('w'):
                 # W shape is [1,1,400]
                 W = tf.Variable(tf.truncated_normal([passage_shape[2],1], stddev=0.1))
 
-            with tf.variable_scope('forward'):
-                q_forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
-            with tf.variable_scope('backward'):
-                q_backward_cell = tf.contrib.rnn.GRUCell(self.num_units)
-            with tf.variable_scope('question_dynamic_rnn'):
-                q_bi_outputs, q_encoder_state = tf.nn.bidirectional_dynamic_rnn(
-                    q_forward_cell, q_backward_cell, query_inputs_embedded,
-                    sequence_length=self.query_sequence_length, time_major=True,dtype = tf.float32)
+            data_in = query_inputs_embedded
+            for i in range(self.config.num_layer):
+                data_in = self.bilayer(data_in,i,self.query_sequence_length,"query")
+
+            if self.config.keep_pro < 1:
+                data_in = tf.nn.dropout(data_in,self.config.keep_pro) 
+                print("query rnn layer output,keep_pro:{}".format(self.config.keep_pro)) 
+
+
             #<tf.Tensor 'concat:0' shape=(?, self.batch_size, hidden_units*2) dtype=float32>
-            question_outputs  = tf.concat(q_bi_outputs, -1)
-            
+            question_outputs  = tf.concat(data_in, -1)      
             # a list of [?,400],len is self.batch_size
             question_outputs_unstack  = tf.unstack(question_outputs,axis=1)
             # a list of [?,1] , len is self.batch_size

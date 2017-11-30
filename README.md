@@ -16,7 +16,10 @@ This is a tensorflow version using DrQA model from  Reading Wikipedia to answer 
 	In make_vocab.py and  reader.py . Firstly,Using jieba to cut down the sentece ,where numbers and english words will be seperated, then use a regex to match en and numbers  in return list and also replaced them with tags. So when you want to change tags ,you should firstly look at this two files. 
 2. test.py is used to confirm what is right or wrong
 
- 
+
+# Improvement:
+1. Try use beam search rather than taking the arvmax
+
 
 # Results 
 
@@ -25,87 +28,24 @@ This is a tensorflow version using DrQA model from  Reading Wikipedia to answer 
 formate should like this 
 
 ```
-├── input
-│   ├── data
-│   └── valid
-├── lib-word
-│   ├── add_answer.py
-│   ├── evaluate.sh
-│   ├── filter.py
-│   ├── inference.py
-│   ├── make_vocab.py
-│   ├── model
-│   │   ├── __init__.py
-│   │   ├── model_add_aligned.py
-│   │   ├── model_multiRNN.py
-│   │   ├── model.py
-│   │   └── __pycache__
-│   │       ├── __init__.cpython-36.pyc
-│   │       ├── model_add_aligned.cpython-36.pyc
-│   │       └── model.cpython-36.pyc
-│   ├── pos.py
-│   ├── pos_vocab
-│   ├── process.py
-│   ├── __pycache__
-│   │   ├── reader.cpython-36.pyc
-│   │   ├── tokenize.cpython-36.pyc
-│   │   └── ultize.cpython-36.pyc
-│   ├── reader.py
-│   ├── README.md
-│   ├── sougou
-│   ├── toSimply.py
-│   ├── totokenize.py
-│   ├── train.py
-│   ├── train.sh
-│   ├── ultize.py
-│   └── untitled.txt
-├── modelRestor
-│   ├── model_base
-│   │   ├── checkpoint
-│   │   ├── model.ckpt-49716.data-00000-of-00001
-│   │   ├── model.ckpt-49716.index
-│   │   └── model.ckpt-49716.meta
-│   ├── model_base_v2
-│   │   ├── checkpoint
-│   │   ├── events.out.tfevents.1508772930.lival
-│   │   ├── model.ckpt-74503.data-00000-of-00001
-│   │   ├── model.ckpt-74503.index
-│   │   └── model.ckpt-74503.meta
-│   └── word-level
-│       ├── -41602.data-00000-of-00001
-│       ├── -41602.index
-│       ├── -41602.meta
-│       ├── -43595.data-00000-of-00001
-│       ├── -43595.index
-│       ├── -43595.meta
-│       ├── -44566.data-00000-of-00001
-│       ├── -44566.index
-│       ├── -44566.meta
-│       ├── -46560.data-00000-of-00001
-│       ├── -46560.index
-│       ├── -46560.meta
-│       ├── -48554.data-00000-of-00001
-│       ├── -48554.index
-│       ├── -48554.meta
-│       ├── checkpoint
-│       └── events.out.tfevents.1511419759.Zehao-Lab
-├── output
-│   ├── assembled_result
-│   ├── base
-│   │   ├── nn_result
-│   │   └── result
-│   ├── filter-data
-│   ├── nn_result
-│   ├── pre_processed
-│   ├── result
-│   ├── tfidf_result
-│   ├── train_add_answer
-│   ├── train_answer_vocab
-│   ├── train_Simply
-│   ├── valid_pred
-│   ├── valid_tokenize
-│   ├── valid_vocab
-│   └── vocab
+.:
+input  lib-word  modelRestor  one  output  __pycache__  readme.md  start.sh
+
+
+./input:
+data  data_2_3  train_factoid_2.json  train_factoid_3.json  valid  valid_factoid.json
+
+./lib-word:
+add_answer.py  make_vector.sh  nohup.out     pos_vocab          reader.py  test.ipynb   totokenize.py  ultize.py
+evaluate.sh    make_vocab.py   parameter.py  produce_vector.py  README.md  test.py      train.py       ultize.pyc
+inference.py   model           pos.py        __pycache__        tag_vocab  toSimply.py  train.sh       untitled.txt
+
+./lib-word/model:
+__init__.py  model_add_aligned.py  model_multiRNN.py  model.py  __pycache__
+
+./output:
+infer_answer.json  result  train_add_answer  train_Simply  valid_pred  vocab
+
 
 ```
 

@@ -131,18 +131,19 @@ for step in range(Lenght):
         if len(result_buffer):
 
             line = max(result_buffer,key = lambda item:item[3])
-            #print("In integration pro:{},finally chosing:{}".format(line[4],line[1]))
+            print("In integration pro:{},finally chosing:{}".format(line[4],line[1]))
             result_list.append( line)
         else:
             result_list.append( (query_id_ls[0],'None'))
-            #print("In integration pro:{},finally chosing:{}".format(0,"None"))
+            print("In integration pro:{},finally chosing:{}".format(0,"None"))
             unkown_counts+=1
 
         # store answer we produce
         store_json_dict['query_id']  = int(query_id_ls[0])
-        store_json_dict['query']   =  id2word(query_ls[i],id_vocab)
+        store_json_dict['query']   =  id2word(query_ls[0],id_vocab)
         store_json_dict['answer_ls'] = make_answer_dict(result_buffer)
-        store_json_list.append( json.dumps(store_json_dict))
+        #print("Wrtie to json:{}".format(store_json_dict))
+        store_json_list.append( json.dumps(store_json_dict,ensure_ascii = False))
         
 end_time =time.time()
 print("spend:{}".format(end_time-start_time))

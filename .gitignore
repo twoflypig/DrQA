@@ -8,5 +8,6 @@
 dist
 build
 word-vector
-__pycache__/
+__pycache__ 
 nohup.out
+*.ipynb
