@@ -27,27 +27,29 @@ class model(object):
                 output, _states = tf.nn.bidirectional_dynamic_rnn(forward_cell, backward_cell, output,
                                                 sequence_length=sequence_length, time_major=True,dtype = tf.float32)
                 output =  tf.concat(output, -1)
+            print("{} layer {} : keep_pro".format(name,i,dropout_output))
 
         if dropout_output < 1:
             output = tf.nn.dropout(output,dropout_output) 
 
         return output
 
-    def bilayer(self, inputs,layer_index,sequence_length , name):
+    # def bilayer(self, inputs,layer_index,sequence_length , name):
 
-        with  tf.variable_scope( name +str(layer_index), reuse=False) as scope:
+    #     output = inputs
+    #     with  tf.variable_scope( name +str(layer_index), reuse=False) as scope:
 
-            if self.config.keep_pro < 1:
-                output = tf.nn.dropout(inputs,self.config.keep_pro) 
-                print("{} rnn layer{} input,keep_pro:{}".format(name,layer_index,self.config.keep_pro)) 
+    #         if self.config.keep_pro < 1:
+    #             output = tf.nn.dropout(output,self.config.keep_pro) 
+    #             print("{} rnn layer{} input,keep_pro:{}".format(name,layer_index,self.config.keep_pro)) 
 
-            forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
-            backward_cell = tf.contrib.rnn.GRUCell(self.num_units)
-            output, _states = tf.nn.bidirectional_dynamic_rnn(forward_cell, backward_cell, output,
-                                                              sequence_length=sequence_length, time_major=True,dtype = tf.float32)
-            output =  tf.concat(output, -1)
+    #         forward_cell = tf.contrib.rnn.GRUCell(self.num_units)
+    #         backward_cell = tf.contrib.rnn.GRUCell(self.num_units)
+    #         output, _states = tf.nn.bidirectional_dynamic_rnn(forward_cell, backward_cell, output,
+    #                                                           sequence_length=sequence_length, time_major=True,dtype = tf.float32)
+    #         output =  tf.concat(output, -1)
             
-        return output
+    #     return output
     def build_model(self):
         # passage
         # as time-major
@@ -137,16 +139,16 @@ class model(object):
             print("after adding pos vector, shape is:{}".format(fuse_passage_encoding.shape))
 
 
-            data_in = fuse_passage_encoding
-            for i in range(self.config.num_layer):
-                data_in = self.bilayer(data_in,i,self.passage_sequence_length , "passage")
 
-            if self.config.keep_pro < 1:
-                data_in = tf.nn.dropout(data_in,self.config.keep_pro) 
-                print("passage rnn layer output,keep_pro:{}".format(self.config.keep_pro)) 
+            passage_outputs =  self.MultiBiRNN(inputs=fuse_passage_encoding,
+                                            hidden_units =self.num_units,
+                                            num_layers = self.config.num_layer,
+                                            sequence_length = self.passage_sequence_length,
+                                            dropout_output =self.config.keep_pro ,
+                                            name= "passage")
 
             
-            passage_outputs =data_in
+            #passage_outputs =data_in
             passage_shape = passage_outputs.get_shape().as_list()
             
 
@@ -155,17 +157,24 @@ class model(object):
                 # W shape is [1,1,400]
                 W = tf.Variable(tf.truncated_normal([passage_shape[2],1], stddev=0.1))
 
-            data_in = query_inputs_embedded
-            for i in range(self.config.num_layer):
-                data_in = self.bilayer(data_in,i,self.query_sequence_length,"query")
+            # data_in = query_inputs_embedded
+            # for i in range(self.config.num_layer):
+            #     data_in = self.bilayer(data_in,i,self.query_sequence_length,"query")
 
-            if self.config.keep_pro < 1:
-                data_in = tf.nn.dropout(data_in,self.config.keep_pro) 
-                print("query rnn layer output,keep_pro:{}".format(self.config.keep_pro)) 
+            # if self.config.keep_pro < 1:
+            #     data_in = tf.nn.dropout(data_in,self.config.keep_pro) 
+            #     print("query rnn layer output,keep_pro:{}".format(self.config.keep_pro)) 
+
+            question_outputs =  self.MultiBiRNN(inputs=query_inputs_embedded,
+                                hidden_units =self.num_units,
+                                num_layers = self.config.num_layer,
+                                sequence_length = self.query_sequence_length,
+                                dropout_output =self.config.keep_pro ,
+                                name= "query")
 
 
             #<tf.Tensor 'concat:0' shape=(?, self.batch_size, hidden_units*2) dtype=float32>
-            question_outputs  = tf.concat(data_in, -1)      
+            question_outputs  = tf.concat(question_outputs, -1)      
             # a list of [?,400],len is self.batch_size
             question_outputs_unstack  = tf.unstack(question_outputs,axis=1)
             # a list of [?,1] , len is self.batch_size
