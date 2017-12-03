@@ -54,20 +54,20 @@ class model(object):
             # input passage_sequence_length : [batch_size,]
             # the result of sequence_mask shape: batch,passage_length,query_length
             # returned masked shape [batch,passage_length,query_length]
-            # sequence_mask=  tf.tile(tf.expand_dims(tf.sequence_mask(matrix_query_length),axis=1),[1,tf.reduce_max( tf.reshape(martrix_passage_length,(-1,1))),1])
+            sequence_mask=  tf.tile(tf.expand_dims(tf.sequence_mask(matrix_query_length),axis=1),[1,tf.reduce_max( tf.reshape(martrix_passage_length,(-1,1))),1])
 
-            # sequence_ones = tf.ones_like(sequence_mask,dtype=tf.float32)
+            sequence_ones = tf.ones_like(sequence_mask,dtype=tf.float32)
 
-            # sequence_infi = sequence_ones * (-float('inf'))
+            sequence_infi = sequence_ones * (-float('inf'))
 
-            # masked = tf.where(sequence_mask,batch_martix,sequence_infi)
+            masked = tf.where(sequence_mask,batch_martix,sequence_infi)
             # apply softmax ,dim default is -1 ,operates on the last dimension the batch_martix
             #shape is [batch_size,?,?]
-            batch_softmax_martix = tf.nn.softmax(batch_martix)
+            batch_softmax_martix = tf.nn.softmax(masked)
             #[20,?,200] =  [20,?,?] x [20,?,200]
             aligned_question_embeding=  tf.matmul(batch_softmax_martix, tf.transpose(matrix_query,[1,0,2]) )    
             print("building SeqAtten:{}".format(name))
-            return aligned_question_embeding
+            return aligned_question_embeding ,batch_softmax_martix,masked
     def bilineaAtten(self,matrix_passage,query,name):
 
         with  tf.variable_scope( name , reuse=False) as scope:
@@ -109,7 +109,7 @@ class model(object):
             tf.summary.histogram("SelfAttenW"+name,W)
 
             print("building SelfAtten:{}".format(name))
-        return final_query
+        return final_query,weight_martix
     def build_model(self):
         # passage
         # as time-major
@@ -160,7 +160,7 @@ class model(object):
             self.global_step = tf.Variable(0, trainable=False)
 
 
-        aligned_question_embeding= self.SeqAtten(passage_inputs_embedded,query_inputs_embedded,self.passage_sequence_length,
+        aligned_question_embeding,self.seqmasked,self.beforemasked= self.SeqAtten(passage_inputs_embedded,query_inputs_embedded,self.passage_sequence_length,
                                             self.query_sequence_length,"q_p_alligned")
 
 
@@ -197,7 +197,7 @@ class model(object):
                                 sequence_length = self.query_sequence_length,
                                 dropout_output =self.config.keep_pro ,
                                 name= "query")
-            final_query = self.SelfAtten(question_outputs,self.query_sequence_length,name="self-atten")
+            final_query,self.selfAttenMask = self.SelfAtten(question_outputs,self.query_sequence_length,name="self-atten")
 
         with tf.name_scope('g') as scope:
 
@@ -210,8 +210,8 @@ class model(object):
         print("Training state :{}".format(self.config.is_training))
         if self.config.is_training is False :
             # I need to see probalities:
-            self.end_pro = self.p_We_q
-            self.start_pro = self.p_W_q
+            self.end_pro = tf.exp(self.p_We_q)
+            self.start_pro = tf.exp(self.p_W_q)
             print("In inference process")
             return
         with tf.name_scope("compute_loss") as scope:

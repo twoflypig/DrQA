@@ -35,7 +35,7 @@ vocab = dict(zip(vocab,vocab_index)) # vocab
 id_vocab = {v:k for k, v in vocab.items() }
 
 # Define reader
-reader  = infe_reader(args,vocab)
+reader  = infer_reader(args,vocab)
 args.src_vocab_size = vocab_size
 args.input_embedding_size = embedding_dim
 args.pos_vocab_size =  len(reader.pos_vocab)  # size of vocab
@@ -90,19 +90,24 @@ for step in range(Lenght):
 
         print(len(origin_passage))
 
-        passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch= \
-                          get_numpys(query_ls , passage_ls,passage_pos_ls,args.add_token_feature)
+        # passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch= \
+        #                   get_numpys(query_ls , passage_ls,passage_pos_ls,args.add_token_feature)
 
         result_buffer= []
         store_json_dict= {} # now data
         for i in range(len(passage_ls)):
+
+            passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch= \
+            get_numpys( [query_ls[i]] , [passage_ls[i]],[passage_pos_ls[i]],args.add_token_feature)
+            #print(passage_batch.shape)
+
             feed={
-              evaluate_model.passage_inputs:passage_batch[:,i].reshape((-1,1)),
-              evaluate_model.passage_sequence_length:[passage_length[i]],
-              evaluate_model.query_inputs: query_batch[:,i].reshape((-1,1)),
-              evaluate_model.query_sequence_length:[query_length[i]],
-              evaluate_model.binary_inputs:binary_batch[:,i].reshape((-1,1)),
-              evaluate_model.pos_passages_inputs:passage_pos_batch[:,i].reshape((-1,1))
+              evaluate_model.passage_inputs:passage_batch[:,0].reshape((-1,1)),
+              evaluate_model.passage_sequence_length:[passage_length[0]],
+              evaluate_model.query_inputs: query_batch[:,0].reshape((-1,1)),
+              evaluate_model.query_sequence_length:[query_length[0]],
+              evaluate_model.binary_inputs:binary_batch[:,0].reshape((-1,1)),
+              evaluate_model.pos_passages_inputs:passage_pos_batch[:,0].reshape((-1,1))
              }
             #print(feed[evaluate_model.pos_passages_inputs])
             #pre_s ,pre_e =sess.run([evaluate_model.start_pro,evaluate_model.end_pro],feed_dict=feed)

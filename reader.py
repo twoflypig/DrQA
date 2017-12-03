@@ -50,7 +50,7 @@ class Reader(object):
         vocab_index = range(len(vocab))
         vocab = dict(zip(vocab,vocab_index)) # vocab
         return vocab
-    def get_batch(self):
+    def get_batch(self,show_ori = False):
         """
         batch the data returned by next_batch
         return [batch_size,length]
@@ -60,16 +60,21 @@ class Reader(object):
         answer_ls  = []
         answer_p_s = []
         answer_p_e = []
+        ori_passage = []
+        ori_query   = []
         passage_pos_ls = []
 
         patched_index= 0
         while  patched_index < self.batch_size:
             # convert the batch return to id
             query , passage , answer ,answer_p  , passage_pos =  self.next_batch()
+
             # add </s> to the passage
             passage.append('</s>')
-
-            #logging.info("before id query:{},passage:{}".format(query,passage))
+            #return origin
+            if show_ori:
+                ori_passage.append(passage)
+                ori_query.append(query)
             #perform word2id
             query , passage  = self._batch2id( (query , passage ))
 
@@ -96,7 +101,10 @@ class Reader(object):
                     # I add </s> to th end of the passage so we can set None p to the end
                     answer_p_s.append(len(passage) -1)
                     answer_p_e.append(len(passage) -1)
-        return  batch_query_ls , passage_ls, answer_ls, answer_p_s, answer_p_e ,passage_pos_ls
+        if show_ori:
+            return  batch_query_ls , passage_ls, answer_ls, answer_p_s, answer_p_e ,passage_pos_ls,ori_passage,ori_query
+        else:
+            return batch_query_ls, passage_ls, answer_ls, answer_p_s, answer_p_e, passage_pos_ls
     def reset(self):
         self.question_index = 0
         self.line  = json.loads(self.data[self.question_index])
@@ -151,38 +159,10 @@ class Reader(object):
         pos_id =  [ self.pos_vocab.get(item) for item in ls]
         return pos_id
 
-class infe_reader(object):
-
-    def __init__(self , arg , vocab  ):
-        source_fp=codecs.open(arg.data_path ,'r','utf8')
-        # read  datas
-        self.data = source_fp.readlines()
-        # the whole length of data
-        self.length  = len(self.data)
-        # load vocab
-        self.vocab =  vocab
-        # the index of question
-        self.question_index = 0
-        # the index of passage
-        self.passage_index = 0
-
-        # load pos vocab
-        self.pos_vocab  = self._load_pos_vocab(arg.pos_vocab_path)
-
-        # store paramaters
-        self.config = arg
-
-    def _load_pos_vocab(self,filename):
-        # load pos vocab
-        vocab = []
-        with codecs.open(filename,'r','utf-8') as fp:
-            for line in fp:
-                vocab.append(line.strip())
-
-        vocab_index = range(len(vocab))
-        vocab = dict(zip(vocab,vocab_index)) # vocab
-        return vocab
-
+class infer_reader(Reader):
+    def __init__(self, arg , vocab ):
+        Reader.__init__(self, arg , vocab)
+        print("inference reader init")
     def get_batch(self):
         """
         return batched query, passage ,query_id , origin_possage, passage_pos
@@ -240,28 +220,3 @@ class infe_reader(object):
             self.question_index = 0
 
         return  batch_query_ls , passage_ls, query_id,origin_passage,passage_pos_ls
-
-    def reset(self):
-        self.question_index = 0
-        
-    def _word2id(self,sentence):
-        ids = []
-        unk_id = self.vocab['<unk>']
-        for character in sentence:
-            ids.append( self.vocab.get(character,unk_id) )
-        return ids
-    def _batch2id(self,pair):
-        """
-        pair: the list of  q,a,d
-        vocab:vocab
-        """
-        query_id,passage_id = [ self._word2id(item) for item in pair]
-        return  query_id,passage_id
-
-    def _pos2id(self,ls):
-        """
-        ls : the list of pos
-        return the list of ids
-        """
-        pos_id =  [ self.pos_vocab.get(item) for item in ls]
-        return pos_id

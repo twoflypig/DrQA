@@ -22,6 +22,6 @@ python train.py --vocab_path ../output/vocab --test train --data_path ../output/
      --keep_pro 0.7
 
 # test
-# python test.py --vocab_path ../output/vocab --test train --data_path ../output/train_add_answer --is_training True\
-#      --use_pretrain_vector  false --vector_path word-vector --num_units 128 --input_embedding_size 200 --batch_size 20\
+# python test.py --vocab_path ../output/vocab --test train --data_path ../output/train_add_answer --is_training True
+#      --use_pretrain_vector  false --vector_path word-vector --num_units 128 --input_embedding_size 200 --batch_size 20
 #      --keep_pro 0.7
