@@ -9,7 +9,9 @@ import os
 from ultize import *
 from hanziconv import HanziConv
 import argparse
-
+"""
+This is a file to pre-process the data
+"""
 
 logging.basicConfig()#level=logging.NOTSET)
 jieba.initialize()  # (optional)
@@ -20,6 +22,8 @@ parser.add_argument('--data_path',type= str ,
                     help='the origin data path')
 parser.add_argument('--aim_path', type= str,
                     help='the path of processed data ')
+parser.add_argument('--process_answer',type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
+                    help='a switch to to process answer ,set true when processing training data ')
 
 args = parser.parse_args()
 fp = codecs.open(args.data_path,"r","utf-8")
@@ -38,6 +42,7 @@ for index, item in enumerate(data):
         loaded['passages'][i]['passage_text'] = process_line(loaded['passages'][i]['passage_text'] ,cut=False)
    
     # write answer
-    loaded['answer'] = process_line(loaded['answer'] ,cut= False)
+    if args.process_answer:
+        loaded['answer'] = process_line(loaded['answer'] ,cut= False)
     pro_fp.write(json.dumps(loaded,ensure_ascii = False) +'\n')
 print("processed finished")

@@ -13,12 +13,14 @@ This is a tensorflow version using DrQA model from  Reading Wikipedia to answer 
 # Note:
 
 1. Where are NUM_TAG and EN_TAG used ?
-	In make_vocab.py and  reader.py . Firstly,Using jieba to cut down the sentece ,where numbers and english words will be seperated, then use a regex to match en and numbers  in return list and also replaced them with tags. So when you want to change tags ,you should firstly look at this two files. 
+  In make_vocab.py and  reader.py . Firstly,Using jieba to cut down the sentece ,where numbers and english words will be seperated, then use a regex to match en and numbers  in return list and also replaced them with tags. So when you want to change tags ,you should firstly look at this two files. 
 2. test.py is used to confirm what is right or wrong
 
 
 # Improvement:
 1. Try use beam search rather than taking the arvmax
+2. Use character embedding
+3. ​
 
 
 # Results 

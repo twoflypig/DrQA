@@ -1,6 +1,5 @@
 import argparse
 import tensorflow as tf
-from model import model
 from reader import *
 from ultize import *
 import numpy as np
@@ -117,25 +116,22 @@ for step in range(Lenght):
             e_p = np.argmax(pre_e[0])
             s_p_max = pre_s[0][s_p]#np.max(pre_s[0])
             e_p_max = pre_s[0][e_p]#np.max(pre_e[0])
-            if s_p <e_p and s_p +5 >e_p :#and s_p!= len(origin_passage[i])-1 :
+            if (s_p <e_p and s_p +5 >e_p) or args.show_self_define :#and s_p!= len(origin_passage[i])-1 :
 
-                
                 passage_split = origin_passage[i]
-                #print(passage_split)
-                #print(pre_s[0])
+
                 buffer_answer = "".join(passage_split[s_p:e_p]) 
 
                 max_pro = s_p_max*e_p_max
-                print("s_p:{},e_p:{},pro:{},query:{},answer:{},pasage len:{}".format(s_p,e_p,max_pro,id2word(query_ls[i],id_vocab),buffer_answer,len(passage_split)))
-                #print(buffer_answer)
-                result_buffer.append( (query_id_ls[0],buffer_answer,s_p,e_p,max_pro))
-                #print(id2word(query_ls[i],id_vocab) + '\t'+ id2word(passage_ls[i],id_vocab)+ buffer_answer +":" +str(s_p_max)+"\t"+ str(e_p_max))
-                #result_buffer.append(buffer_answer)
-                # result_fp.write(id2word(query_ls[i],id_vocab) + '\t'+ id2word(passage_ls[i],id_vocab)
-                #            + buffer_answer +":" +str(s_p_max)+"\t"+ str(e_p_max) +'\n')
-        if len(result_buffer):
+                print("s_p:{},e_p:{},pro:{},query:{},answer:{},pasage:{}".format(s_p,e_p,max_pro,id2word(query_ls[i],id_vocab),
+                    buffer_answer,
+                    passage_split if args.show_self_define else len(passage_split)))
 
-            line = max(result_buffer,key = lambda item:item[3])
+                result_buffer.append( (query_id_ls[0],buffer_answer,s_p,e_p,max_pro))
+
+
+        if len(result_buffer):
+            line = max(result_buffer,key = lambda item:item[4])
             print("In integration pro:{},finally chosing:{}".format(line[4],line[1]))
             result_list.append( line)
         else:
@@ -147,7 +143,7 @@ for step in range(Lenght):
         store_json_dict['query_id']  = int(query_id_ls[0])
         store_json_dict['query']   =  id2word(query_ls[0],id_vocab)
         store_json_dict['answer_ls'] = make_answer_dict(result_buffer)
-        #print("Wrtie to json:{}".format(store_json_dict))
+
         store_json_list.append( json.dumps(store_json_dict,ensure_ascii = False))
         
 end_time =time.time()

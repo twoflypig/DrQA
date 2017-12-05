@@ -1,13 +1,9 @@
 import argparse
 import tensorflow as tf
-from model import model
 from reader import *
 from ultize import *
 import numpy as np
-from collections import Counter
 import model.model_add_aligned as model_add_aligned
-import time
-import logging
 # the commandline parameters 
 from  parameter import args
 

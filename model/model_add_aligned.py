@@ -43,9 +43,15 @@ class model(object):
             return aligned_question_embeding: batch_size,length1,feature
         """
         with  tf.variable_scope( name , reuse=False) as scope:
-            alph_passage = tf.layers.dense(martrix_passage,martrix_passage.get_shape().as_list()[2],kernel_initializer =tf.random_uniform_initializer(-0.5, 0.5, seed=12),activation=tf.nn.relu,name='aligned_dense',reuse=None)
-            # shape of alph_question is [?,20,1]
-            alph_question = tf.layers.dense(matrix_query ,matrix_query.get_shape().as_list()[2],kernel_initializer =tf.random_uniform_initializer(-0.5, 0.5, seed=12),activation=tf.nn.relu,name='aligned_dense',reuse=True)
+            # TODO: Here we used reused needed to be valided
+            with tf.variable_scope("aligned_dense") :
+               alph_passage = tf.layers.dense(martrix_passage,martrix_passage.get_shape().as_list()[2],kernel_initializer =tf.random_uniform_initializer(-0.5, 0.5, seed=12),activation=tf.nn.relu)#,name='aligned_dense',reuse=None)
+      
+            with tf.variable_scope("aligned_dense", reuse=True):
+               # shape of alph_question is [?,20,1]
+               alph_question = tf.layers.dense(matrix_query ,matrix_query.get_shape().as_list()[2],kernel_initializer =tf.random_uniform_initializer(-0.5, 0.5, seed=12),activation=tf.nn.relu)#,name='aligned_dense',reuse=True)
+       
+
             # result:[batch_size,? ,?] the result of matmul between [20,?,1] and [20,1,?]
             # so dimension = 1 means passage pi , and simension =2 means question qi
             batch_martix = tf.matmul( tf.transpose(alph_passage,[1,0,2]) , tf.transpose(alph_question,[1,2,0]) )

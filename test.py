@@ -1,20 +1,17 @@
-import argparse
+
 import tensorflow as tf
-from model import model
 from reader import *
 from ultize import *
-import numpy as np
-from collections import Counter
 import model.model_add_aligned as model_add_aligned
-import time
 import logging
 # the commandline parameters 
 from  parameter import args
-
+import seaborn as sns; sns.set()
+import matplotlib.pyplot as plt
 logging.basicConfig(level=logging.INFO)
 
 
-args.batch_size = 12
+args.batch_size = 2
 
 # Read cha_vectors.bin
 if args.use_pretrain_vector is False:
@@ -80,27 +77,19 @@ for m_epoch in range(args.epoch):
 
         query_ls , passage_ls, answer_ls, answer_p_s, answer_p_e,passage_pos_ls,ori_pas,ori_query = reader.get_batch(True)
 
-       # logging.info("query_ls:{},passage_ls:{},answer_ls:{},answer_p_s:{},answer_p_e:{},passage_pos_ls:{}".format(
-
-       #        query_ls,passage_ls,answer_ls, answer_p_s,answer_p_e,passage_pos_ls))
         
         feed = set_dict(trainModel,query_ls , passage_ls, answer_p_s, answer_p_e,passage_pos_ls,add_token_feature = args.add_token_feature)
-        
-       # logging.info("feed.binary:{}".format(feed[trainModel.binary_inputs]))
+
 
         answer_one_hot = sess.run([trainModel.passage_logit_pro_start,trainModel.passage_logit_pro_end],feed_dict=feed) 
 
-        #logging.info("answer_one_hot:{},max_length:{}".format(answer_one_hot,max(feed[trainModel.passage_sequence_length])))
 
         toSee = [trainModel.p_We_q,trainModel.p_W_q,trainModel.seqmasked,trainModel.beforemasked,trainModel.selfAttenMask]
         
         p_We_q,p_W_q,masked,masked_before,selfAttenMask= sess.run(toSee,feed_dict=feed)
+        ax = sns.heatmap(selfAttenMask.reshape( (args.batch_size,-1)),annot=True, cmap="YlGnBu")
+        plt.show()
 
-        #debug_fp.write("".joint)
-        
-
-        #print()
-        print("p_We_q:{},p_W_q:{},masked shape:{},maksed value:{}".format(p_We_q,p_W_q,masked.shape,masked))
         # save summary
         exit(0)
     reader.reset()

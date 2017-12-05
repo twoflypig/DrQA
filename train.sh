@@ -9,7 +9,7 @@ rm -rf ../output
 mkdir ../output
 
 # delete some unrelated characters
-python toSimply.py --data_path ../input/data --aim_path ../output/train_Simply
+python toSimply.py --data_path ../input/data --aim_path ../output/train_Simply --process_answer True
 
 python make_vocab.py  --src_path ../output/train_Simply  --vocab_path ../output/vocab
 

@@ -45,11 +45,14 @@ parser.add_argument('--pos_vocab_size', type= int, default = 30,
 parser.add_argument('--add_token_feature', type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
                     help='add_token_feature to be Ture of False')
 # model version 
-parser.add_argument('--version', action='version', version='%(prog)s 1.13')
+parser.add_argument('--version', action='version', version='%(prog)s 1.14')
 
 # drop_out_pro
 parser.add_argument('--keep_pro', type= float, default = 0.7,
                     help='drop out probality')
+# Used in self-define data 
+parser.add_argument('--show_self_define',type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
+                    help='a switch to show inference information')
 args = parser.parse_args()
 
 with codecs.open("tag_vocab","r","utf8") as fp:
