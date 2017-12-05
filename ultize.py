@@ -113,7 +113,19 @@ def replace_fuse(sentence,tag_nn,tagnum,tagen):
     line = replace_numdotnum_withtag(line,tag_nn)
     line = replace_num_withtag(line , tagnum)
 
-    return line 
+    return line
+def get_diff_vocabs(vocab1,vocab2):
+    """
+    :param vocab1: the list of vocab
+    :param vocab2: the list of vocab
+    :return: the difference between two vocabs
+    """
+    One = set(vocab1)
+    Two = set(vocab2)
+    result = Two - One
+
+    return list(result)
+
 def make_answer_dict(id_answer_ls):
     """
     used in inference.py to record the answer we produce 

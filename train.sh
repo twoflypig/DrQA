@@ -11,7 +11,7 @@ mkdir ../output
 # delete some unrelated characters
 python toSimply.py --data_path ../input/data --aim_path ../output/train_Simply --process_answer True
 
-python make_vocab.py  --src_path ../output/train_Simply  --vocab_path ../output/vocab
+python make_vocab.py  --src_path ../output/train_Simply  --vocab_path ../output/vocab --add_answer True --add_endtag True
 
 # add answer
 python add_answer.py --src_path ../output/train_Simply --aim_path ../output/train_add_answer

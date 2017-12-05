@@ -146,18 +146,23 @@ class model(object):
             if self.config.use_pretrain_vector:
 
                 # load pre-trained vector
-
                 print("using pre-trained vector")
-                self.embedding_placeholder = tf.placeholder(tf.float32, [self.src_vocab_size, self.input_embedding_size])
-                embeddings = tf.Variable(tf.constant(0.0, shape=[self.src_vocab_size , self.input_embedding_size]),
+                self.embedding_placeholder = tf.placeholder(tf.float32, [self.config.pre_trained_embedding_length, self.input_embedding_size])
+                embeddings = tf.Variable(tf.constant(0.0, shape=[self.config.pre_trained_embedding_length , self.input_embedding_size]),
                                     trainable=True, name="W")
                 # embedding intial assgin op
                 self.embedding_init = embeddings.assign(self.embedding_placeholder)
             else:
                 print("using vocab vectos training with models")
-                embeddings = tf.get_variable('W',[self.src_vocab_size , self.input_embedding_size],
+                embeddings = tf.get_variable('W',[self.config.pre_trained_embedding_length , self.input_embedding_size],
                                                        initializer=tf.random_uniform_initializer(-0.2, 0.2, seed=123),
                                                         dtype=tf.float32)
+            if self.config.is_training is False:
+                print("Inference:contact unsee word embedding")
+                Unseembeddings = tf.get_variable('UnseeEmbedding',[ self.config.src_vocab_size - self.config.pre_trained_embedding_length , self.input_embedding_size],
+                                                       initializer=tf.random_uniform_initializer(-0.4, 0.4, seed=21),
+                                                        dtype=tf.float32,trainable= False)
+                embeddings = tf.concat([embeddings,Unseembeddings],axis=0)
 
             passage_inputs_embedded = tf.nn.embedding_lookup(embeddings, self.passage_inputs)
             query_inputs_embedded = tf.nn.embedding_lookup(embeddings, self.query_inputs)
@@ -170,7 +175,7 @@ class model(object):
                                             self.query_sequence_length,"q_p_alligned")
 
 
-        with tf.name_scope("passage_rnn") as scope:
+        with tf.name_scope("passage_rnn") :
 
             fuse_passage_encoding = tf.concat(  [passage_inputs_embedded ,tf.transpose(aligned_question_embeding ,[1,0,2]) ],axis =2 )
             

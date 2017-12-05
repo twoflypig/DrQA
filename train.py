@@ -28,6 +28,7 @@ id_vocab = {v:k for k, v in vocab.items() }
 # Define reader
 reader  = Reader(args,vocab)
 args.src_vocab_size = vocab_size
+args.pre_trained_embedding_length = vocab_size # fix the trained embedding size
 args.input_embedding_size = embedding_dim
 args.pos_vocab_size =  len(reader.pos_vocab)  # size of vocab
 

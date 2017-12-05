@@ -30,8 +30,12 @@ parser.add_argument('--vector_path', type= str, default = "../cha_vectors.bin",
 
 parser.add_argument('--result_path', type= str, default = "../output/result",
                     help='the path of result')
-parser.add_argument('--test', type= str, default = "inference",
-                    help='whether to check run ok')
+# used in inference
+parser.add_argument('--test_inference', type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
+                    help='whether to check inference run ok')
+parser.add_argument('--infer_vocab_path', type= str, default = None,
+                    help='the path of infer_vocab')
+
 parser.add_argument('--num_layer', type= int, default =3,
                     help='layers in biRNN')
 parser.add_argument('--epoch', type= int, default =10,

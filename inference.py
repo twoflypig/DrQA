@@ -13,31 +13,45 @@ from  parameter import args
 
 args.batch_size =1
 args.is_training = False
-args.test = "inference"
 
 
-# Read cha_vectors.bin
+# Read cha_vectors.bin or load vocab
 if args.use_pretrain_vector  is  False:
     vocab = loadvocab(args.vocab_path)
     vocab_size = len(vocab)
     embedding_dim = args.input_embedding_size 
-    print("load vocab")
+    print("load training vocab")
 else:    
     vocab,embd = loadWord2Vec(args.vector_path)
     vocab_size = len(vocab)
     embedding_dim = len(embd[0])  
-    print("load vector")  
- 
+    print("load vector")
 
-vocab_index = range(vocab_size)
-vocab = dict(zip(vocab,vocab_index)) # vocab
-id_vocab = {v:k for k, v in vocab.items() }
+args.pre_trained_embedding_length = vocab_size
+
+# load inference vocab
+infer_vocab = loadvocab(args.infer_vocab_path)
+infer_vocab_size = len(infer_vocab)
+print("load inference vocab")
+diff_vocab = get_diff_vocabs(vocab,infer_vocab)
+
+# Adding inference vocab to the src vocab
+vocab.extend(diff_vocab)
+vocab = dict(zip(vocab,range(len(vocab)))) # vocab
+id_vocab = {v:k for k, v in vocab.items()}
+
+# the embedding can be divided into two parts ,the known matrix and unknown matrix and the contact them
+
+
 
 # Define reader
 reader  = infer_reader(args,vocab)
-args.src_vocab_size = vocab_size
+args.src_vocab_size = len(vocab)
 args.input_embedding_size = embedding_dim
+
 args.pos_vocab_size =  len(reader.pos_vocab)  # size of vocab
+
+
 
 evaluate_model = model_add_aligned.model(args)
 evaluate_model.build_model()
@@ -73,10 +87,11 @@ result_list= []
 unkown_counts = 0
 result_fp =  codecs.open(args.result_path,'w','utf-8')
 start_time = time.time()
-if args.test == "test":
-    print("infernece testing...")
-    Lenght =  10
+if args.test_inference is True:
+    Lenght = 10
+    print("Infernece testing length:{}".format())
 else:
+    print("Starting inference")
     Lenght = reader.length
 
 store_json_list= [] # result list to write
