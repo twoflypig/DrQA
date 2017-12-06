@@ -1,7 +1,7 @@
 #coding=utf-8
 import codecs
 import numpy as np
-import json
+import tensorflow as tf
 import re
 import jieba
 import jieba.posseg as pseg
@@ -114,6 +114,22 @@ def replace_fuse(sentence,tag_nn,tagnum,tagen):
     line = replace_num_withtag(line , tagnum)
 
     return line
+
+def optimistic_restore_vars(model_checkpoint_path):
+    reader = tf.train.NewCheckpointReader(model_checkpoint_path)
+    saved_shapes = reader.get_variable_to_shape_map()
+    var_names = sorted([(var.name, var.name.split(':')[0]) for var in tf.global_variables()
+                        if var.name.split(':')[0] in saved_shapes])
+    restore_vars = []
+    name2var = dict(zip(map(lambda x:x.name.split(':')[0], tf.global_variables()), tf.global_variables()))
+    with tf.variable_scope('', reuse=True):
+        for var_name, saved_var_name in var_names:
+            curr_var = name2var[saved_var_name]
+            var_shape = curr_var.get_shape().as_list()
+            if var_shape == saved_shapes[saved_var_name]:
+                restore_vars.append(curr_var)
+    return restore_vars
+
 def get_diff_vocabs(vocab1,vocab2):
     """
     :param vocab1: the list of vocab

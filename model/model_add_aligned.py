@@ -159,8 +159,11 @@ class model(object):
                                                         dtype=tf.float32)
             if self.config.is_training is False:
                 print("Inference:contact unsee word embedding")
-                Unseembeddings = tf.get_variable('UnseeEmbedding',[ self.config.src_vocab_size - self.config.pre_trained_embedding_length , self.input_embedding_size],
-                                                       initializer=tf.random_uniform_initializer(-0.4, 0.4, seed=21),
+                # Unseembeddings = tf.get_variable('UnseeEmbedding',[ self.config.src_vocab_size - self.config.pre_trained_embedding_length , self.input_embedding_size],
+                #                                        initializer=tf.random_uniform_initializer(-0.4, 0.4, seed=21),
+                #                                         dtype=tf.float32,trainable= False)
+                Unseembeddings = tf.Variable(tf.truncated_normal([ self.config.src_vocab_size - self.config.pre_trained_embedding_length, self.input_embedding_size],
+                                                              stddev=0.1),
                                                         dtype=tf.float32,trainable= False)
                 embeddings = tf.concat([embeddings,Unseembeddings],axis=0)
 

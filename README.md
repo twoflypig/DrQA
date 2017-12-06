@@ -27,6 +27,7 @@ This is a tensorflow version using DrQA model from  Reading Wikipedia to answer 
 
 ​	on sougou qa set , word-level are 36% ac after 10 epochs
 
+In Dec 6, model can achieve 47% ac after 20 epochs
 formate should like this 
 
 ```

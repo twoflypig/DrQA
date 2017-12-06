@@ -6,7 +6,7 @@ import codecs
 import argparse
 from ultize import *
 from collections import Counter
-
+import  json
 parser = argparse.ArgumentParser(description='produce answer and passage vocab.')
 
 parser.add_argument('--src_path',type= str ,default = "None",
@@ -15,13 +15,12 @@ parser.add_argument('--vocab_path', type= str, default = "None",
                     help='the path of answer and passage vocab')
 parser.add_argument('--add_answer', type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= True,
                     help='whether to add answer vocab')
-parser.add_argument('--add_endtag', type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= True,
-                    help='whether to add </s> and <unk>,used in inference')
+
 Englist_TAG = 'EN'
 Number_TAG = 'NUM'
 
 
-def save(path,word_set,add_tag):
+def save(path,word_set):
     """
     save vocab to disk
     """
@@ -30,12 +29,9 @@ def save(path,word_set,add_tag):
         # attention : here we add a </s> to indicate the end of sentence
         for item in word_set:
             fp.write(item[0] + '\n' )  # the input word_set is a tuple (word,counts)
-        if add_tag:
-            print("Adding </s> and <unk> to the vocab")
-            fp.write('</s>' + '\n')
-            fp.write('<unk>' +'\n') # in case there are no see words
-        else:
-            print("Not adding </s> and <unk> to the vocab")
+        print("Adding </s> and <unk> to the vocab")
+        fp.write('</s>' + '\n')
+        fp.write('<unk>' +'\n') # in case there are no see words
 
 
 def get_vocab_list(path,add_answer ):
@@ -111,4 +107,4 @@ words_result = get_vocab_list(args.src_path,args.add_answer)
 
 print("vocab size:{}".format(len(words_result)))
 
-save(args.vocab_path , words_result, args.add_endtag)
+save(args.vocab_path , words_result)

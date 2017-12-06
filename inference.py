@@ -37,6 +37,7 @@ diff_vocab = get_diff_vocabs(vocab,infer_vocab)
 
 # Adding inference vocab to the src vocab
 vocab.extend(diff_vocab)
+print("extend vocab size:{}".format(len(diff_vocab)))
 vocab = dict(zip(vocab,range(len(vocab)))) # vocab
 id_vocab = {v:k for k, v in vocab.items()}
 
@@ -61,9 +62,11 @@ evaluate_model.build_model()
 #                 intra_op_parallelism_threads = 10)
 
 sess = tf.Session()#config=para_config)
-saver = tf.train.Saver()
-ckpt_state = tf.train.get_checkpoint_state(args.restore_path)
 
+# Note: This will ignore the unsee variables when restoring the models
+sess.run(tf.global_variables_initializer())
+ckpt_state = tf.train.get_checkpoint_state(args.restore_path)
+saver = tf.train.Saver(var_list=optimistic_restore_vars(ckpt_state.model_checkpoint_path) if ckpt_state else None)
 
 if ckpt_state == None:
     print("Cant't load model")
