@@ -8,7 +8,28 @@ This is a tensorflow version using DrQA model from  Reading Wikipedia to answer 
 
 ​	tensorflow :1.3
 
-​	hanziconv
+# Usage
+## use pre-trained word-vector
+If you want to be use pre-trained word-vector,make sure you have a model trained by gensim named text.model in ../../text.model .
+then run 
+```
+bash make_vector.sh
+```
+This command will firstly make vocab from the training data,and then search text.model if the word can be found there.and the produce a vector named word-vector.
+Next for training data, you should run
+```
+bash train.sh
+```
+After training ,you should run 
+Next for training data, you should run
+```
+bash evaluate.sh
+```
+## the meaning of parameters
+Here, we will explain the function of specific parameter.
+    -- use_pretrain_vector . whether to use pre-trained word-vector,you should set use_pretrain_vector to be true and run make_vector.sh before training 
+    -- pretrain_vector_split . whether to use fine-tuned word-vector,you should set use_pretrain_vector to be true and run make_vector.sh before training
+     
 
 # Note:
 
@@ -25,9 +46,12 @@ This is a tensorflow version using DrQA model from  Reading Wikipedia to answer 
 
 # Results 
 
-​	on sougou qa set , word-level are 36% ac after 10 epochs
+on sougou qa set , word-level are 36% ac after 10 epochs
 
 In Dec 6, model can achieve 47% ac after 20 epochs
+
+In Dec 8, model can achieve 54% ac .
+
 formate should like this 
 
 ```
