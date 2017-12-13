@@ -2,7 +2,7 @@ import codecs
 import argparse
 import json
 import re
-from ultize import *
+from functions import *
 
 
 parser = argparse.ArgumentParser(description='add answer_point to the data for training model.')
@@ -103,10 +103,6 @@ for index,item in  enumerate(data):
                 exit(0)
 
         line['passages'][i]['answer_point']  = result
-
-
-        #print("index:{},sentence:{}'\n'cut_list:{}'\n'sequence:{}'\n'answer_find:{}"
-        #                .format(index,sequence,list_words,sequence,sequence[result[0]:result[1]] if result else None   ))
 
         #find the result
         if result:

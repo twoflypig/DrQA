@@ -1,12 +1,11 @@
+import seaborn as sns;
 
-import tensorflow as tf
-from reader import *
-from ultize import *
 import model.model_add_aligned as model_add_aligned
-import logging
-# the commandline parameters 
-from  parameter import args
-import seaborn as sns; sns.set()
+# the commandline parameters
+from  function.parameter import args
+from function.reader import *
+
+sns.set()
 import matplotlib.pyplot as plt
 logging.basicConfig(level=logging.INFO)
 

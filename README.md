@@ -8,7 +8,26 @@ This is a tensorflow version using DrQA model from  Reading Wikipedia to answer 
 
 ​	tensorflow :1.3
 
+# Data Form
+
+A line is a json object, the form of json is like followings:
+
+answer
+
+passages:[]
+
+​	'passage_id'
+
+​	'passage_text'
+
+​	'answer_p'
+
+query:
+
+query_id:
+
 # Usage
+
 ## use pre-trained word-vector
 If you want to be use pre-trained word-vector,make sure you have a model trained by gensim named text.model in ../../text.model .
 then run 
@@ -29,7 +48,7 @@ bash evaluate.sh
 Here, we will explain the function of specific parameter.
     -- use_pretrain_vector . whether to use pre-trained word-vector,you should set use_pretrain_vector to be true and run make_vector.sh before training 
     -- pretrain_vector_split . whether to use fine-tuned word-vector,you should set use_pretrain_vector to be true and run make_vector.sh before training
-     
+
 
 # Note:
 
@@ -41,7 +60,7 @@ Here, we will explain the function of specific parameter.
 # Improvement:
 1. Try use beam search rather than taking the arvmax
 2. Use character embedding
-3. ​
+3. ​I need to delete pos tag 
 
 
 # Results 

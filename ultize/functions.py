@@ -222,7 +222,7 @@ def cut_sentence(sentence,cut = False):
 def token_pos(sentence , use_pos = True):
     """
     if use_pos is True: return pos , else return empty pos
-    input: a strng
+    input: a list of words
     return tokenize ,part of speech ,
     attention: the result of tokenize may not same as the result of lcut 
     """
@@ -238,11 +238,25 @@ def token_pos(sentence , use_pos = True):
 
         return words_ls,pos_ls
     else:
-        words_ls  = cut_sentence(sentence ,cut = True)
+        words_ls  = sentence.split()
 
         # attention: here end should an intance of pos_vocab
 
         return words_ls, ['end']*len(words_ls)
+
+def save_vocab(path,word_set,add_flag =True):
+    """
+    save vocab to disk
+    """
+    with  codecs.open(path,'w','utf-8') as fp:
+
+        # attention : here we add a </s> to indicate the end of sentence
+        for item in word_set:
+            fp.write(item[0] + '\n' )  # the input word_set is a tuple (word,counts)
+        if add_flag:
+            print("Adding </s> and <unk> to the vocab")
+            fp.write('</s>' + '\n')
+            fp.write('<unk>' +'\n') # in case there are no see words
 
 
 def loadWord2Vec(filename):
@@ -272,7 +286,10 @@ def loadWord2Vec(filename):
     fr.close()
     return vocab,buffer_vector
 
+
 def loadvocab(filename):
+
+
     vocab= []
     with codecs.open(filename,'r','utf-8') as fp:
         for line in fp:
@@ -297,12 +314,6 @@ def id2word(sentence, id_vocab):
     for p_id in sentence:
         ids.append( id_vocab.get(p_id,"unk") )
     return " ".join(ids)
-def batch2id(pair,vocab):
-    """
-    pair: the list of  q,a,d
-    vocab:vocab
-    """
-    result = [ word2id(item,vocab) for item in pair]
 
     return result
 def batchlize(inputs, max_sequence_length=None):
@@ -363,6 +374,26 @@ def check_exis_question(passage_ls,query_ls):
         binary_ls.append(binary_per)
     return batchlize(binary_ls)
 
+
+def pad_to_length(max_length, query_ls , passage_ls,passage_pos_ls):
+    """
+    the Input are all
+    :param max_length:
+    :param query_ls:
+    :param passage_ls:
+    :param query_id_ls:
+    :param origin_passage:
+    :return:  query_ls , passage_ls, query_id_ls,origin_passage
+    """
+    true_length = len(query_ls)
+    iter_index = true_length
+    while iter_index < max_length:
+        query_ls.append([0])
+        passage_ls.append([0])
+        passage_pos_ls.append([0])
+        iter_index +=1
+    return true_length,query_ls , passage_ls, passage_pos_ls
+
 # feed the return numpy array to dict
 def set_dict(model, query_ls , passage_ls, answer_p_s, answer_p_e,passage_pos_ls,add_token_feature = False):
     
@@ -411,3 +442,5 @@ def get_numpys(query_ls , passage_ls,passage_pos_ls,add_token_feature = False):
         passage_pos_batch = np.zeros_like(passage_pos_batch)
 
     return  passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch
+
+# def load_vocab_or_vector()

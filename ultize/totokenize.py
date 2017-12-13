@@ -1,9 +1,6 @@
 import json
 import codecs
-import jieba
-import jieba.posseg
-import jieba.analyse
-from ultize import *
+from  functions import *
 import argparse
 
 
@@ -25,11 +22,11 @@ for index, item in enumerate(data):
     # read original data
     loaded = json.loads(item)
     # write question
-    loaded['query'] =  " ".join(process_line(loaded['query'],cut=True))
+    loaded['query'] =  " ".join(cut_sentence(loaded['query'],cut=True))
 
     for i in range(len(loaded['passages'])):
         # write document
-        loaded['passages'][i]['passage_text'] = " ".join(process_line(loaded['passages'][i]['passage_text'] ,cut=True))
+        loaded['passages'][i]['passage_text'] = " ".join(cut_sentence(loaded['passages'][i]['passage_text'] ,cut=True))
     # write answer
     pro_fp.write(json.dumps(loaded,ensure_ascii = False) +'\n')
 print("processed finished")

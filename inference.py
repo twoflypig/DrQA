@@ -1,55 +1,55 @@
-import argparse
-import tensorflow as tf
-from reader import *
-from ultize import *
-import numpy as np
-from collections import Counter
-import model.model_add_aligned as model_add_aligned
 import time
-import logging
 
-# the commandline parameters 
-from  parameter import args
+from  ultize.parameter import args
 
-args.batch_size =1
+import model.model_add_aligned as model_add_aligned
+from ultize.reader import *
+from ultize.functions import *
+# the max_batch_size is 10
+args.batch_size =10
 args.is_training = False
 
 
-# Read cha_vectors.bin or load vocab
-if args.use_pretrain_vector  is  False:
+# Read cha_vectors.bin
+if args.use_pretrain_vector is False:
     vocab = loadvocab(args.vocab_path)
     vocab_size = len(vocab)
-    embedding_dim = args.input_embedding_size 
-    print("load training vocab")
-else:    
-    vocab,embd = loadWord2Vec(args.vector_path)
-    vocab_size = len(vocab)
-    embedding_dim = len(embd[0])  
-    print("load vector")
+    embedding_dim = args.input_embedding_size
+    print("load vocab")
+else:
+    if args.pretrain_vector_split is False:
+        vocab,embd = loadWord2Vec(args.vector_path)
+        vocab_size = len(vocab)
+        embedding_dim = len(embd[0])
+        print("load vector")
+    else:
+        vocab,trainable_embd = loadWord2Vec(args.vector_path+'-trainable')
+        vocab2, fixed_embd = loadWord2Vec(args.vector_path + '-fixed')
+        # adding vocab size parameter
+        args.fixed_vocab_size =len(vocab2)
+        args.trainable_vocab_size = len(vocab)
+        vocab.extend(vocab2) # because vocab is the big vocab
+        embedding_dim = len(fixed_embd[0])
+        vocab_size = len(vocab)
+        print("load spliting vector")
 
-args.pre_trained_embedding_length = vocab_size
 
 # load inference vocab
 infer_vocab = loadvocab(args.infer_vocab_path)
 infer_vocab_size = len(infer_vocab)
 print("load inference vocab")
 diff_vocab = get_diff_vocabs(vocab,infer_vocab)
-
-# Adding inference vocab to the src vocab
-vocab.extend(diff_vocab)
+vocab.extend(diff_vocab)# Adding inference vocab to the src vocab
 print("extend vocab size:{}".format(len(diff_vocab)))
 vocab = dict(zip(vocab,range(len(vocab)))) # vocab
 id_vocab = {v:k for k, v in vocab.items()}
-
-# the embedding can be divided into two parts ,the known matrix and unknown matrix and the contact them
-
 
 
 # Define reader
 reader  = infer_reader(args,vocab)
 args.src_vocab_size = len(vocab)
+args.pre_trained_embedding_length = len(vocab) - len(diff_vocab) # fix the trained embedding size
 args.input_embedding_size = embedding_dim
-
 args.pos_vocab_size =  len(reader.pos_vocab)  # size of vocab
 
 
@@ -57,11 +57,8 @@ args.pos_vocab_size =  len(reader.pos_vocab)  # size of vocab
 evaluate_model = model_add_aligned.model(args)
 evaluate_model.build_model()
 
-# para_config = tf.ConfigProto(
-#                 inter_op_parallelism_threads = 2,
-#                 intra_op_parallelism_threads = 10)
 
-sess = tf.Session()#config=para_config)
+sess = tf.Session()
 
 # Note: This will ignore the unsee variables when restoring the models
 sess.run(tf.global_variables_initializer())
@@ -74,6 +71,13 @@ if ckpt_state == None:
 else:
     try:
         saver.restore(sess, ckpt_state.model_checkpoint_path)
+        # load embedding
+        if args.use_pretrain_vector:
+            if args.pretrain_vector_split is False:
+                sess.run(evaluate_model.embedding_init, feed_dict={evaluate_model.embedding_placeholder: embd})
+            else:
+                sess.run(evaluate_model.embedding_init, feed_dict={evaluate_model.trainable_embed_placeholder: trainable_embd,
+                                                                   evaluate_model.fixed_embed_placeholder: fixed_embd})
         print("restor model successed")
     except:
         print("loading error.")
@@ -105,35 +109,31 @@ for step in range(Lenght):
 
         query_ls , passage_ls,query_id_ls,origin_passage,passage_pos_ls = reader.get_batch()
 
-        print(len(origin_passage))
+        true_length ,query_ls, passage_ls ,passage_pos_ls= pad_to_length(args.batch_size,query_ls , passage_ls,passage_pos_ls)
+        print(true_length)
 
-        # passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch= \
-        #                   get_numpys(query_ls , passage_ls,passage_pos_ls,args.add_token_feature)
+        passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch= \
+                          get_numpys(query_ls , passage_ls,passage_pos_ls,args.add_token_feature)
+
+        feed={
+          evaluate_model.passage_inputs:passage_batch,
+          evaluate_model.passage_sequence_length:passage_length,
+          evaluate_model.query_inputs: query_batch,
+          evaluate_model.query_sequence_length:query_length,
+          evaluate_model.binary_inputs:binary_batch,
+          evaluate_model.pos_passages_inputs:passage_pos_batch
+         }
+
+        pre_s ,pre_e =sess.run([evaluate_model.start_pro,evaluate_model.end_pro],feed_dict=feed)
+
 
         result_buffer= []
         store_json_dict= {} # now data
-        for i in range(len(passage_ls)):
-
-            passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch= \
-            get_numpys( [query_ls[i]] , [passage_ls[i]],[passage_pos_ls[i]],args.add_token_feature)
-            #print(passage_batch.shape)
-
-            feed={
-              evaluate_model.passage_inputs:passage_batch[:,0].reshape((-1,1)),
-              evaluate_model.passage_sequence_length:[passage_length[0]],
-              evaluate_model.query_inputs: query_batch[:,0].reshape((-1,1)),
-              evaluate_model.query_sequence_length:[query_length[0]],
-              evaluate_model.binary_inputs:binary_batch[:,0].reshape((-1,1)),
-              evaluate_model.pos_passages_inputs:passage_pos_batch[:,0].reshape((-1,1))
-             }
-            #print(feed[evaluate_model.pos_passages_inputs])
-            #pre_s ,pre_e =sess.run([evaluate_model.start_pro,evaluate_model.end_pro],feed_dict=feed)
-            #we use theunnormalized exponential and take argmax over all considered paragraph spans for our ﬁnal prediction
-            pre_s ,pre_e =sess.run([evaluate_model.start_pro,evaluate_model.end_pro],feed_dict=feed)
-            s_p = np.argmax(pre_s[0])
-            e_p = np.argmax(pre_e[0])
-            s_p_max = pre_s[0][s_p]#np.max(pre_s[0])
-            e_p_max = pre_s[0][e_p]#np.max(pre_e[0])
+        for i in range(true_length):
+            s_p = np.argmax(pre_s[i])
+            e_p = np.argmax(pre_e[i])
+            s_p_max = pre_s[i][s_p]#np.max(pre_s[0])
+            e_p_max = pre_s[i][e_p]#np.max(pre_e[0])
             if (s_p <e_p and s_p +5 >e_p) or args.show_self_define :#and s_p!= len(origin_passage[i])-1 :
 
                 passage_split = origin_passage[i]

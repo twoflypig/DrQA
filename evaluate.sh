@@ -3,15 +3,14 @@
 # secondly,tokenize the passages
 # thirdly, sent to model to process
 
-python toSimply.py  --data_path ../input/valid --aim_path ../output/valid_pred
 
-# produce the valid vocab
-
-python make_vocab.py --add_answer False --src_path ../output/valid_pred --vocab_path ../output/infer_vocab
-
-#python totokenize.py --data_path ../output/valid_pred --aim_path ../output/valid_tokenize
-
-# in inference.py --is_training  default is false
-python inference.py --vocab_path ../output/vocab --infer_vocab_path ../output/infer_vocab  --test_inference False  --data_path ../output/valid_pred \
-	--use_pretrain_vector  false --vector_path word-vector --num_units 128 --input_embedding_size 200\
+# Step1:delete some unrelated characters
+python ./ultize/toSimply.py  --data_path ../input/valid --aim_path ../output/valid_pred
+# Step2: produce vocab
+python ./ultize/make_vocab.py --add_answer False --src_path ../output/valid_pred --vocab_path ../output/infer_vocab
+# Step3: tokenize files
+python ./ultize/totokenize.py --data_path ../output/valid_pred --aim_path ../output/valid_tokenize
+# Step4: inference process
+python inference.py --vocab_path ../output/vocab --infer_vocab_path ../output/infer_vocab  --test_inference False  --data_path ../output/valid_tokenize \
+	--use_pretrain_vector  true --pretrain_vector_split true  --vector_path word-vector  --num_units 128 --input_embedding_size 200\
 	   --keep_pro 1

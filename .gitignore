@@ -11,3 +11,6 @@ word-vector
 __pycache__ 
 nohup.out
 *.ipynb
+*.xml
+word-vector-fixed
+word-vector-trainable

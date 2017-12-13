@@ -6,7 +6,7 @@ import jieba
 import jieba.analyse
 import logging
 import os
-from ultize import *
+from functions import  *
 from hanziconv import HanziConv
 import argparse
 """

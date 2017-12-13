@@ -6,9 +6,16 @@ import json
 import codecs
 import jieba
 from collections import Counter
+import argparse
+parser = argparse.ArgumentParser(description='parameters.')
+
+parser.add_argument('--src_path', type= str, default = "../../output/infer_answer.json",
+                    help='the path of answers to be ranked ')
+
+args = parser.parse_args()
 
 result_list=[]
-with codecs.open("../output/infer_answer.json","r","utf8") as fp:
+with codecs.open(args.src_path,"r","utf8") as fp:
     for line in fp:
         line = json.loads(line.strip())
         result_true = []
@@ -45,6 +52,6 @@ with codecs.open("../output/infer_answer.json","r","utf8") as fp:
         result_list.append((line['query_id'],answer_tuple))
 
 
-with codecs.open("../output/result2","w","utf8") as fp:
+with codecs.open(args.src_path+str(2),"w","utf8") as fp:
     for line in result_list:
         fp.write( str(line[0])+'\t'+line[1]+'\n')

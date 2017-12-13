@@ -1,6 +1,8 @@
+import sys
+
 import json
 import codecs
-from ultize import *
+from .functions import *
 import logging
 
 #logging.basicConfig(level=logging.NOTSET)
@@ -34,7 +36,7 @@ class Reader(object):
                 if len(line[i]):
                     self.num_examples +=1
         # load pos vocab
-        self.pos_vocab  = self._load_pos_vocab(config.pos_vocab_path)
+        self.pos_vocab  ={'end':0,'V':1} #self._load_pos_vocab(config.pos_vocab_path)
 
         self.config = config # store configs
 
@@ -124,7 +126,7 @@ class Reader(object):
         passage = check_nunber_en(passage,tagnum = self.config.NUM_TAG,tagen=self.config.EN_TAG)
         #print(passage)
         # answer
-        answer   =    cut_sentence (self.line['answer'] ,cut = False)
+        answer   =   self.line['answer'].split()
         # answer_point
         answer_p  =  self.line['passages'][self.passage_index]['answer_point']
 

@@ -1,12 +1,7 @@
-import argparse
-import tensorflow as tf
-from reader import *
-from ultize import *
-import numpy as np
 import model.model_add_aligned as model_add_aligned
-# the commandline parameters 
-from  parameter import args
-
+from  ultize.parameter import args
+from ultize.reader import *
+from ultize.functions import *
 #logging.basicConfig(level=logging.NOTSET)
 
 # Read cha_vectors.bin
@@ -15,20 +10,31 @@ if args.use_pretrain_vector is False:
     vocab_size = len(vocab)
     embedding_dim = args.input_embedding_size 
     print("load vocab")
-else:    
-    vocab,embd = loadWord2Vec(args.vector_path)
-    vocab_size = len(vocab)
-    embedding_dim = len(embd[0])  
-    print("load vector")  
+else:
+    if args.pretrain_vector_split is False:
+        vocab,embd = loadWord2Vec(args.vector_path)
+        vocab_size = len(vocab)
+        embedding_dim = len(embd[0])
+        print("load vector")
+    else:
+        vocab,trainable_embd = loadWord2Vec(args.vector_path+'-trainable')
+        vocab2, fixed_embd = loadWord2Vec(args.vector_path + '-fixed')
+        # adding vocab size parameter
+        args.fixed_vocab_size =len(vocab2)
+        args.trainable_vocab_size = len(vocab)
+        vocab.extend(vocab2) # because vocab is the big vocab
+        embedding_dim = len(fixed_embd[0])
+        vocab_size = len(vocab)
+        print("load spliting vector")
 
-vocab_index = range(vocab_size)
-vocab = dict(zip(vocab,vocab_index)) # vocab
+# specific vocab size
+vocab = dict(zip(vocab,range(len(vocab)))) # vocab
 id_vocab = {v:k for k, v in vocab.items() }
 
 # Define reader
 reader  = Reader(args,vocab)
 args.src_vocab_size = vocab_size
-args.pre_trained_embedding_length = vocab_size # fix the trained embedding size
+args.pre_trained_embedding_length = len(vocab) # fix the trained embedding size
 args.input_embedding_size = embedding_dim
 args.pos_vocab_size =  len(reader.pos_vocab)  # size of vocab
 
@@ -36,9 +42,6 @@ args.pos_vocab_size =  len(reader.pos_vocab)  # size of vocab
 trainModel = model_add_aligned.model(args)
 trainModel.build_model()
 
-# para_config = tf.ConfigProto(
-#                 inter_op_parallelism_threads = 2,
-#                 intra_op_parallelism_threads = 10)
 
 sess = tf.Session()#config=para_config)
 saver = tf.train.Saver()
@@ -54,7 +57,11 @@ if ckpt_state == None:
     sess.run(tf.global_variables_initializer())
     # load embedding
     if args.use_pretrain_vector:
-        sess.run(trainModel.embedding_init, feed_dict={trainModel.embedding_placeholder: embd})
+        if args.pretrain_vector_split is False:
+            sess.run(trainModel.embedding_init, feed_dict={trainModel.embedding_placeholder: embd})
+        else:
+            sess.run(trainModel.embedding_init, feed_dict={trainModel.trainable_embed_placeholder: trainable_embd,trainModel.fixed_embed_placeholder: fixed_embd})
+
 else:
     try:
         saver.restore(sess, ckpt_state.model_checkpoint_path)
@@ -87,7 +94,7 @@ for m_epoch in range(args.epoch):
         per_loss_end    += loss_end
         
         # save summary
-        if step % 100 ==0:
+        if step*args.batch_size % 100 ==0:
             print("iterator: {} ，loss_start is :{} , loss_end is:{}".format(reader.question_index, per_loss_start /100,per_loss_end/100 ))
             writer.add_summary(summary_re,global_step = trainModel.global_step.eval(session = sess))
             per_loss_start = 0
@@ -109,7 +116,7 @@ for m_epoch in range(args.epoch):
                     e_p,
                     len(passage_ls[0])))
                 #print("start_martix:{},end_martix:{}".format(pre_s[0],pre_e[0]))
-        if step%1000 == 0:
+        if step*args.batch_size %1000 == 0:
             saver.save(sess,args.restore_path,global_step = trainModel.global_step.eval(session = sess))
     reader.reset()
 

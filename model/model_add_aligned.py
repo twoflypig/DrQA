@@ -19,10 +19,14 @@ class model(object):
             with  tf.variable_scope( name +str(i), reuse=False) as scope:
                 
                 if dropout_output < 1:
-                    output = tf.nn.dropout(output,dropout_output) 
+                    output = tf.nn.dropout(output,dropout_output)
+                if i == 0 :
+                    output_size =  hidden_units
+                else:
+                    output_size =  2 * hidden_units
 
-                forward_cell = tf.contrib.rnn.LSTMCell(hidden_units)
-                backward_cell = tf.contrib.rnn.LSTMCell(hidden_units)
+                forward_cell = tf.contrib.rnn.LSTMCell(output_size)
+                backward_cell = tf.contrib.rnn.LSTMCell(output_size)
 
                 output, _states = tf.nn.bidirectional_dynamic_rnn(forward_cell, backward_cell, output,
                                                 sequence_length=sequence_length, time_major=True,dtype = tf.float32)
@@ -56,10 +60,6 @@ class model(object):
             # so dimension = 1 means passage pi , and simension =2 means question qi
             batch_martix = tf.matmul( tf.transpose(alph_passage,[1,0,2]) , tf.transpose(alph_question,[1,2,0]) )
 
-            # input query_sequence_length : [batch_size,]
-            # input passage_sequence_length : [batch_size,]
-            # the result of sequence_mask shape: batch,passage_length,query_length
-            # returned masked shape [batch,passage_length,query_length]
             sequence_mask=  tf.tile(tf.expand_dims(tf.sequence_mask(matrix_query_length),axis=1),[1,tf.reduce_max( tf.reshape(martrix_passage_length,(-1,1))),1])
 
             sequence_ones = tf.ones_like(sequence_mask,dtype=tf.float32)
@@ -67,8 +67,7 @@ class model(object):
             sequence_infi = sequence_ones * (-float('inf'))
 
             masked = tf.where(sequence_mask,batch_martix,sequence_infi)
-            # apply softmax ,dim default is -1 ,operates on the last dimension the batch_martix
-            #shape is [batch_size,?,?]
+
             batch_softmax_martix = tf.nn.softmax(masked)
             #[20,?,200] =  [20,?,?] x [20,?,200]
             aligned_question_embeding=  tf.matmul(batch_softmax_martix, tf.transpose(matrix_query,[1,0,2]) )    
@@ -134,24 +133,37 @@ class model(object):
             self.passage_end_pos =  tf.placeholder(shape=([self.batch_size]), dtype=tf.int32, name='passage_end_pos')
             self.passage_logit_pro_start =tf.one_hot(self.passage_start_pos, depth= tf.reduce_max(self.passage_sequence_length) )     #tf.placeholder(shape=(1, passage_max), dtype=tf.int32, name='self.passage_logit_pro_start')
             self.passage_logit_pro_end = tf.one_hot(self.passage_end_pos,    depth= tf.reduce_max(self.passage_sequence_length) )  #tf.placeholder(shape=(1, passage_max), dtype=tf.int32, name='self.passage_logit_pro_end')
-             #input is (nums,batch_sizes) result should be (?, 20, 401) (nums,batch_size,deeps)
 
             self.pos_passages_inputs = tf.placeholder(shape=(None,self.batch_size), dtype=tf.int32, name='pos_passages_vector')
-            #input is (nums,batch_sizes) result should be (?, 20, 401) (nums,batch_size,deeps)
+
             passages_pos_vectors = tf.one_hot(tf.transpose(self.pos_passages_inputs,[1,0]),depth = self.config.pos_vocab_size,axis = -1)
             
             if self.config.add_token_feature:
                  print("passage_pos_vecots shape:{}".format(passages_pos_vectors.shape))    
-            # embedding
-            if self.config.use_pretrain_vector:
 
+            if self.config.use_pretrain_vector:
                 # load pre-trained vector
-                print("using pre-trained vector")
-                self.embedding_placeholder = tf.placeholder(tf.float32, [self.config.pre_trained_embedding_length, self.input_embedding_size])
-                embeddings = tf.Variable(tf.constant(0.0, shape=[self.config.pre_trained_embedding_length , self.input_embedding_size]),
-                                    trainable=True, name="W")
-                # embedding intial assgin op
-                self.embedding_init = embeddings.assign(self.embedding_placeholder)
+
+                if self.config.pretrain_vector_split is False:
+                    print("using pre-trained vector")
+                    self.embedding_placeholder = tf.placeholder(tf.float32, [self.config.pre_trained_embedding_length, self.input_embedding_size])
+                    embeddings = tf.Variable(tf.constant(0.0, shape=[self.config.pre_trained_embedding_length , self.input_embedding_size]),
+                                        trainable=True, name="W")
+                    # embedding intial assgin op
+                    self.embedding_init = embeddings.assign(self.embedding_placeholder)
+                else:
+                    print("using pre-trained vector spliting")
+                    self.fixed_embed_placeholder = tf.placeholder(tf.float32, [self.config.fixed_vocab_size, self.input_embedding_size])
+                    self.trainable_embed_placeholder = tf.placeholder(tf.float32, [self.config.trainable_vocab_size, self.input_embedding_size])
+
+                    embedd_fixed = tf.Variable(tf.constant(0.0, shape=[self.config.fixed_vocab_size , self.input_embedding_size]),
+                                        trainable=False, name="embedd_fixed")
+                    embedd_trainable = tf.Variable(tf.constant(0.0, shape=[self.config.trainable_vocab_size , self.input_embedding_size]),
+                                        trainable=True, name="embedd_trainable")
+                    # embedding intial assgin op
+                    self.embedding_init = [embedd_fixed.assign(self.fixed_embed_placeholder) ,embedd_trainable.assign(self.trainable_embed_placeholder)]
+
+                    embeddings = tf.concat([embedd_trainable, embedd_fixed], axis=0) # because in vocab ,trainble words are for-head
             else:
                 print("using vocab vectos training with models")
                 embeddings = tf.get_variable('W',[self.config.pre_trained_embedding_length , self.input_embedding_size],
@@ -159,9 +171,7 @@ class model(object):
                                                         dtype=tf.float32)
             if self.config.is_training is False:
                 print("Inference:contact unsee word embedding")
-                # Unseembeddings = tf.get_variable('UnseeEmbedding',[ self.config.src_vocab_size - self.config.pre_trained_embedding_length , self.input_embedding_size],
-                #                                        initializer=tf.random_uniform_initializer(-0.4, 0.4, seed=21),
-                #                                         dtype=tf.float32,trainable= False)
+
                 Unseembeddings = tf.Variable(tf.truncated_normal([ self.config.src_vocab_size - self.config.pre_trained_embedding_length, self.input_embedding_size],
                                                               stddev=0.1),
                                                         dtype=tf.float32,trainable= False)
@@ -189,8 +199,6 @@ class model(object):
                 # adding token feature
                 print("Adding pos feature")
                 fuse_passage_encoding = tf.concat(  [fuse_passage_encoding , tf.transpose(passages_pos_vectors,[1,0,2]) ],axis =2 )
-
-            print("after adding pos vector, shape is:{}".format(fuse_passage_encoding.shape))
 
 
 

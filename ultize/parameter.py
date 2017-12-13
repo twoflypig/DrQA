@@ -22,6 +22,8 @@ parser.add_argument('--data_path', type= str, default = "../input/data",
 # check to use vocab or pre-train vector
 parser.add_argument('--use_pretrain_vector',type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
                     help='a switch to use pre-trained vector ')
+parser.add_argument('--pretrain_vector_split',type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
+                    help='whether to split vector into fixed and trainable')
 
 parser.add_argument('--vocab_path', type= str, default = None,
                     help='the size of vocab size ')
@@ -41,7 +43,7 @@ parser.add_argument('--num_layer', type= int, default =3,
 parser.add_argument('--epoch', type= int, default =10,
                     help='the training epochs')
 # pos 
-parser.add_argument('--pos_vocab_path', type= str, default ="pos_vocab",
+parser.add_argument('--pos_vocab_path', type= str, default ="../others/pos_vocab",
                     help='the pos vocab')
 parser.add_argument('--pos_vocab_size', type= int, default = 30,
                     help='the pos vocab size')
@@ -49,7 +51,7 @@ parser.add_argument('--pos_vocab_size', type= int, default = 30,
 parser.add_argument('--add_token_feature', type=lambda s: s.lower() in ['true', 't', 'yes', '1'] ,default= False,
                     help='add_token_feature to be Ture of False')
 # model version 
-parser.add_argument('--version', action='version', version='%(prog)s 1.14')
+parser.add_argument('--version', action='version', version='%(prog)s 1.17')
 
 # drop_out_pro
 parser.add_argument('--keep_pro', type= float, default = 0.7,
@@ -59,9 +61,8 @@ parser.add_argument('--show_self_define',type=lambda s: s.lower() in ['true', 't
                     help='a switch to show inference information')
 args = parser.parse_args()
 
-with codecs.open("tag_vocab","r","utf8") as fp:
-    # load tag vocab
-    data = fp.readlines()
-    args.EN_TAG  = data[0].strip()
-    args.NUM_TAG = data[1].strip()
+# TODO : this two flag are also set in make_vocab.py
+# I need to modify this
+args.EN_TAG  = 'EN'
+args.NUM_TAG = 'NUM'
 print("load paramaters")

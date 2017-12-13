@@ -19,7 +19,7 @@ dataset ={'query': "智能化油气田的提出经历了多少年?",'query_id':0
 		[{'passage_text':"智能化油气田的提出仅有10余年的时间"}]}
 str_ls.append(json.dumps(dataset,ensure_ascii = False))
 
-path = "../output/self-defined.json"
+path = "../../output/self-defined.json"
 print("writing data to {}".format(path))
 with codecs.open(path,'w','utf8') as fp:
     for line in str_ls:
