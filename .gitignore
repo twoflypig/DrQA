@@ -14,3 +14,4 @@ nohup.out
 *.xml
 word-vector-fixed
 word-vector-trainable
+model/__pycache__/
