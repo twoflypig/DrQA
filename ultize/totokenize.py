@@ -1,6 +1,6 @@
 import json
 import codecs
-from  functions import *
+from  .functions import *
 import argparse
 
 

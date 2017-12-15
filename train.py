@@ -85,16 +85,16 @@ for m_epoch in range(args.epoch):
         
         feed = set_dict(trainModel,query_ls , passage_ls, answer_p_s, answer_p_e,passage_pos_ls,add_token_feature = args.add_token_feature)
         
-        toSee = [trainModel.cross_entropy_start,trainModel.cross_entropy_end,trainModel.summary_op,trainModel.train_op]
+        toSee = [trainModel.cross_entropy_start,trainModel.cross_entropy_end,trainModel.start_loss_matrix,trainModel.summary_op,trainModel.train_op]
         
-        loss_start,loss_end, summary_re, _ = sess.run(toSee,feed_dict=feed)
+        loss_start,loss_end, loss_nartix,summary_re, _ = sess.run(toSee,feed_dict=feed)
         
         per_loss_start  += loss_start
         
         per_loss_end    += loss_end
         
         # save summary
-        if step*args.batch_size % 100 ==0:
+        if step*args.batch_size % 100 ==0 and step!=0:
             print("iterator: {} ，loss_start is :{} , loss_end is:{}".format(reader.question_index, per_loss_start /100,per_loss_end/100 ))
             writer.add_summary(summary_re,global_step = trainModel.global_step.eval(session = sess))
             per_loss_start = 0

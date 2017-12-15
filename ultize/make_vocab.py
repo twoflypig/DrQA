@@ -4,7 +4,7 @@ This file is used to create a vocab file
 """
 import codecs
 import argparse
-from functions import *
+from .functions import *
 from collections import Counter
 
 import  json

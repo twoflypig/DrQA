@@ -2,7 +2,7 @@ import gensim
 import codecs
 import numpy as np
 import argparse
-from functions import save_vocab
+from .functions import save_vocab
 
 parser = argparse.ArgumentParser(description='produce answer and passage vocab.')
 

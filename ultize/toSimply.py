@@ -1,13 +1,6 @@
 import json
-import codecs
-import re
-import jieba
-#import jieba.posseg
-import jieba.analyse
 import logging
-import os
-from functions import  *
-from hanziconv import HanziConv
+from .functions import  *
 import argparse
 """
 This is a file to pre-process the data

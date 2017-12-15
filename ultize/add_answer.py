@@ -2,7 +2,7 @@ import codecs
 import argparse
 import json
 import re
-from functions import *
+from .functions import *
 
 
 parser = argparse.ArgumentParser(description='add answer_point to the data for training model.')

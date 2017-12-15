@@ -96,7 +96,7 @@ result_fp =  codecs.open(args.result_path,'w','utf-8')
 start_time = time.time()
 if args.test_inference is True:
     Lenght = 10
-    print("Infernece testing length:{}".format())
+    print("Infernece testing length:{}".format(Lenght))
 else:
     print("Starting inference")
     Lenght = reader.length
@@ -158,7 +158,7 @@ for step in range(Lenght):
             unkown_counts+=1
 
         # store answer we produce
-        store_json_dict['query_id']  = int(query_id_ls[0])
+        store_json_dict['query_id']  = query_id_ls[0]
         store_json_dict['query']   =  id2word(query_ls[0],id_vocab)
         store_json_dict['answer_ls'] = make_answer_dict(result_buffer)
 

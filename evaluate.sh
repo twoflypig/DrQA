@@ -5,11 +5,11 @@
 
 
 # Step1:delete some unrelated characters
-python ./ultize/toSimply.py  --data_path ../input/valid --aim_path ../output/valid_pred
+python -m ultize.toSimply  --data_path ../input/valid --aim_path ../output/valid_pred
 # Step2: produce vocab
-python ./ultize/make_vocab.py --add_answer False --src_path ../output/valid_pred --vocab_path ../output/infer_vocab
+python -m ultize.make_vocab --add_answer False --src_path ../output/valid_pred --vocab_path ../output/infer_vocab
 # Step3: tokenize files
-python ./ultize/totokenize.py --data_path ../output/valid_pred --aim_path ../output/valid_tokenize
+python -m ultize.totokenize --data_path ../output/valid_pred --aim_path ../output/valid_tokenize
 # Step4: inference process
 python inference.py --vocab_path ../output/vocab --infer_vocab_path ../output/infer_vocab  --test_inference False  --data_path ../output/valid_tokenize \
 	--use_pretrain_vector  true --pretrain_vector_split true  --vector_path word-vector  --num_units 128 --input_embedding_size 200\

@@ -1,6 +1,6 @@
 import codecs
 import json
-from function import *
+from .function import *
 ### code 1:
 # with codecs.open("pos_vocab","r","utf8") as fp:
 # 	with codecs.open("pos_vocab_new","w","utf8") as aim_fp:
