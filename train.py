@@ -61,7 +61,6 @@ if ckpt_state == None:
             sess.run(trainModel.embedding_init, feed_dict={trainModel.embedding_placeholder: embd})
         else:
             sess.run(trainModel.embedding_init, feed_dict={trainModel.trainable_embed_placeholder: trainable_embd,trainModel.fixed_embed_placeholder: fixed_embd})
-
 else:
     try:
         saver.restore(sess, ckpt_state.model_checkpoint_path)

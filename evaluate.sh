@@ -14,3 +14,5 @@ python -m ultize.totokenize --data_path ../output/valid_pred --aim_path ../outpu
 python inference.py --vocab_path ../output/vocab --infer_vocab_path ../output/infer_vocab  --test_inference False  --data_path ../output/valid_tokenize \
 	--use_pretrain_vector  true --pretrain_vector_split true  --vector_path word-vector  --num_units 128 --input_embedding_size 200\
 	   --keep_pro 1
+
+#--vocab_path ../output/vocab --infer_vocab_path ../output/infer_vocab  --test_inference False  --data_path ../output/valid_tokenize  --use_pretrain_vector  false --pretrain_vector_split false  --vector_path word-vector  --num_units 128 --input_embedding_size 200 --keep_pro 1

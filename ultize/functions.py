@@ -71,50 +71,6 @@ def convert_ch2num(string):
         temp_str.append( number_dict.get(item,item))
     return "".join(temp_str)
 
-def replace_numdotnum_withtag(sentence,tag):
-    """
-    will be discard in version 1.2
-    """
-    # input tag must be a string
-    # replacing strings like 3.2
-    # used in make_vocab.py
-    line = re.sub(rule_numdotnum,tag,sentence)
-
-    return line 
-
-def replace_num_withtag(sentence,tag):
-    """
-    will be discard in version 1.2
-    """ 
-    # input tag must be a string
-    # replacing strings like 32
-    # used in make_vocab.py
-    line = re.sub(rule_num,tag,sentence)
-
-    return line 
-
-def replace_englist_withtag(sentence,tag):
-    """
-    will be discard in version 1.2
-    """
-    # input tag must be a string
-    # replacing strings like  apple 
-    # used in make_vocab.py
-    line = re.sub(rule_englist,tag,sentence)
-
-    return line 
-
-def replace_fuse(sentence,tag_nn,tagnum,tagen):
-    """
-    will be discard in version 1.2
-    """
-    # performing vocab replacing all 
-    line = replace_englist_withtag(sentence , tagen)
-    line = replace_numdotnum_withtag(line,tag_nn)
-    line = replace_num_withtag(line , tagnum)
-
-    return line
-
 def optimistic_restore_vars(model_checkpoint_path):
     reader = tf.train.NewCheckpointReader(model_checkpoint_path)
     saved_shapes = reader.get_variable_to_shape_map()
@@ -423,18 +379,7 @@ def get_numpys(query_ls , passage_ls,passage_pos_ls,add_token_feature = False):
     passage_batch , passage_length = batchlize(passage_ls)
     #print("After passage_ls")
     binary_batch ,_ = check_exis_question(passage_ls,query_ls)
-    #print("After binary_batch")
-    # print("query_ls:{}".format(query_ls))
 
-    # print("query_pos_ls:{}".format(query_pos_ls))
-
-    # print("len of query pos :{}".format( len(query_pos_ls)))
-
-    # print("passage_ls:{}".format(passage_ls))
-
-    # print("passage_pos_ls:{}".format(passage_pos_ls))
-
-    # print("len of passage pos :{}".format( len(passage_pos_ls)))
     passage_pos_batch, _ = batchlize(passage_pos_ls)
     #print("After passage_pos")
     # add_token_feature is False , set passage_pos_batch to be zeros
@@ -443,4 +388,50 @@ def get_numpys(query_ls , passage_ls,passage_pos_ls,add_token_feature = False):
 
     return  passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch
 
-# def load_vocab_or_vector()
+def decoder_outer(score_s,score_e,true_length, length, passage,query_id):
+
+    pred_s = []
+    pred_e = []
+    pred_score = []
+    for i in range(true_length):
+        # reshape score martix ,note that this belong to sequence!
+        start_reshape = score_s[i][:length[i]]
+        end_reshape  =  score_e[i][:length[i]]
+        # Outer product of scores to get full p_s * p_e matrix
+        scores = np.outer(start_reshape,end_reshape)
+
+        # Zero out negative length and over-length span scores
+        scores = np.triu(scores,0)
+        # Take argmax or top n
+        scores_flat = scores.flatten()
+
+        idx_sort = [np.argmax(scores_flat)]
+
+        s_idx, e_idx = np.unravel_index(idx_sort, scores.shape)
+        pred_s.append(s_idx)
+        pred_e.append(e_idx)
+        pred_score.append(scores_flat[idx_sort])
+    return np.array(pred_s), np.array(pred_e), np.array(pred_score)
+
+def decoder_max(score_s,score_e,true_length, length, passage,query_id):
+    #TODO:Here will be a question
+    pred_s = []
+    pred_e = []
+    pred_score = []
+    for i in range(true_length):
+        s_p = np.argmax(score_s[i])
+        e_p = np.argmax(score_e[i])
+        s_p_max = score_s[i][s_p]
+        e_p_max = score_e[i][e_p]
+
+        if (s_p < e_p and s_p + 5 > e_p) :
+
+            max_pro = s_p_max * e_p_max
+            pred_s.append(s_p)
+            pred_e.append(e_p)
+            pred_score.append(max_pro)
+        else:
+            pred_s.append(length[i]-1)
+            pred_e.append(length[i]-1)
+            pred_score.append( -float('inf'))
+    return np.array(pred_s), np.array(pred_e), np.array(pred_score)

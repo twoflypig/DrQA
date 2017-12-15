@@ -105,16 +105,13 @@ store_json_list= [] # result list to write
 
 for step in range(Lenght):
 
-        print('step:'+ str(step))
-
+        #get batch data
         query_ls , passage_ls,query_id_ls,origin_passage,passage_pos_ls = reader.get_batch()
-
+        #pad sequence
         true_length ,query_ls, passage_ls ,passage_pos_ls= pad_to_length(args.batch_size,query_ls , passage_ls,passage_pos_ls)
-        print(true_length)
-
+        #convert to ids
         passage_batch , passage_length, query_batch,query_length,binary_batch ,passage_pos_batch= \
                           get_numpys(query_ls , passage_ls,passage_pos_ls,args.add_token_feature)
-
         feed={
           evaluate_model.passage_inputs:passage_batch,
           evaluate_model.passage_sequence_length:passage_length,
@@ -126,43 +123,28 @@ for step in range(Lenght):
 
         pre_s ,pre_e =sess.run([evaluate_model.start_pro,evaluate_model.end_pro],feed_dict=feed)
 
-
         result_buffer= []
-        store_json_dict= {} # now data
-        for i in range(true_length):
-            s_p = np.argmax(pre_s[i])
-            e_p = np.argmax(pre_e[i])
-            s_p_max = pre_s[i][s_p]#np.max(pre_s[0])
-            e_p_max = pre_s[i][e_p]#np.max(pre_e[0])
-            if (s_p <e_p and s_p +5 >e_p) or args.show_self_define :#and s_p!= len(origin_passage[i])-1 :
+        #store_json_dict= {} # now data
+        pred_s, pred_e, pred_score =decoder_outer(pre_s,pre_s,true_length,passage_length,
+                                                  passage_ls,query_ls[0])
 
-                passage_split = origin_passage[i]
-
-                buffer_answer = "".join(passage_split[s_p:e_p]) 
-
-                max_pro = s_p_max*e_p_max
-                print("s_p:{},e_p:{},pro:{},query:{},answer:{},pasage:{}".format(s_p,e_p,max_pro,id2word(query_ls[i],id_vocab),
-                    buffer_answer,
-                    passage_split if args.show_self_define else len(passage_split)))
-
-                result_buffer.append( (query_id_ls[0],buffer_answer,s_p,e_p,max_pro))
-
-
-        if len(result_buffer):
-            line = max(result_buffer,key = lambda item:item[4])
-            print("In integration pro:{},finally chosing:{}".format(line[4],line[1]))
-            result_list.append( line)
+        index = np.argmax(pred_score)
+        if pred_s[index] < passage_length[index]-1:
+            answer = passage_ls[index][pred_s[index]:pre_e[index]]
+            result_list.append((query_id_ls[0],answer))
+            print("In {} step integration pro:{},finally chosing:{}".format(step,pred_score[index],answer))
         else:
             result_list.append( (query_id_ls[0],'None'))
-            print("In integration pro:{},finally chosing:{}".format(0,"None"))
+            print("In {} step integration pro:{},finally chosing:{}".format(step,0,"None"))
             unkown_counts+=1
 
-        # store answer we produce
-        store_json_dict['query_id']  = query_id_ls[0]
-        store_json_dict['query']   =  id2word(query_ls[0],id_vocab)
-        store_json_dict['answer_ls'] = make_answer_dict(result_buffer)
 
-        store_json_list.append( json.dumps(store_json_dict,ensure_ascii = False))
+        # store answer we produce
+        # store_json_dict['query_id']  = query_id_ls[0]
+        # store_json_dict['query']   =  id2word(query_ls[0],id_vocab)
+        # store_json_dict['answer_ls'] = make_answer_dict(result_buffer)
+        #
+        # store_json_list.append( json.dumps(store_json_dict,ensure_ascii = False))
         
 end_time =time.time()
 print("spend:{}".format(end_time-start_time))
@@ -171,10 +153,11 @@ for line in result_list:
 result_fp.close()
 print("unknow:{}".format(unkown_counts))
 
-path = "../output/infer_answer.json"
-print("writing answers to {}".format(path))
-with codecs.open(path,'w','utf8') as fp:
-    for line in store_json_list:
-        fp.write(line +'\n')
-print("writing finished")
+# temporarily we don't need to do this
+# path = "../output/infer_answer.json"
+# print("writing answers to {}".format(path))
+# with codecs.open(path,'w','utf8') as fp:
+#     for line in store_json_list:
+#         fp.write(line +'\n')
+# print("writing finished")
 

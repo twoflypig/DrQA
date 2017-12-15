@@ -142,7 +142,7 @@ class model(object):
             replced = tf.where(sequence_masked, pre, sequence_infi_1)
 
 
-            # when this is set to be (-float('inf)) ,whill be a error
+            # when this is set to be (-float('inf)) ,will be a error
             loss = tf.nn.softmax_cross_entropy_with_logits(labels=aim, logits=replced)
 
             reduce_loss = tf.reduce_mean(loss)
